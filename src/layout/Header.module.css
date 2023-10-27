@@ -1,0 +1,59 @@
+.header__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(-15deg, rgba(244, 69, 46, 1) 52%, rgba(255, 200, 0, 1) 52%);
+
+
+  margin-bottom: 6rem;
+}
+
+.header__title {
+  font-size: 6rem;
+  margin: 1rem;
+  background: linear-gradient(-15deg, rgba(255, 200, 0, 0.9) 46.8%, rgba(244, 69, 46, 0.9) 46.8%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/*
+YELLOW
+#FDE74C
+#FFBC42
+#FED766
+#FFD449
+#FFC800
+#FFD151
+#F8C537
+#EDB230
+#FFB400
+#FFDD4A
+
+RED
+#F4442E
+#E55934
+#D5573B
+#FE4A49
+#FE654F
+#FB3640
+#FC7753
+#DD1C1A
+#FF312E
+#F42C04
+#F96F5D
+
+PALE
+#F9F9F9
+#FFECD1
+#E0E1E9
+#DBD9DB
+#D8CBC7
+#F4F4F8
+#F9F5FF
+#EEEEEE
+#FFEDDF
+#E2E2E2
+
+*/
