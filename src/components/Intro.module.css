@@ -1,8 +1,6 @@
 .intro__container {
-  height: 100vh;
   padding: 0 1rem;
-  /* display: flex; */
-  /* justify-content: center; */
+  margin-bottom: 8rem;
 }
 
 .intro__box {

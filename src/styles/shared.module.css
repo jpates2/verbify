@@ -1,0 +1,13 @@
+.section-header {
+  font-size: 4rem;
+  color: #F4442E;
+  text-align: center;
+}
+
+
+.test-div {
+  z-index: 50;
+  background-color: #F9F9F9;
+  height: 50vh;
+  position: relative;
+}
