@@ -10,7 +10,7 @@
 .header__title {
   font-size: 6rem;
   margin: 0;
-  background: linear-gradient(-15deg, #FFB400 45%, #F4442E 45%);
+  background: linear-gradient(-15deg, #FFB400 46%, #F4442E 46%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
