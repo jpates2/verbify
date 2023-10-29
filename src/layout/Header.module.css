@@ -4,25 +4,46 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(-15deg, #F4442E 52%, #FFB400 52%);
-
-
-  margin-bottom: 6rem;
+  background: linear-gradient(-15deg, #F4442E 49%, #FFB400 49%);
 }
 
 .header__title {
   font-size: 6rem;
-  margin: 1rem;
-  background: linear-gradient(-15deg, #FFB400 46.8%, #F4442E 46.8%);
+  margin: 0;
+  background: linear-gradient(-15deg, #FFB400 45%, #F4442E 45%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.header__slogan {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #FFB400;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+}
+
+@media (min-width: 800px) {
+  .header__title {
+    font-size: 8rem;
+  }
+
+  .header__slogan {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
 
 /*
 RED
 #FE4A49
 #FE654F
-#FB3640 ?
+#FB3640
 #F4442E
 #FF312E
 #F42C04

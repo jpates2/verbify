@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
+  background-color: #F9F9F9;
 }
 
 code {
@@ -17,3 +18,20 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+/*
+PALE
+#F9F9F9
+#F4F4F8
+#F9F5FF
+#EEEEEE
+#F6F9FC
+
+#DBD9DB
+#FFECD1
+#E0E1E9
+#D8CBC7
+#FFEDDF
+#E2E2E2
+
+*/
