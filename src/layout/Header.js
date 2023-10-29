@@ -14,7 +14,10 @@ export default function Header() {
     <section id="header">
       <motion.div className={classes["header__container"]}>
         <motion.h2 className={classes["header__title"]} style={{ scale: scaleTitle}}>verbify</motion.h2>
-        <motion.p className={classes["header__slogan"]} style={{scale: scaleText, y: yText}}><span>Unlock Spanish fluency, </span><span>verb by verb</span></motion.p>
+        <motion.div className={classes["header__slogan"]} style={{scale: scaleText, y: yText}}>
+          <span>Unlock Spanish fluency, </span>
+          <span>verb by verb</span>
+        </motion.div>
       </motion.div>
     </section>
   )

@@ -23,6 +23,7 @@
   flex-direction: column;
   align-items: center;
   position: absolute;
+  white-space: pre;
 }
 
 @media (min-width: 800px) {
