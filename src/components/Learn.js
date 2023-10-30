@@ -12,10 +12,9 @@ export default function Learn() {
         <div className={classes["learn__container"]}>
           <h2 className={styles["section-header"]}>Learn with Verbify</h2>
           <div className={classes["learn__cards"]}>
-            <LearnCard title={LearnInfo[0].title} description={LearnInfo[0].description} />
-            <LearnCard title={LearnInfo[1].title} description={LearnInfo[1].description} />
-            <LearnCard title={LearnInfo[2].title} description={LearnInfo[2].description} />
-            <LearnCard title={LearnInfo[3].title} description={LearnInfo[3].description} />
+            {LearnInfo.map(card => (
+              <LearnCard key={card.title} title={card.title} description={card.description} image={card.img} link={card.link} />
+            ))}
           </div>
         </div>
       </section>

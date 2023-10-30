@@ -35,16 +35,8 @@
 
   .learn__container-background::before {
     margin-top: 30vh;
-    height: 76vh;
+    height: 80vh;
     max-height: 40rem;
     clip-path: polygon(0% 0%, 100% 25%, 100% 100%, 0% 100%);
   }
 }
-
-
-/* @media (max-width: 440px) {
-  .learn__container-background {
-    margin-top: 20vh;
-    height: 160vh;
-  }
-} */
