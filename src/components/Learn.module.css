@@ -3,8 +3,10 @@
   overflow: hidden;
   position: relative;
   padding-bottom: 2rem;
+  background: linear-gradient(25deg, #FFB400 85%, transparent 85%);
 }
 
+/*
 .learn__container-background::before {
   content: "";
   position: absolute;
@@ -14,9 +16,9 @@
   z-index: 0;
   clip-path: polygon(0% 0%, 100% 10%, 100% 100%, 0% 100%);
   background: #FFB400;
-  margin-bottom: 20vh;
+  margin-bottom: 20vh; */
   /* background: linear-gradient(25deg, #FFB400 80%, transparent 80%); */
-}
+/* } */
 
 .learn__cards {
   padding: 0 1rem;
@@ -33,9 +35,11 @@
     justify-items: center;
   }
 
-  .learn__container-background::before {
-    margin-top: 30vh;
+  .learn__container {
+    background: linear-gradient(15deg, #FFB400 70%, transparent 70%);
+
+    /* margin-top: 30vh;
     height: 160vh;
-    clip-path: polygon(0% 0%, 100% 15%, 100% 100%, 0% 100%);
+    clip-path: polygon(0% 0%, 100% 15%, 100% 100%, 0% 100%); */
   }
 }

@@ -1,0 +1,36 @@
+.start__container {
+  margin-top: 6rem;
+  margin-bottom: 8rem;
+  text-align: center;
+}
+
+.start__header {
+  font-size: 2rem;
+  color: #F4442E;
+  text-align: center;
+}
+
+.start__button {
+  all: unset;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border-radius: 16px;
+  background: #FFB400;
+  color: #F9F9F9;
+  cursor: pointer;
+}
+
+@media (min-width: 800px) {
+  .start__header {
+    font-size: 3rem;
+  }
+
+  .start__button {
+    font-size: 2rem;
+  }
+
+  .start__container {
+    margin-top: 8rem;
+  }
+}

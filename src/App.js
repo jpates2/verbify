@@ -3,6 +3,7 @@ import Intro from "./components/Intro";
 import Learn from "./components/Learn";
 
 import classes from "../src/styles/shared.module.css"
+import StartLearning from "./components/StartLearning";
 
 function App() {
   return (
@@ -10,9 +11,7 @@ function App() {
       <Header />
       <Intro />
       <Learn />
-      <div className={classes["test-div"]}>
-
-      </div>
+      <StartLearning />
     </>
   );
 }
