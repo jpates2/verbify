@@ -1,10 +1,175 @@
+import { useState } from 'react';
+import { Link } from "react-scroll";
 import { motion } from 'framer-motion';
 import classes from "./Nav.module.css";
 
+const navVariant = {
+  opened: {
+    height: "100vh",
+    background: "#FFB400",
+    zIndex: 100
+  },
+  closed: {
+    height: "4rem",
+    background: "#FFB400",
+    zIndex: 30
+  }
+}
+
+const burgerIconVariant = {
+  opened: {
+    opacity: 0,
+    y: "-100%",
+    transition: {
+      duration: 0.5,
+      ease: "easeInOut"
+    }
+  },
+  closed: {
+    opacity: 1,
+    y: "0%",
+    transition: {
+      delay: 1,
+      duration: 0.5,
+      ease: "easeInOut"
+    }
+  }
+}
+
+const mobileMenuVariant = {
+  opened: {
+    y: "0%",
+    height: "100vh",
+    transition: {
+      delay: 0.15,
+      duration: 1,
+      ease: [0.75, 0, 0.2, 1]
+    }
+  },
+  closed: {
+    y: "-100%",
+    height: 0,
+    transition: {
+      delay: 0.35,
+      duration: 0.5,
+      ease: [0.75, 0, 0.5, 1]
+    }
+  }
+}
+
+const closeIconVariant = {
+  opened: {
+    opacity: 1,
+    transition: {
+      delay: 1
+    }
+  },
+  closed: { opacity: 0 }
+}
+
+const listVariant = {
+  opened: {
+    transition: {
+      delayChildren: 1,
+      staggerChildren: 0.15
+    }
+  },
+  closed: {
+    transition: {
+      staggerChildren: 0.05,
+      staggerDirection: -1
+    }
+  }
+}
+
+const linkVariant = {
+  opened: {
+    opacity: 1,
+    y: "0%",
+    transition: {
+      duration: 0.65,
+      ease: "easeOut"
+    }
+  },
+  closed: {
+    opacity: 0,
+    y: "100%",
+    transition: {
+      duration: 0.25,
+      ease: "easeInOut"
+    }
+  }
+}
+
 export default function Nav() {
-  return (
-    <nav>
-      <div className={classes["nav__container"]}>
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
+  const mobileNav = (
+    <motion.nav
+      className={classes["mobile-nav"]}
+      initial="closed"
+      animate={mobileNavOpen ? "opened" : "closed"}
+      variants={navVariant}
+    >
+
+      <motion.div
+        className={classes["hamburger"]}
+        variants={burgerIconVariant}
+        onClick={() => setMobileNavOpen(true)}
+      >
+        <span className={classes["hamburger-top"]}></span>
+        <span className={classes["hamburger-middle"]}></span>
+        <span className={classes["hamburger-bottom"]}></span>
+      </motion.div>
+
+      <motion.div variants={mobileMenuVariant} className="mobile-navbar_container">
+        <motion.div
+          variants={closeIconVariant}
+          onClick={() => setMobileNavOpen(false)}
+          className={classes["mobile-navbar__close"]}
+        >
+          X
+        </motion.div>
+        <motion.div variants={listVariant} className={classes["mobile-navbar__links"]}>
+          <div className={classes["mobile-navbar__top-links"]}>
+            <motion.div variants={linkVariant}>
+              <Link to="home" className={classes["mobile-navbar__link"]}>Verbs</Link>
+            </motion.div>
+            <motion.div variants={linkVariant}>
+              <Link to="certificates" className={classes["mobile-navbar__link"]}>Flashcards</Link>
+            </motion.div>
+          </div>
+          <div className={classes["mobile-navbar__bottom-links"]}>
+            <motion.div variants={linkVariant} className={classes["mobile-navbar__line"]}></motion.div>
+            <motion.div variants={linkVariant}>
+              <Link to="contact" className={classes["mobile-navbar__link"]}>
+                <motion.button
+                  className={classes["mobile-nav__button"]}
+                  whileHover={{
+                    scale: 1.1,
+                    transition: {
+                      duration: 0.3
+                    }
+                  }}
+                  whileTap={{
+                    scale: 0.9,
+                    color: "#FFB400",
+                  }}
+                >
+                  Sign Up
+                </motion.button>
+              </Link>
+            </motion.div>
+          </div>
+
+        </motion.div>
+      </motion.div>
+    </motion.nav>
+  )
+
+  const desktopNav = (
+    <nav className={classes["desktop-nav"]}>
+      <div className={classes["desktop-nav__container"]}>
         <div>Verbs</div>
         <div>Flashcards</div>
         <motion.button
@@ -22,5 +187,12 @@ export default function Nav() {
         >Sign Up</motion.button>
       </div>
     </nav>
+  )
+
+  return (
+    <>
+      {mobileNav}
+      {desktopNav}
+    </>
   )
 }
