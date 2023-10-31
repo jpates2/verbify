@@ -10,7 +10,7 @@
   position: absolute;
   margin-top: 30vh;
   width: 100%;
-  height: 180vh;
+  height: 380vh;
   z-index: 0;
   clip-path: polygon(0% 0%, 100% 10%, 100% 100%, 0% 100%);
   background: #FFB400;
@@ -35,8 +35,7 @@
 
   .learn__container-background::before {
     margin-top: 30vh;
-    height: 80vh;
-    max-height: 40rem;
-    clip-path: polygon(0% 0%, 100% 25%, 100% 100%, 0% 100%);
+    height: 160vh;
+    clip-path: polygon(0% 0%, 100% 15%, 100% 100%, 0% 100%);
   }
 }
