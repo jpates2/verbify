@@ -1,0 +1,35 @@
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4rem;
+}
+
+.nav__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  min-width: 20rem;
+  position: absolute;
+  right: 3rem;
+  font-weight: bold;
+  color: #F4442E;
+  font-size: 1.2rem;
+}
+
+.nav__button {
+  all: unset;
+  background: #F4442E;
+  border-radius: 16px;
+  padding: 0.5rem 1rem;
+  color: #F9F9F9;
+  cursor: pointer;
+}
+
+@media (min-width: 800px) {
+  nav {
+    height: 6rem;
+  }
+}
