@@ -5,6 +5,7 @@ import Intro from "../components/Intro";
 import Learn from "../components/Learn";
 import Nav from "../layout/Nav";
 import StartLearning from "../components/StartLearning";
+import Reviews from "../components/Reviews";
 
 export default function HomePage() {
   return (
@@ -23,6 +24,7 @@ export default function HomePage() {
           <Intro />
           <Learn />
           <StartLearning />
+          <Reviews />
         </main>
       </motion.div>
     </AnimatePresence>
