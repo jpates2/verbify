@@ -1,0 +1,12 @@
+.verbs__container {
+  background: #FFB400;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.verbs__header {
+  margin: 0;
+}

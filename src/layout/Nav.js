@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from "react-scroll";
+import { Link } from "react-router-dom";
 import { motion } from 'framer-motion';
 import classes from "./Nav.module.css";
 
@@ -133,16 +133,16 @@ export default function Nav() {
         <motion.div variants={listVariant} className={classes["mobile-navbar__links"]}>
           <div className={classes["mobile-navbar__top-links"]}>
             <motion.div variants={linkVariant}>
-              <Link to="home" className={classes["mobile-navbar__link"]}>Verbs</Link>
+              <Link to="/verbs" className={classes["mobile-navbar__link"]}>Verbs</Link>
             </motion.div>
             <motion.div variants={linkVariant}>
-              <Link to="certificates" className={classes["mobile-navbar__link"]}>Flashcards</Link>
+              <Link to="/flashcards" className={classes["mobile-navbar__link"]}>Flashcards</Link>
             </motion.div>
           </div>
           <div className={classes["mobile-navbar__bottom-links"]}>
             <motion.div variants={linkVariant} className={classes["mobile-navbar__line"]}></motion.div>
             <motion.div variants={linkVariant}>
-              <Link to="contact" className={classes["mobile-navbar__link"]}>
+              <Link to="/signup" className={classes["mobile-navbar__link"]}>
                 <motion.button
                   className={classes["mobile-nav__button"]}
                   whileHover={{
@@ -170,21 +170,23 @@ export default function Nav() {
   const desktopNav = (
     <nav className={classes["desktop-nav"]}>
       <div className={classes["desktop-nav__container"]}>
-        <div>Verbs</div>
-        <div>Flashcards</div>
-        <motion.button
-          className={classes["nav__button"]}
-          whileHover={{
-            scale: 1.1,
-            transition: {
-              duration: 0.3
-            }
-          }}
-          whileTap={{
-            scale: 0.9,
-            color: "#FFB400",
-          }}
-        >Sign Up</motion.button>
+        <Link to="/verbs">Verbs</Link>
+        <Link to="/flashcards">Flashcards</Link>
+        <Link to="/signup">
+          <motion.button
+            className={classes["nav__button"]}
+            whileHover={{
+              scale: 1.1,
+              transition: {
+                duration: 0.3
+              }
+            }}
+            whileTap={{
+              scale: 0.9,
+              color: "#FFB400",
+            }}
+          >Sign Up</motion.button>
+        </Link>
       </div>
     </nav>
   )
