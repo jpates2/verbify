@@ -11,8 +11,10 @@ export default function Review({ text, name, location }) {
         exit={{opacity: 0}}
       >
         <p className={classes["review__text"]}>{text}</p>
-        <p className={classes["review__name"]}>{name}</p>
-        <p className={classes["review__location"]}>{location}</p>
+        <div>
+          <p className={classes["review__name"]}>{name}</p>
+          <p className={classes["review__location"]}>{location}</p>
+        </div>
       </motion.div>
     </AnimatePresence>
   )

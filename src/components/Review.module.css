@@ -5,7 +5,24 @@
   line-height: 1.5rem;
   border-radius: 8px;
   padding: 1rem 2rem;
+  min-height: 12rem;
   margin-bottom: 3rem;
   white-space: normal;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.review__text {
+  font-style: italic;
+}
+
+.review__name{
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.review__location {
+  margin-top: 0;
 }

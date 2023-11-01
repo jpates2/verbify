@@ -11,7 +11,6 @@
 
 .reviews__inner {
   white-space: nowrap;
-  /* display: flex; */
 }
 
 .reviews__header {
@@ -28,7 +27,6 @@
 }
 
 .reviews__dash {
-  /* background-color: #FFB400; */
   height: 0.4rem;
   width: 2rem;
   border-radius: 8px;
