@@ -1,21 +1,16 @@
-import Header from "./layout/Header";
-import Intro from "./components/Intro";
-import Learn from "./components/Learn";
-import Nav from "./layout/Nav";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import HomePage from "./pages/Home";
+import VerbsPage from "./pages/Verbs";
+import FlashcardsPage from "./pages/Flashcards";
 
-import classes from "../src/styles/shared.module.css"
-import StartLearning from "./components/StartLearning";
+const router = createBrowserRouter([
+  {path: "/", element: <HomePage />},
+  {path: "/flashcards", element: <FlashcardsPage />},
+  {path: "/verbs", element: <VerbsPage /> },
+])
 
 function App() {
-  return (
-    <>
-      <Nav />
-      <Header />
-      <Intro />
-      <Learn />
-      <StartLearning />
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
