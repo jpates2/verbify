@@ -6,6 +6,7 @@ import Learn from "../components/Learn";
 import Nav from "../layout/Nav";
 import StartLearning from "../components/StartLearning";
 import Reviews from "../components/Reviews";
+import Suggestions from "../components/Suggestions";
 
 export default function HomePage() {
   return (
@@ -24,6 +25,7 @@ export default function HomePage() {
           <Intro />
           <Learn />
           <StartLearning />
+          <Suggestions />
           <Reviews />
         </main>
       </motion.div>

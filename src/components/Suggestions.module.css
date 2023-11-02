@@ -1,0 +1,30 @@
+.suggestions__container {
+  text-align: center;
+  margin-bottom: 6rem;
+}
+
+.suggestions__background {
+  background: #FFB400;
+  padding: 1rem 0 4rem 0;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 0% 100%);
+}
+
+.suggestions__header {
+  font-size: 2rem;
+  color: #F4442E;
+}
+
+.suggestions__text {
+  max-width: 24rem;
+  margin: 0 auto 2rem auto;
+}
+
+@media (min-width: 800px) {
+  .suggestions__background {
+    padding: 2rem 0 4rem 0;
+  }
+
+  .suggestions__text {
+    max-width: 48rem;
+  }
+}
