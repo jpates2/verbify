@@ -1,0 +1,17 @@
+footer {
+  background: #FFB400;
+  height: 8rem;
+  color: #F9F9F9;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__links {
+  font-size: 2rem;
+  width: 4rem;
+  display: flex;
+  justify-content: space-between;
+}

@@ -7,6 +7,7 @@ import Nav from "../layout/Nav";
 import StartLearning from "../components/StartLearning";
 import Reviews from "../components/Reviews";
 import Suggestions from "../components/Suggestions";
+import Footer from "../layout/Footer";
 
 export default function HomePage() {
   return (
@@ -28,6 +29,7 @@ export default function HomePage() {
           <Suggestions />
           <Reviews />
         </main>
+        <Footer />
       </motion.div>
     </AnimatePresence>
   );
