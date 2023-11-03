@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Nav from "../layout/Nav";
 import Header from "../verbs/Header";
+import VerbSearch from "../verbs/VerbSearch";
 
 export default function VerbsPage() {
   return (
@@ -13,6 +14,7 @@ export default function VerbsPage() {
       >
       <Nav />
       <Header />
+      <VerbSearch />
     </motion.div>
   );
 }
