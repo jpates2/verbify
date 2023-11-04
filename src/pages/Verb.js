@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
 import Header from "../verb/Header";
 import Nav from "../layout/Nav";
+import TenseGroup from "../verb/TenseGroup";
 
 export default function VerbPage() {
   let params = useParams();
@@ -15,6 +16,7 @@ export default function VerbPage() {
     >
       <Nav />
       <Header verb={params.verb} />
+      <TenseGroup tenses={["Present", "Preterite", "Imperfect", "Conditional", "Future"]}>Present Indicative</TenseGroup>
     </motion.div>
   );
 }
