@@ -16,7 +16,7 @@
   font-size: 2rem;
   margin-bottom: 1rem;
   font-weight: bold;
-  background: linear-gradient(-15deg, #FFB400 46%, #F4442E 46%);
+  background: linear-gradient(-15deg, #F4442E 46%, #FFB400 46%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

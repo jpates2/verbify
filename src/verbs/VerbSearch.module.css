@@ -13,3 +13,8 @@
   font-family: inherit;
   border-radius: 32px;
 }
+
+.verbs__search-bar:focus {
+  outline: none;
+  border: 2px solid #F4442E;
+}

@@ -1,50 +1,50 @@
 export const VerbInfo = [
   {
-    infintive: "tener",
+    infinitive: "tener",
     translation: "to have"
   },
   {
-    infintive: "estar",
+    infinitive: "estar",
     translation: "to be"
   },
   {
-    infintive: "ser",
+    infinitive: "ser",
     translation: "to be"
   },
   {
-    infintive: "poner",
+    infinitive: "poner",
     translation: "to put"
   },
   {
-    infintive: "poder",
+    infinitive: "poder",
     translation: "to be able"
   },
   {
-    infintive: "ganar",
+    infinitive: "ganar",
     translation: "to win"
   },
   {
-    infintive: "comprar",
+    infinitive: "comprar",
     translation: "to buy"
   },
   {
-    infintive: "venir",
+    infinitive: "venir",
     translation: "to come"
   },
   {
-    infintive: "bajar",
+    infinitive: "bajar",
     translation: "to go down"
   },
   {
-    infintive: "subir",
+    infinitive: "subir",
     translation: "to go up"
   },
   {
-    infintive: "probar",
+    infinitive: "probar",
     translation: "to try"
   },
   {
-    infintive: "comer",
+    infinitive: "comer",
     translation: "to eat"
   },
 ]
