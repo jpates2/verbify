@@ -9,21 +9,21 @@
   border-radius: 16px;
   box-shadow: 0px 18px 36px -18px rgba(0,0,0,0.1),0px 30px 45px -30px rgba(50,50,93,0.25);
   justify-self: center;
-  color: #F4442E;
+  /* color: #F4442E; */
 }
 
 .verb-card__spanish {
   font-size: 2rem;
   margin-bottom: 1rem;
   font-weight: bold;
-  /* background: linear-gradient(-15deg, #FFB400 46%, #F4442E 46%);
+  background: linear-gradient(-15deg, #FFB400 46%, #F4442E 46%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
+  -webkit-text-fill-color: transparent;
 }
 
-.verb-card:nth-child(2n) {
+/* .verb-card:nth-child(2n) {
   color: #FFB400;
-}
+} */
 
 .verb-card__english {
   font-size: 1.2rem;
