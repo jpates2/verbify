@@ -1,3 +1,4 @@
+import VerbPair from "../verbs/VerbPair";
 import classes from "./TenseGroup.module.css";
 
 export default function TenseGroup({ children, tenses }) {
@@ -10,30 +11,12 @@ export default function TenseGroup({ children, tenses }) {
         ))}
       </ul>
       <div>
-        <div className={classes["tense-group__pair"]}>
-          <div className={classes["tense-group__pair-pronoun"]}>yo</div>
-          <div className={classes["tense-group__pair-verb"]}>soy</div>
-        </div>
-        <div className={`${classes["tense-group__pair"]} ${classes["tense-group__pair-red"]}`}>
-          <div className={classes["tense-group__pair-pronoun"]}>tu</div>
-          <div className={classes["tense-group__pair-verb"]}>eres</div>
-        </div>
-        <div className={classes["tense-group__pair"]}>
-          <div className={classes["tense-group__pair-pronoun"]}>el / ella / usted</div>
-          <div className={classes["tense-group__pair-verb"]}>es</div>
-        </div>
-        <div className={`${classes["tense-group__pair"]} ${classes["tense-group__pair-red"]}`}>
-          <div className={classes["tense-group__pair-pronoun"]}>nosotros / nosotras</div>
-          <div className={classes["tense-group__pair-verb"]}>somos</div>
-        </div>
-        <div className={classes["tense-group__pair"]}>
-          <div className={classes["tense-group__pair-pronoun"]}>vosotros / vosotras</div>
-          <div className={classes["tense-group__pair-verb"]}>sois</div>
-        </div>
-        <div className={`${classes["tense-group__pair"]} ${classes["tense-group__pair-red"]}`}>
-          <div className={classes["tense-group__pair-pronoun"]}>ellos / ellas / ustedes</div>
-          <div className={classes["tense-group__pair-verb"]}>son</div>
-        </div>
+        <VerbPair pronoun="yo" conVerb="soy" />
+        <VerbPair pronoun="tu" conVerb="eres" />
+        <VerbPair pronoun="el / ella / usted" conVerb="es" />
+        <VerbPair pronoun="nosotros / nosotras" conVerb="somos" />
+        <VerbPair pronoun="vosotros / vosotras" conVerb="sois" />
+        <VerbPair pronoun="ellos / ellas / ustedes" conVerb="son" />
       </div>
     </section>
   )

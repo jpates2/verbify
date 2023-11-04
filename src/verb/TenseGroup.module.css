@@ -32,26 +32,6 @@
   width: 30%;
 }
 
-.tense-group__pair {
-  display: grid;
-  grid-template-columns: 5fr 4fr;
-  margin-bottom: 1rem;
-  grid-gap: 1rem;
-}
-
-.tense-group__pair-red {
-  color: #F4442E;
-}
-
-.tense-group__pair-pronoun {
-  justify-self: end;
-  font-style: italic;
-}
-
-.tense-group__pair-verb {
-  justify-self: start;
-}
-
 @media (min-width: 800px) {
   .tense-group__container {
     max-width: 40rem;
@@ -67,10 +47,5 @@
 
   .tense-group__list li {
     width: 20%;
-  }
-
-  .tense-group__pair {
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 2rem;
   }
 }
