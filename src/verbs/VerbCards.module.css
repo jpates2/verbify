@@ -1,0 +1,22 @@
+.verb-cards__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 4rem;
+  grid-gap: 2rem;
+}
+
+@media (min-width: 600px) {
+  .verb-cards__container {
+    padding: 0 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 40rem;
+    margin: 0 auto 4rem auto;
+  }
+}
+
+@media (min-width: 1000px) {
+  .verb-cards__container {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    max-width: 64rem;
+  }
+}
