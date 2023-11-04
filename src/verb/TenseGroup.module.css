@@ -30,6 +30,15 @@
 
 .tense-group__list li {
   width: 30%;
+  cursor: pointer;
+}
+
+.tense__underline {
+  border: 1.5px solid #FFB400;
+  border-radius: 8px;
+  width: 40%;
+  bottom: 1.5rem;
+  margin: 0.2rem auto 0 auto;
 }
 
 @media (min-width: 800px) {
