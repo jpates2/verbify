@@ -2,10 +2,10 @@
   background-color: white;
   box-shadow: 0px 18px 36px -18px rgba(0,0,0,0.1),0px 30px 45px -30px rgba(50,50,93,0.25);
   line-height: 1.5rem;
-  border-radius: 8px;
-  max-width: 40rem;
+  border-radius: 16px;
+  max-width: 85%;
   margin: 0 auto 4rem auto;
-  padding: 4rem 2rem;
+  padding: 4rem 1rem;
   text-align: center;
 }
 
@@ -20,17 +20,23 @@
   list-style: none;
   padding: 0;
   display: flex;
-  width: 80%;
-  margin: 0 auto 2rem auto;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0 auto 1rem auto;
+  justify-content: space-evenly;
+  height: 6rem;
   font-weight: bold;
+}
+
+.tense-group__list li {
+  width: 30%;
 }
 
 .tense-group__pair {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 5fr 4fr;
   margin-bottom: 1rem;
-  grid-gap: 2rem;
+  grid-gap: 1rem;
 }
 
 .tense-group__pair-red {
@@ -44,4 +50,27 @@
 
 .tense-group__pair-verb {
   justify-self: start;
+}
+
+@media (min-width: 800px) {
+  .tense-group__container {
+    max-width: 40rem;
+    margin: 0 auto 4rem auto;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .tense-group__list {
+    width: 80%;
+    height: 3rem;
+  }
+
+  .tense-group__list li {
+    width: 20%;
+  }
+
+  .tense-group__pair {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
+  }
 }

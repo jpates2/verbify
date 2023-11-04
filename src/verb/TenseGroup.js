@@ -31,7 +31,7 @@ export default function TenseGroup({ children, tenses }) {
           <div className={classes["tense-group__pair-verb"]}>sois</div>
         </div>
         <div className={`${classes["tense-group__pair"]} ${classes["tense-group__pair-red"]}`}>
-          <div className={classes["tense-group__pair-pronoun"]}>ellos / ellas</div>
+          <div className={classes["tense-group__pair-pronoun"]}>ellos / ellas / ustedes</div>
           <div className={classes["tense-group__pair-verb"]}>son</div>
         </div>
       </div>
