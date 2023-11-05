@@ -22,6 +22,7 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  max-width: 28rem;
   margin: 0 auto 1rem auto;
   justify-content: space-evenly;
   height: 6rem;
@@ -31,10 +32,19 @@
 .tense-group__list li {
   width: 30%;
   cursor: pointer;
+  height: 2rem;
 }
 
 .tense__underline {
   border: 1.5px solid #FFB400;
+  border-radius: 8px;
+  width: 40%;
+  bottom: 1.5rem;
+  margin: 0.2rem auto 0 auto;
+}
+
+.tense__underline-blank {
+  border: 1.5px solid transparent;
   border-radius: 8px;
   width: 40%;
   bottom: 1.5rem;
@@ -51,6 +61,7 @@
 
   .tense-group__list {
     width: 80%;
+    max-width: 32rem;
     height: 3rem;
   }
 

@@ -62,6 +62,7 @@ export default function TenseGroup({ children, tenses }) {
           <motion.li key={`${children} ${tense}`} >
             <div onClick={() => {handleVerbClick(tense.toLowerCase())}}>{tense}</div>
             {verbTense === tense.toLowerCase() && <motion.div className={classes["tense__underline"]} layoutId="animate-tense" ></motion.div>}
+            {/* <motion.div className={verbTense === tense.toLowerCase() ?classes["tense__underline"] : classes["tense__underline-blank"]} layoutId="animate-tense" ></motion.div> */}
           </motion.li>
         ))}
       </motion.ul>
