@@ -1,13 +1,11 @@
-import classes from "./Header.module.css";
+import PageHeader from "../layout/PageHeader";
 
 export default function Header() {
+  const headerText = "Every tense, mood and conjugation for (almost) every verb"
+
   return (
     <section id="header">
-      <div className={classes["verbs__container"]}>
-          <h1 className={classes["verbs__header"]}>Verb Library</h1>
-          <p className={classes["verbs__slogan"]}>Every tense, mood and conjugation for (almost) every verb</p>
-      </div>
-      <div className={classes["verbs__container-background"]}></div>
+      <PageHeader text={headerText}>Verb Library</PageHeader>
     </section>
   )
 }

@@ -1,9 +1,11 @@
-import classes from "./Header.module.css";
+import PageHeader from "../layout/PageHeader";
 
 export default function Header() {
+  const headerText = "Start practising now!"
+
   return (
-    <div className={classes["flashcards__container"]}>
-      <h1 className={classes["flashcards__header"]}>Flashcards</h1>
-    </div>
+    <section id="flashcards">
+      <PageHeader text={headerText}>Flashcards</PageHeader>
+    </section>
   )
 }

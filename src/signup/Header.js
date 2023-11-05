@@ -1,9 +1,11 @@
-import classes from "./Header.module.css";
+import PageHeader from "../layout/PageHeader";
 
 export default function Signup() {
+  const headerText = "Sign up now to track your progress and personalise your learning"
+
   return (
-    <div className={classes["signup__container"]}>
-      <h1 className={classes["signup__header"]}>Signup</h1>
-    </div>
+    <section id="signup">
+      <PageHeader text={headerText}>Sign Up</PageHeader>
+    </section>
   )
 }
