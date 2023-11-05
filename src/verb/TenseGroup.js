@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import VerbPair from "../verbs/VerbPair";
 import classes from "./TenseGroup.module.css";
 
@@ -56,14 +57,14 @@ export default function TenseGroup({ children, tenses }) {
   return (
     <section className={classes["tense-group__container"]}>
       <div className={classes["tense-group__header"]}>{children}</div>
-      <ul className={classes["tense-group__list"]}>
+      <motion.ul className={classes["tense-group__list"]}>
         {tenses.map(tense => (
-          <li key={`${children} ${tense}`} >
+          <motion.li key={`${children} ${tense}`} >
             <div onClick={() => {handleVerbClick(tense.toLowerCase())}}>{tense}</div>
-            {verbTense === tense.toLowerCase() && <div className={classes["tense__underline"]}></div>}
-          </li>
+            {verbTense === tense.toLowerCase() && <motion.div className={classes["tense__underline"]} layoutId="animate-tense" ></motion.div>}
+          </motion.li>
         ))}
-      </ul>
+      </motion.ul>
       <div>
         <VerbPair pronoun="yo" conVerb={selectedTense.yo} />
         <VerbPair pronoun="tu" conVerb={selectedTense.tu} />
