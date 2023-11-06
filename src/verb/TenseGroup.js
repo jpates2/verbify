@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
-import VerbPair from "../verbs/VerbPair";
-import { useTense } from "../hooks/useTense";
+import VerbPair from "./VerbPair";
 import classes from "./TenseGroup.module.css";
 import TenseList from "./TenseList";
 
@@ -77,35 +75,18 @@ const verbExample = {
 }
 
 export default function TenseGroup({ children, tenses, tenseSection }) {
-  const [activeTenses, setActiveTenses] = useState({
-    indicative: "present",
-    subjunctive: "present"
-  });
+  const [activeTense, setActiveTense] = useState("present");
 
-  function handleTensesClick(tense) {
-    setActiveTenses((prevTense) => {
-      return {
-        ...prevTense,
-        [tenseSection]: tense
-      }
-    });
+  function handleTenseClick(tense) {
+    setActiveTense(tense);
   }
 
-  const selectedTense = verbExample[tenseSection][activeTenses[tenseSection]];
+  const selectedTense = verbExample[tenseSection][activeTense];
 
   return (
     <section className={classes["tense-group__container"]}>
       <div className={classes["tense-group__header"]}>{children}</div>
-      <motion.ul className={classes["tense-group__list"]}>
-      {tenses.map((tense) => (
-        <motion.li key={tense}>
-          <div onClick={() => handleTensesClick(tense.toLowerCase())}>{tense}</div>
-          {activeTenses[tenseSection] === tense.toLowerCase() && (
-            <motion.div className={classes["tense__underline"]} layoutId="animate-tense"></motion.div>
-          )}
-        </motion.li>
-      ))}
-    </motion.ul>
+      <TenseList tenses={tenses} activeTense={activeTense} onTenseClick={handleTenseClick} tenseSection={tenseSection} />
       <div>
         <VerbPair pronoun="yo" conVerb={selectedTense.yo} />
         <VerbPair pronoun="tu" conVerb={selectedTense.tu} />
