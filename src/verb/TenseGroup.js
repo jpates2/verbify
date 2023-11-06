@@ -2,91 +2,23 @@ import { useState } from "react";
 import VerbPair from "./VerbPair";
 import classes from "./TenseGroup.module.css";
 import TenseList from "./TenseList";
-
-const verbExample = {
-  indicative: {
-    present: {
-      yo: "soy",
-      tu: "eres",
-      el: "es",
-      nos: "somos",
-      vos: "sois",
-      ellos: "son"
-    },
-    preterite: {
-      yo: "fui",
-      tu: "fuiste",
-      el: "fue",
-      nos: "fuimos",
-      vos: "fuisteis",
-      ellos: "fueron"
-    },
-    imperfect: {
-      yo: "era",
-      tu: "eras",
-      el: "era",
-      nos: "eramos",
-      vos: "erais",
-      ellos: "eran"
-    },
-    conditional: {
-      yo: "seria",
-      tu: "serias",
-      el: "seria",
-      nos: "seriamos",
-      vos: "seriais",
-      ellos: "serian"
-    },
-    future: {
-      yo: "sere",
-      tu: "seras",
-      el: "sera",
-      nos: "seremos",
-      vos: "sereis",
-      ellos: "seran"
-    }
-  },
-  subjunctive: {
-    present: {
-      yo: "sea",
-      tu: "seas",
-      el: "sea",
-      nos: "seamos",
-      vos: "seais",
-      ellos: "sean"
-    },
-    imperfect: {
-      yo: "fuera / fuesa",
-      tu: "fueras / fuesas",
-      el: "fuera / fuesa",
-      nos: "fueramos / fuesemos",
-      vos: "fuerais / fueseis",
-      ellos: "fueran / fuesen"
-    },
-    future: {
-      yo: "fuere",
-      tu: "fueres",
-      el: "fuere",
-      nos: "fueremos",
-      vos: "fuereis",
-      ellos: "feueren"
-    }
-  }
-}
+import { VerbExample } from "../info/verb-info";
 
 export default function TenseGroup({ children, tenses, tenseSection }) {
   const [activeTense, setActiveTense] = useState("present");
+  const [imperativeTense, setImperativeTense] = useState("positive");
 
   function handleTenseClick(tense) {
-    setActiveTense(tense);
+    if (tenseSection !== "imperative") {setActiveTense(tense)}
+    if (tenseSection === "imperative") {setImperativeTense(tense)}
   }
 
-  const selectedTense = verbExample[tenseSection][activeTense];
+  const selectedTense = VerbExample[tenseSection][activeTense];
+  const selectedImperativeTense = VerbExample[tenseSection][imperativeTense];
 
-  return (
-    <section className={classes["tense-group__container"]}>
-      <div className={classes["tense-group__header"]}>{children}</div>
-      <TenseList tenses={tenses} activeTense={activeTense} onTenseClick={handleTenseClick} tenseSection={tenseSection} />
+  let verbContent;
+  if (["indicative", "subjunctive", "progressive", "perfect", "perfect-subjunctive"].includes(tenseSection)) {
+    verbContent = (
       <div>
         <VerbPair pronoun="yo" conVerb={selectedTense.yo} />
         <VerbPair pronoun="tu" conVerb={selectedTense.tu} />
@@ -95,6 +27,35 @@ export default function TenseGroup({ children, tenses, tenseSection }) {
         <VerbPair pronoun="vosotros / vosotras" conVerb={selectedTense.vos} />
         <VerbPair pronoun="ellos / ellas / ustedes" conVerb={selectedTense.ellos} />
       </div>
+    )
+  }
+
+  if (tenseSection === "imperative") {
+    verbContent = (
+      <div>
+        <VerbPair pronoun="tu" conVerb={selectedImperativeTense.tu} />
+        <VerbPair pronoun="el / ella / usted" conVerb={selectedImperativeTense.el} />
+        <VerbPair pronoun="nosotros / nosotras" conVerb={selectedImperativeTense.nos} />
+        <VerbPair pronoun="vosotros / vosotras" conVerb={selectedImperativeTense.vos} />
+        <VerbPair pronoun="ellos / ellas / ustedes" conVerb={selectedImperativeTense.ellos} />
+      </div>
+    )
+  }
+
+  if (tenseSection === "participle") {
+    verbContent = (
+      <div>
+        <div>{selectedTense}</div>
+      </div>
+    )
+  }
+
+  return (
+    <section className={classes["tense-group__container"]}>
+      <div className={classes["tense-group__header"]}>{children}</div>
+      {tenseSection !== "imperative" && <TenseList tenses={tenses} activeTense={activeTense} onTenseClick={handleTenseClick} tenseSection={tenseSection} />}
+      {tenseSection === "imperative" && <TenseList tenses={tenses} activeTense={imperativeTense} onTenseClick={handleTenseClick} tenseSection={tenseSection} />}
+      {verbContent}
     </section>
   )
 }

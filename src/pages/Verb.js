@@ -16,8 +16,27 @@ export default function VerbPage() {
     >
       <Nav />
       <Header verb={params.verb} />
-      <TenseGroup tenseSection="indicative" tenses={["Present", "Preterite", "Imperfect", "Conditional", "Future"]}>Present Indicative</TenseGroup>
-      <TenseGroup tenseSection="subjunctive" tenses={["Present", "Imperfect", "Future"]}>Subjunctive</TenseGroup>
+      <TenseGroup tenseSection="indicative" tenses={["Present", "Preterite", "Imperfect", "Conditional", "Future"]}>
+        Present Indicative
+      </TenseGroup>
+      <TenseGroup tenseSection="participle" tenses={["Present", "Past"]}>
+        Participle
+      </TenseGroup>
+      <TenseGroup tenseSection="imperative" tenses={["Positive", "Negative"]}>
+        Imperative
+      </TenseGroup>
+      <TenseGroup tenseSection="subjunctive" tenses={["Present", "Imperfect", "Future"]}>
+        Subjunctive
+      </TenseGroup>
+      <TenseGroup tenseSection="perfect-subjunctive" tenses={["Present", "Past", "Future"]}>
+        Perfect Subjunctive
+      </TenseGroup>
+      <TenseGroup tenseSection="progressive" tenses={["Present", "Preterite", "Imperfect", "Conditional", "Future"]}>
+        Progressive
+      </TenseGroup>
+      <TenseGroup tenseSection="perfect" tenses={["Present", "Preterite", "Pluperfect", "Conditional", "Future"]}>
+        Perfect
+      </TenseGroup>
     </motion.div>
   );
 }
