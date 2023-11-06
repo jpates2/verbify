@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import classes from "./VerbCards.module.css";
 import { VerbInfo } from "../info/verb-info";
 import VerbCard from "./VerbCard";
@@ -36,7 +37,25 @@ export default function VerbCards({ searchTerms }) {
         {verbResults.slice(0, limit)}
       </div>
       <div className={classes["verb-cards__button-container"]}>
-        {limit < filteredVerbs.length && <button onClick={handleLimitIncrease} className={classes["verb-cards__add-button"]}>View More</button>}
+        {limit < filteredVerbs.length &&
+          <motion.button
+            whileHover={{
+              scale: 1.1,
+              transition: {
+                duration: 0.3
+              }
+            }}
+            whileTap={{
+              scale: 0.9,
+              backgroundColor: "#F9F9F9",
+              color: "#F4442E"
+            }}
+            onClick={handleLimitIncrease}
+            className={classes["verb-cards__add-button"]}
+          >
+            View More
+          </motion.button>
+        }
       </div>
     </section>
   )
