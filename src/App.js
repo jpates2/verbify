@@ -9,7 +9,7 @@ const router = createBrowserRouter([
   {path: "/", element: <HomePage />},
   {path: "/flashcards", element: <FlashcardsPage />},
   {path: "/verbs", element: <VerbsPage /> },
-  {path: "/verbs/:verb", element: <VerbPage /> },
+  {path: "/verbs/:verb", element: <VerbPage />},
   {path: "/signup", element: <SignupPage /> },
 ])
 
