@@ -23,10 +23,10 @@ export default function TenseGroup({ children, conjugations, tenses, tenseSectio
       <div>
         <VerbPair pronoun="yo" conVerb={selectedTense.yo} />
         <VerbPair pronoun="tu" conVerb={selectedTense.tu} />
-        <VerbPair pronoun="el / ella / usted" conVerb={selectedTense.ud} />
-        <VerbPair pronoun="nosotros / nosotras" conVerb={selectedTense.nosotros} />
-        <VerbPair pronoun="vosotros / vosotras" conVerb={selectedTense.vosotros} />
-        <VerbPair pronoun="ellos / ellas / ustedes" conVerb={selectedTense.uds} />
+        <VerbPair pronoun="el / ella" conVerb={selectedTense.ud} />
+        <VerbPair pronoun="nosotros / as" conVerb={selectedTense.nosotros} />
+        <VerbPair pronoun="vosotros / as" conVerb={selectedTense.vosotros} />
+        <VerbPair pronoun="ellos / ellas" conVerb={selectedTense.uds} />
       </div>
     )
   }
@@ -35,9 +35,9 @@ export default function TenseGroup({ children, conjugations, tenses, tenseSectio
     verbContent = (
       <div>
         <VerbPair pronoun="tu" conVerb={selectedImperativeTense.tu} />
-        <VerbPair pronoun="el / ella / usted" conVerb={selectedImperativeTense.ud} />
-        <VerbPair pronoun="vosotros / vosotras" conVerb={selectedImperativeTense.vosotros} />
-        <VerbPair pronoun="ellos / ellas / ustedes" conVerb={selectedImperativeTense.uds} />
+        <VerbPair pronoun="el / ella" conVerb={selectedImperativeTense.ud} />
+        <VerbPair pronoun="vosotros / as" conVerb={selectedImperativeTense.vosotros} />
+        <VerbPair pronoun="ellos / ellas" conVerb={selectedImperativeTense.uds} />
       </div>
     )
   }

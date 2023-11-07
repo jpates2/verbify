@@ -7,8 +7,12 @@
   max-width: 28rem;
   margin: 0 auto 1rem auto;
   justify-content: space-evenly;
-  height: 6rem;
+  height: 3rem;
   font-weight: bold;
+}
+
+.tense-group__double-list {
+  height: 6rem;
 }
 
 .tense-group__list li {

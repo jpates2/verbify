@@ -1,6 +1,6 @@
 .tense-group__pair {
   display: grid;
-  grid-template-columns: 5fr 4fr;
+  grid-template-columns: 2fr 3fr;
   margin-bottom: 1rem;
   grid-gap: 1rem;
 }
