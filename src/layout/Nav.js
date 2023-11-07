@@ -133,7 +133,7 @@ export default function Nav() {
         <motion.div variants={listVariant} className={classes["mobile-navbar__links"]}>
           <div className={classes["mobile-navbar__top-links"]}>
             <motion.div variants={linkVariant}>
-              <Link to="/verbs" className={classes["mobile-navbar__link"]}>Verbs</Link>
+              <Link to="/verbs" className={classes["mobile-navbar__link"]}>Verb Library</Link>
             </motion.div>
             <motion.div variants={linkVariant}>
               <Link to="/flashcards" className={classes["mobile-navbar__link"]}>Flashcards</Link>
@@ -170,7 +170,7 @@ export default function Nav() {
   const desktopNav = (
     <nav className={classes["desktop-nav"]}>
       <div className={classes["desktop-nav__container"]}>
-        <Link to="/verbs">Verbs</Link>
+        <Link to="/verbs">Verb Library</Link>
         <Link to="/flashcards">Flashcards</Link>
         <Link to="/signup">
           <motion.button
