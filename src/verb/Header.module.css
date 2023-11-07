@@ -24,11 +24,18 @@
 }
 
 .verb__translations {
-  font-size: 1.5rem;
+  font-size: 1rem;
+  text-align: center;
+  padding: 0 2rem;
 }
 
 @media (min-width: 800px) {
   .verb__header {
     font-size: 6rem;
+  }
+
+  .verb__translations {
+    font-size: 1.2rem;
+    text-align: center;
   }
 }

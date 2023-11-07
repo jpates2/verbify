@@ -9,9 +9,9 @@ export default function VerbCards({ searchTerms }) {
   const [allVerbs, setAllVerbs] = useState([])
 
   let initialLimit;
-  if (window.innerWidth >= 1000) {initialLimit = 10}
-  if (window.innerWidth < 1000 && window.innerWidth > 600) {initialLimit = 8}
-  if (window.innerWidth <= 600) {initialLimit = 6}
+  if (window.innerWidth >= 1000) {initialLimit = 50}
+  if (window.innerWidth < 1000 && window.innerWidth > 600) {initialLimit = 30}
+  if (window.innerWidth <= 600) {initialLimit = 20}
   const [limit, setLimit] = useState(initialLimit);
 
   function handleLimitIncrease() {

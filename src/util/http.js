@@ -26,3 +26,17 @@ export async function fetchVerbs() {
   console.log(infinitives);
   return infinitives;
 }
+
+export async function fetchTranslations(verb) {
+  const response = await fetch("https://raw.githubusercontent.com/ghidinelli/fred-jehle-spanish-verbs/master/jehle_verb_lookup.json");
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch verbs");
+  }
+
+  const translation = data[verb][0].translation;
+
+  console.log(translation);
+  return translation;
+}
