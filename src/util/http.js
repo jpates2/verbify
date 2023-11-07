@@ -31,7 +31,7 @@ export async function fetchConjugations(verb) {
 
   const allConjugations = {
     participle: {
-      present: currentVerb[0]["gerundio"],
+      present: currentVerb[0]["gerundio"].slice(-2) === "se" ? currentVerb[0]["gerundio"].slice(0, -2) : currentVerb[0]["gerundio"],
       past: currentVerb[0]["participioPasado"]
     },
     indicative: {
@@ -64,7 +64,11 @@ export async function fetchConjugations(verb) {
       conditional: currentVerb[0]["indicativo"]["condicionalPerfecto"],
       future: currentVerb[0]["indicativo"]["futuroPerfecto"],
     },
-    progressive: {
+    progressive: {},
+  }
+
+  if (currentVerb[0]["infinitivo"].slice(-2) !== "se") {
+    allConjugations.progressive = {
       present: {
         yo: `estoy ${currentVerb[0]["gerundio"]}`,
         tu: `estás ${currentVerb[0]["gerundio"]}`,
@@ -105,7 +109,52 @@ export async function fetchConjugations(verb) {
         vosotros: `estaréis ${currentVerb[0]["gerundio"]}`,
         uds: `estarán ${currentVerb[0]["gerundio"]}`,
       },
-    },
+    }
+  }
+
+  if (currentVerb[0]["infinitivo"].slice(-2) === "se") {
+    allConjugations.progressive = {
+      present: {
+        yo: `me estoy ${currentVerb[0]["gerundio"]}`,
+        tu: `te estás ${currentVerb[0]["gerundio"]}`,
+        ud: `se está ${currentVerb[0]["gerundio"]}`,
+        nosotros: `nos estamos ${currentVerb[0]["gerundio"]}`,
+        vosotros: `os estáis ${currentVerb[0]["gerundio"]}`,
+        uds: `se están ${currentVerb[0]["gerundio"]}`,
+      },
+      preterite: {
+        yo: `me estuve ${currentVerb[0]["gerundio"]}`,
+        tu: `te estuviste ${currentVerb[0]["gerundio"]}`,
+        ud: `se estuvo ${currentVerb[0]["gerundio"]}`,
+        nosotros: `nos estuvimos ${currentVerb[0]["gerundio"]}`,
+        vosotros: `os estuvisteis ${currentVerb[0]["gerundio"]}`,
+        uds: `se estuvieron ${currentVerb[0]["gerundio"]}`,
+      },
+      imperfect: {
+        yo: `me estaba ${currentVerb[0]["gerundio"]}`,
+        tu: `te estabas ${currentVerb[0]["gerundio"]}`,
+        ud: `se estaba ${currentVerb[0]["gerundio"]}`,
+        nosotros: `nos estábamos ${currentVerb[0]["gerundio"]}`,
+        vosotros: `os estabais ${currentVerb[0]["gerundio"]}`,
+        uds: `se estaban ${currentVerb[0]["gerundio"]}`,
+      },
+      conditional: {
+        yo: `me estaría ${currentVerb[0]["gerundio"]}`,
+        tu: `te estarías ${currentVerb[0]["gerundio"]}`,
+        ud: `se estaría ${currentVerb[0]["gerundio"]}`,
+        nosotros: `nos estaríamos ${currentVerb[0]["gerundio"]}`,
+        vosotros: `os estaríais ${currentVerb[0]["gerundio"]}`,
+        uds: `se estarían ${currentVerb[0]["gerundio"]}`,
+      },
+      future: {
+        yo: `me estaré ${currentVerb[0]["gerundio"]}`,
+        tu: `te estarás ${currentVerb[0]["gerundio"]}`,
+        ud: `se estará ${currentVerb[0]["gerundio"]}`,
+        nosotros: `nos estaremos ${currentVerb[0]["gerundio"]}`,
+        vosotros: `os estaréis ${currentVerb[0]["gerundio"]}`,
+        uds: `se estarán ${currentVerb[0]["gerundio"]}`,
+      },
+    }
   }
 
   return allConjugations;
