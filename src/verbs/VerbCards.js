@@ -2,16 +2,20 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import classes from "./VerbCards.module.css";
+import styles from "../styles/shared.module.css";
 import VerbCard from "./VerbCard";
 import { fetchVerbs } from "../util/http";
+import Error from "../layout/Error";
 
 export default function VerbCards({ searchTerms }) {
-  const [allVerbs, setAllVerbs] = useState([])
+  const [allVerbs, setAllVerbs] = useState([]);
+  const [fetchingVerbs, setFetchingVerbs] = useState();
+  const [error, setError] = useState();
 
   let initialLimit;
-  if (window.innerWidth >= 1000) {initialLimit = 50}
-  if (window.innerWidth < 1000 && window.innerWidth > 600) {initialLimit = 30}
-  if (window.innerWidth <= 600) {initialLimit = 20}
+  if (window.innerWidth >= 1200) {initialLimit = 50}
+  if (window.innerWidth < 1200 && window.innerWidth > 700) {initialLimit = 30}
+  if (window.innerWidth <= 700) {initialLimit = 20}
   const [limit, setLimit] = useState(initialLimit);
 
   function handleLimitIncrease() {
@@ -22,13 +26,15 @@ export default function VerbCards({ searchTerms }) {
 
   useEffect(() => {
     async function getVerbs() {
+      setFetchingVerbs(true);
       try {
         const verbs = await fetchVerbs();
         console.log(verbs);
         setAllVerbs(verbs);
       } catch (error) {
-
+        setError({ message: error.message || 'Failed to fetch data. Please reload the page to try again.' });
       }
+      setFetchingVerbs(false);
     }
     getVerbs();
   }, [])
@@ -50,12 +56,21 @@ export default function VerbCards({ searchTerms }) {
     </Link>
   ))
 
+  if (error) {
+    return (
+      <Error title="An error occurred!" message="Please reload the page and try again." />
+    )
+  }
+
+
   return (
     <section>
-      <div className={classes["verb-cards__container"]}>
+      {fetchingVerbs && <p className={styles["loading-text"]}>Loading...</p>}
+
+      {!fetchingVerbs && <div className={classes["verb-cards__container"]}>
         {verbResults.slice(0, limit)}
-      </div>
-      <div className={classes["verb-cards__button-container"]}>
+      </div>}
+      {!fetchingVerbs && <div className={classes["verb-cards__button-container"]}>
         {limit < filteredVerbs.length &&
           <motion.button
             whileHover={{
@@ -75,7 +90,7 @@ export default function VerbCards({ searchTerms }) {
             View More
           </motion.button>
         }
-      </div>
+      </div>}
     </section>
   )
 }

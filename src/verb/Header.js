@@ -15,7 +15,7 @@ export default function Header({ verb }) {
       }
     }
     getTranslation();
-  }, [])
+  }, [verb])
 
   console.log(translations);
 

@@ -3,3 +3,14 @@
   color: #F4442E;
   text-align: center;
 }
+
+.loading-text {
+  text-align: center;
+  color: #F4442E;
+}
+
+@media (min-width: 800px) {
+  .loading-text {
+    font-size: 2rem;
+  }
+}
