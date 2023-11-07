@@ -2,19 +2,20 @@ import { useState } from "react";
 import VerbPair from "./VerbPair";
 import classes from "./TenseGroup.module.css";
 import TenseList from "./TenseList";
-import { VerbExample } from "../info/verb-info";
 
-export default function TenseGroup({ children, tenses, tenseSection }) {
+export default function TenseGroup({ children, conjugations, tenses, tenseSection }) {
   const [activeTense, setActiveTense] = useState("present");
-  const [imperativeTense, setImperativeTense] = useState("positive");
+  const [imperativeTense, setImperativeTense] = useState("affirmative");
+
+  console.log(conjugations);
 
   function handleTenseClick(tense) {
     if (tenseSection !== "imperative") {setActiveTense(tense)}
     if (tenseSection === "imperative") {setImperativeTense(tense)}
   }
 
-  const selectedTense = VerbExample[tenseSection][activeTense];
-  const selectedImperativeTense = VerbExample[tenseSection][imperativeTense];
+  const selectedTense = conjugations[tenseSection][activeTense];
+  const selectedImperativeTense = conjugations[tenseSection][imperativeTense];
 
   let verbContent;
   if (["indicative", "subjunctive", "progressive", "perfect", "perfect-subjunctive"].includes(tenseSection)) {
@@ -22,10 +23,10 @@ export default function TenseGroup({ children, tenses, tenseSection }) {
       <div>
         <VerbPair pronoun="yo" conVerb={selectedTense.yo} />
         <VerbPair pronoun="tu" conVerb={selectedTense.tu} />
-        <VerbPair pronoun="el / ella / usted" conVerb={selectedTense.el} />
-        <VerbPair pronoun="nosotros / nosotras" conVerb={selectedTense.nos} />
-        <VerbPair pronoun="vosotros / vosotras" conVerb={selectedTense.vos} />
-        <VerbPair pronoun="ellos / ellas / ustedes" conVerb={selectedTense.ellos} />
+        <VerbPair pronoun="el / ella / usted" conVerb={selectedTense.ud} />
+        <VerbPair pronoun="nosotros / nosotras" conVerb={selectedTense.nosotros} />
+        <VerbPair pronoun="vosotros / vosotras" conVerb={selectedTense.vosotros} />
+        <VerbPair pronoun="ellos / ellas / ustedes" conVerb={selectedTense.uds} />
       </div>
     )
   }
@@ -34,10 +35,9 @@ export default function TenseGroup({ children, tenses, tenseSection }) {
     verbContent = (
       <div>
         <VerbPair pronoun="tu" conVerb={selectedImperativeTense.tu} />
-        <VerbPair pronoun="el / ella / usted" conVerb={selectedImperativeTense.el} />
-        <VerbPair pronoun="nosotros / nosotras" conVerb={selectedImperativeTense.nos} />
-        <VerbPair pronoun="vosotros / vosotras" conVerb={selectedImperativeTense.vos} />
-        <VerbPair pronoun="ellos / ellas / ustedes" conVerb={selectedImperativeTense.ellos} />
+        <VerbPair pronoun="el / ella / usted" conVerb={selectedImperativeTense.ud} />
+        <VerbPair pronoun="vosotros / vosotras" conVerb={selectedImperativeTense.vosotros} />
+        <VerbPair pronoun="ellos / ellas / ustedes" conVerb={selectedImperativeTense.uds} />
       </div>
     )
   }

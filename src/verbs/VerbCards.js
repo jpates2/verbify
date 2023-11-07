@@ -29,7 +29,6 @@ export default function VerbCards({ searchTerms }) {
       setFetchingVerbs(true);
       try {
         const verbs = await fetchVerbs();
-        console.log(verbs);
         setAllVerbs(verbs);
       } catch (error) {
         setError({ message: error.message || 'Failed to fetch data. Please reload the page to try again.' });

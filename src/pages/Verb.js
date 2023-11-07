@@ -1,11 +1,29 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
 import Header from "../verb/Header";
 import Nav from "../layout/Nav";
 import TenseGroup from "../verb/TenseGroup";
+import { fetchConjugations } from "../util/http";
+import { VerbExample } from "../info/verb-info";
 
 export default function VerbPage() {
   let params = useParams();
+  const verb = params.verb;
+
+  const [conjugations, setConjugations] = useState(VerbExample);
+
+  useEffect(() => {
+    async function getConjugations() {
+      try {
+        const verbConjugations = await fetchConjugations(verb);
+        setConjugations(verbConjugations);
+      } catch (error) {
+
+      }
+    }
+    getConjugations();
+  }, [verb])
 
   return (
     <motion.div
@@ -15,26 +33,26 @@ export default function VerbPage() {
       transition={{ duration: 1 }}
     >
       <Nav />
-      <Header verb={params.verb} />
-      <TenseGroup tenseSection="indicative" tenses={["Present", "Preterite", "Imperfect", "Conditional", "Future"]}>
+      <Header verb={verb} />
+      <TenseGroup verb={verb} conjugations={conjugations} tenseSection="indicative" tenses={["Present", "Preterite", "Imperfect", "Conditional", "Future"]}>
         Present Indicative
       </TenseGroup>
-      <TenseGroup tenseSection="participle" tenses={["Present", "Past"]}>
+      <TenseGroup verb={verb} conjugations={conjugations} tenseSection="participle" tenses={["Present", "Past"]}>
         Participle
       </TenseGroup>
-      <TenseGroup tenseSection="imperative" tenses={["Positive", "Negative"]}>
+      <TenseGroup verb={verb} conjugations={conjugations} tenseSection="imperative" tenses={["Affirmative", "Negative"]}>
         Imperative
       </TenseGroup>
-      <TenseGroup tenseSection="subjunctive" tenses={["Present", "Imperfect", "Future"]}>
+      <TenseGroup verb={verb} conjugations={conjugations} tenseSection="subjunctive" tenses={["Present", "Imperfect", "Future"]}>
         Subjunctive
       </TenseGroup>
-      <TenseGroup tenseSection="perfect-subjunctive" tenses={["Present", "Past", "Future"]}>
+      <TenseGroup verb={verb} conjugations={conjugations} tenseSection="perfect-subjunctive" tenses={["Present", "Past", "Future"]}>
         Perfect Subjunctive
       </TenseGroup>
-      <TenseGroup tenseSection="progressive" tenses={["Present", "Preterite", "Imperfect", "Conditional", "Future"]}>
+      <TenseGroup verb={verb} conjugations={conjugations} tenseSection="progressive" tenses={["Present", "Preterite", "Imperfect", "Conditional", "Future"]}>
         Progressive
       </TenseGroup>
-      <TenseGroup tenseSection="perfect" tenses={["Present", "Preterite", "Pluperfect", "Conditional", "Future"]}>
+      <TenseGroup verb={verb} conjugations={conjugations} tenseSection="perfect" tenses={["Present", "Preterite", "Pluperfect", "Conditional", "Future"]}>
         Perfect
       </TenseGroup>
     </motion.div>

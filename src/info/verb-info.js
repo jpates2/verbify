@@ -51,201 +51,201 @@ export const VerbInfo = [
 
 export const VerbExample = {
   participle: {
-    present: "siendo",
-    past: "sido"
+    present: "",
+    past: ""
   },
   indicative: {
     present: {
-      yo: "soy",
-      tu: "eres",
-      el: "es",
-      nos: "somos",
-      vos: "sois",
-      ellos: "son"
+      yo: "",
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
     },
     preterite: {
-      yo: "fui",
-      tu: "fuiste",
-      el: "fue",
-      nos: "fuimos",
-      vos: "fuisteis",
-      ellos: "fueron"
+      yo: "",
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
     },
     imperfect: {
-      yo: "era",
-      tu: "eras",
-      el: "era",
-      nos: "eramos",
-      vos: "erais",
-      ellos: "eran"
+      yo: "",
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
     },
     conditional: {
-      yo: "seria",
-      tu: "serias",
-      el: "seria",
-      nos: "seriamos",
-      vos: "seriais",
-      ellos: "serian"
+      yo: "",
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
     },
     future: {
-      yo: "sere",
-      tu: "seras",
-      el: "sera",
-      nos: "seremos",
-      vos: "sereis",
-      ellos: "seran"
+      yo: "",
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
     }
   },
   imperative: {
-    positive: {
-      tu: "se",
-      el: "sea",
-      nos: "seamos",
-      vos: "sed",
-      ellos: "sean"
+    affirmative: {
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
     },
     negative: {
-      tu: "no seas",
-      el: "no sea",
-      nos: "no seamos",
-      vos: "no seais",
-      ellos: "no sean"
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
     }
   },
   subjunctive: {
     present: {
-      yo: "sea",
-      tu: "seas",
-      el: "sea",
-      nos: "seamos",
-      vos: "seais",
-      ellos: "sean"
+      yo: "",
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
     },
     imperfect: {
-      yo: "fuera / fuesa",
-      tu: "fueras / fuesas",
-      el: "fuera / fuesa",
-      nos: "fueramos / fuesemos",
-      vos: "fuerais / fueseis",
-      ellos: "fueran / fuesen"
+      yo: "",
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
     },
     future: {
-      yo: "fuere",
-      tu: "fueres",
-      el: "fuere",
-      nos: "fueremos",
-      vos: "fuereis",
-      ellos: "feueren"
+      yo: "",
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
     }
   },
   "perfect-subjunctive": {
     present: {
-      yo: "haya sido",
-      tu: "hayas sido",
-      el: "haya sido",
-      nos: "hayamos sido",
-      vos: "hayais sido",
-      ellos: "hayan sido"
+      yo: "",
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
     },
     past: {
-      yo: "hubiera sido / hubiese sido",
-      tu: "hubieras sido / hubieses sido",
-      el: "hubiera sido / hubiese sido",
-      nos: "hubieramos sido / hubiesemos sido",
-      vos: "hubierais sido / hubieseis sido",
-      ellos: "hubieran sido / hubiesen sido"
+      yo: "",
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
     },
     future: {
-      yo: "hubiere sido",
-      tu: "hubieres sido",
-      el: "hubiere sido",
-      nos: "hubieremos sido",
-      vos: "hubiereis sido",
-      ellos: "hubieren sido"
-    }
-  },
-  progressive: {
-    present: {
-      yo: "estoy siendo",
-      tu: "estas siendo",
-      el: "esta siendo",
-      nos: "estamos siendo",
-      vos: "estais siendo",
-      ellos: "estan siendo"
-    },
-    preterite: {
-      yo: "estuve siendo",
-      tu: "estuviste siendo",
-      el: "estuvo siendo",
-      nos: "estuvimos siendo",
-      vos: "estuvisteis siendo",
-      ellos: "estuvieron siendo"
-    },
-    imperfect: {
-      yo: "estaba siendo",
-      tu: "estabas siendo",
-      el: "estaba siendo",
-      nos: "estabamos siendo",
-      vos: "estabais siendo",
-      ellos: "estaban siendo"
-    },
-    conditional: {
-      yo: "estaria siendo",
-      tu: "estarias siendo",
-      el: "estaria siendo",
-      nos: "estariamos siendo",
-      vos: "estariais siendo",
-      ellos: "estarian siendo"
-    },
-    future: {
-      yo: "estare siendo",
-      tu: "estaras siendo",
-      el: "estara siendo",
-      nos: "estaremos siendo",
-      vos: "estareis siendo",
-      ellos: "estaran siendo"
+      yo: "",
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
     }
   },
   perfect: {
     present: {
-      yo: "he sido",
-      tu: "has sido",
-      el: "ha sido",
-      nos: "hemos sido",
-      vos: "habeis sido",
-      ellos: "han sido"
+      yo: "",
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
     },
     preterite: {
-      yo: "hube sido",
-      tu: "hubiste sido",
-      el: "hubo sido",
-      nos: "hubimos sido",
-      vos: "hubisteis sido",
-      ellos: "hubieron sido"
+      yo: "",
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
     },
     pluperfect: {
-      yo: "habia sido",
-      tu: "habias sido",
-      el: "habia sido",
-      nos: "habiamos sido",
-      vos: "habiais sido",
-      ellos: "habian sido"
+      yo: "",
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
     },
     conditional: {
-      yo: "habria sido",
-      tu: "habrias sido",
-      el: "habria sido",
-      nos: "habriamos sido",
-      vos: "habriais sido",
-      ellos: "habrian sido"
+      yo: "",
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
     },
     future: {
-      yo: "habre sido",
-      tu: "habras sido",
-      el: "habra sido",
-      nos: "habremos sido",
-      vos: "habreis sido",
-      ellos: "habran sido"
+      yo: "",
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
     }
-  }
+  },
+  progressive: {
+    present: {
+      yo: "",
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
+    },
+    preterite: {
+      yo: "",
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
+    },
+    imperfect: {
+      yo: "",
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
+    },
+    conditional: {
+      yo: "",
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
+    },
+    future: {
+      yo: "",
+      tu: "",
+      ud: "",
+      nosotros: "",
+      vosotros: "",
+      uds: ""
+    }
+  },
 }
