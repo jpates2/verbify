@@ -10,7 +10,7 @@ export default function VerbsPage() {
   const [searchTerms, setSearchTerms] = useState("");
 
   function handleSearch (event) {
-    setSearchTerms(event.target.value)
+    setSearchTerms(event.target.value.toLowerCase())
   }
 
   return (
