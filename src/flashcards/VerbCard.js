@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import classes from "./VerbCard.module.css";
 
@@ -86,7 +87,9 @@ export default function VerbCard({ verb, translation, regular }) {
         variants={lowerMotion}
       >
         <div className={classes["verb-card__regular"]}>Regular</div>
-        <button className={classes["verb-card__button"]}>Go to Flashcards</button>
+        <Link to={`/flashcards/${verb}`}>
+          <button className={classes["verb-card__button"]}>Go to Flashcards</button>
+        </Link>
       </motion.div>
     </motion.div>
   )
