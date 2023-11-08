@@ -1,0 +1,13 @@
+.verb-cards__add-button {
+  all: unset;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  background: #F4442E;
+  color: #F9F9F9;
+  border-radius: 16px;
+  cursor: pointer;
+  margin-top: 1rem;
+  max-width: 8rem;
+  justify-self: center;
+}

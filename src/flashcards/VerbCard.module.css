@@ -1,0 +1,63 @@
+.verb-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  height: 12rem;
+  width: 22rem;
+  border-radius: 16px;
+  box-shadow: 0px 18px 36px -18px rgba(0,0,0,0.1),0px 30px 45px -30px rgba(50,50,93,0.25);
+  justify-self: center;
+  position: relative;
+}
+
+.verb-card__spanish {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  background: linear-gradient(-15deg, #F4442E 46%, #FFB400 46%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.verb-card__english {
+  font-size: 1rem;
+  color: black;
+  font-style: italic;
+  text-align: center;
+}
+
+.verb-card__lower {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #F4442E;
+  width: 80%;
+  position: absolute;
+  bottom: 1rem;
+}
+
+.verb-card__regular {
+  color: #FFB400;
+  font-weight: bold;
+}
+
+.verb-card__button {
+  all: unset;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@media (min-width: 700px) {
+  .verb-card__spanish {
+    font-size: 2rem;
+  }
+
+  .verb-card__english {
+    font-size: 1.2rem;
+    color: black;
+    font-style: italic;
+    text-align: center;
+  }
+}

@@ -8,7 +8,8 @@ export async function fetchVerbs() {
     if (verb["english"]["infinitivo"] !== "there to be") {
       infinitives.push({
         infinitive: verb["infinitivo"].split('(', 1)[0],
-        translation: verb["english"]["infinitivo"].split(/[,();]+/, 1)[0].trim()
+        translation: verb["english"]["infinitivo"].split(/[,();]+/, 1)[0].trim(),
+        regular: verb.regular
       });
     }
   }

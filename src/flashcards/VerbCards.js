@@ -1,13 +1,12 @@
-import { Link } from "react-router-dom";
-import classes from "./VerbCards.module.css";
-import styles from "../styles/shared.module.css";
+import { useFetchVerbs } from "../hooks/useFetchVerbs";
 import VerbCard from "./VerbCard";
 import Error from "../layout/Error";
-import { useFetchVerbs } from "../hooks/useFetchVerbs";
+import classes from "./VerbCards.module.css";
+import styles from "../styles/shared.module.css";
 import ViewMoreButton from "../layout/ViewMoreButton";
 
 export default function VerbCards({ searchTerms }) {
-  const limits = [50, 30, 20];
+  const limits = [30, 20, 10];
 
   const {
     sortedVerbs,
@@ -18,12 +17,12 @@ export default function VerbCards({ searchTerms }) {
   } = useFetchVerbs(searchTerms, limits);
 
   const verbResults = sortedVerbs.map(verb => (
-    <Link to={`/verbs/${verb.infinitive}`} key={verb.infinitive}>
       <VerbCard
+        key={verb.infinitive}
         verb={verb.infinitive}
         translation={verb.translation}
+        regular={verb.regular}
       />
-    </Link>
   ))
 
   if (error) {

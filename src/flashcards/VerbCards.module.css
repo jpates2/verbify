@@ -1,0 +1,28 @@
+.verb-cards__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0 auto 4rem auto;
+}
+
+.verb-cards__button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 800px) {
+  .verb-cards__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 46rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  .verb-cards__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 70rem;
+  }
+}
