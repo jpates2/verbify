@@ -1,0 +1,44 @@
+.flashcard__buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 40rem;
+  min-height: 8rem;
+  margin: 4rem auto;
+}
+
+.flashcard__filter-button {
+  all: unset;
+  font-weight: bold;
+  font-size: 1.2rem;
+  width: 10rem;
+  padding: 1rem 2rem;
+  color: #F4442E;
+  text-align: center;
+  background: white;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.flashcard__filter-button-active {
+  color: white;
+  background: #F4442E;
+}
+
+@media (min-width: 600px) {
+  .flashcard__buttons-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 40rem;
+    margin: 4rem auto;
+  }
+
+  .flashcard__filter-button {
+    font-size: 1.5rem;
+    width: 12rem;
+
+  }
+}

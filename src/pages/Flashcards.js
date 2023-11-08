@@ -7,10 +7,10 @@ import VerbFilter from "../flashcards/VerbFilter";
 import TenseFilter from "../flashcards/TenseFilter";
 
 export default function FlashcardsPage() {
-  const [tenseFilter, setTenseFilter] = useState("tense");
+  const [flashcardFilter, setFlashcardFilter] = useState("tense");
 
-  function handleTenseFilter(tense) {
-    setTenseFilter(tense);
+  function handleFlashcardFilter(tense) {
+    setFlashcardFilter(tense);
   }
 
   return (
@@ -23,9 +23,9 @@ export default function FlashcardsPage() {
       >
         <Nav />
         <Header />
-        <FilterButtons onTenseFilter={handleTenseFilter} />
-        {tenseFilter === "verb" && <VerbFilter />}
-        {tenseFilter === "tense" && <TenseFilter />}
+        <FilterButtons onFlashcardFilter={handleFlashcardFilter} filter={flashcardFilter} />
+        {flashcardFilter === "verb" && <VerbFilter />}
+        {flashcardFilter === "tense" && <TenseFilter />}
       </motion.div>
     </AnimatePresence>
   );
