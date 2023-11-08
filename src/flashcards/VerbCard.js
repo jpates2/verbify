@@ -55,19 +55,21 @@ export default function VerbCard({ verb, translation, regular }) {
       </div>
       <div className={classes["verb-card__lower"]}>
         <div className={classes["verb-card__regular"]}>{regular === true ? "Regular" : "Irregular"}</div>
-        <motion.button
-          className={classes["verb-card__button"]}
-          animate={{
-            opacity: [1, 0.7, 0.4, 0.7, 1],
-          }}
-          transition={{
-            duration: 2,
-            ease: "easeInOut",
-            times: [0, 0.2, 0.5, 0.8, 1],
-            repeat: Infinity,
-            repeatDelay: 1
-          }}
-        >Go to Flashcards</motion.button>
+        <Link to={`/flashcards/${verb}`}>
+          <motion.button
+            className={classes["verb-card__button"]}
+            animate={{
+              opacity: [1, 0.7, 0.4, 0.7, 1],
+            }}
+            transition={{
+              duration: 2,
+              ease: "easeInOut",
+              times: [0, 0.2, 0.5, 0.8, 1],
+              repeat: Infinity,
+              repeatDelay: 1
+            }}
+          >Go to Flashcards</motion.button>
+        </Link>
       </div>
     </div>
   )
