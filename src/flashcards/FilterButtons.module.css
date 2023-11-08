@@ -5,7 +5,7 @@
   justify-content: space-between;
   max-width: 40rem;
   min-height: 8rem;
-  margin: 4rem auto;
+  margin: 4rem auto 0 auto;
 }
 
 .flashcard__filter-button {
@@ -28,12 +28,7 @@
 
 @media (min-width: 600px) {
   .flashcard__buttons-container {
-    display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 40rem;
-    margin: 4rem auto;
   }
 
   .flashcard__filter-button {
