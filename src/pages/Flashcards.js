@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "../flashcards/Header";
 import Nav from "../layout/Nav";
+import FilterButtons from "../flashcards/FilterButtons";
+import VerbFilter from "../flashcards/VerbFilter";
+import TenseFilter from "../flashcards/TenseFilter";
 
 export default function FlashcardsPage() {
+  const [tenseFilter, setTenseFilter] = useState("tense");
+
+  function handleTenseFilter(tense) {
+    setTenseFilter(tense);
+  }
+
   return (
     <AnimatePresence>
       <motion.div
@@ -14,6 +23,9 @@ export default function FlashcardsPage() {
       >
         <Nav />
         <Header />
+        <FilterButtons onTenseFilter={handleTenseFilter} />
+        {tenseFilter === "verb" && <VerbFilter />}
+        {tenseFilter === "tense" && <TenseFilter />}
       </motion.div>
     </AnimatePresence>
   );
