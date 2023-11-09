@@ -125,6 +125,12 @@ export default function Nav() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const {pathname} = useLocation();
 
+  function mobileClickLinkHandler() {
+    setMobileNavOpen(prevState => {
+      return !prevState;
+    });
+  }
+
   const mobileNav = (
     <motion.nav
       className={classes["mobile-nav"]}
@@ -162,10 +168,10 @@ export default function Nav() {
         <motion.div variants={listVariant} className={classes["mobile-navbar__links"]}>
           <div className={classes["mobile-navbar__top-links"]}>
             <motion.div variants={linkVariant}>
-              <Link to="/verbs" className={classes["mobile-navbar__link"]}>Verb Library</Link>
+              <Link to="/verbs" onClick={mobileClickLinkHandler} className={classes["mobile-navbar__link"]}>Verb Library</Link>
             </motion.div>
             <motion.div variants={linkVariant}>
-              <Link to="/flashcards" className={classes["mobile-navbar__link"]}>Flashcards</Link>
+              <Link to="/flashcards" onClick={mobileClickLinkHandler} className={classes["mobile-navbar__link"]}>Flashcards</Link>
             </motion.div>
           </div>
           <div className={classes["mobile-navbar__bottom-links"]}>
