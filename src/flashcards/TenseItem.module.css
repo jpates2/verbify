@@ -1,0 +1,64 @@
+.tense-item {
+  display: flex;
+  flex-direction: column;
+  max-width: 40rem;
+  margin: 0 auto;
+  justify-content: center;
+  border-bottom: 2px solid;
+  margin-bottom: 1rem;
+  color: #FFB400;
+}
+
+.tense-item__header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 2rem;
+  /* margin-bottom: 1rem; */
+  margin-top: 1rem;
+  color: #F4442E;
+  cursor: pointer;
+}
+
+/* .tense-item__icon {
+  margin-top: -0.2rem;
+} */
+
+.tense-item__content {
+  padding-bottom: 1rem;
+}
+
+.tense-item__line {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 1.5rem 0;
+  padding-left: 2rem;
+}
+
+.tense-item__line-name {
+  font-size: 1.5rem;
+}
+
+.tense-item__line-options {
+  display: flex;
+  justify-content: space-between;
+  min-width: 16rem;
+}
+
+.tense-item__line-options button {
+  all: unset;
+  cursor: pointer;
+  border: 1px solid #FFB400;
+  padding: 0.2rem 0.5rem;
+  border-radius: 16px;
+  width: 4rem;
+  text-align: center;
+}
+
+.normalFont {
+  font-weight: normal;
+}
+
+.boldFont {
+  font-weight: bold;
+}

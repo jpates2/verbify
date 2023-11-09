@@ -7,8 +7,6 @@ export default function TenseGroup({ children, conjugations, tenses, tenseSectio
   const [activeTense, setActiveTense] = useState("present");
   const [imperativeTense, setImperativeTense] = useState("affirmative");
 
-  console.log(conjugations);
-
   function handleTenseClick(tense) {
     if (tenseSection !== "imperative") {setActiveTense(tense)}
     if (tenseSection === "imperative") {setImperativeTense(tense)}

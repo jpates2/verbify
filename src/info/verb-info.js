@@ -249,3 +249,47 @@ export const VerbExample = {
     }
   },
 }
+
+export const AllTenses = [
+  {
+    id: "t1",
+    tense: "Indicative",
+    sub: ["Present", "Preterite", "Imperfect", "Conditional", "Future"]
+  },
+  {
+    id: "t2",
+    tense: "Participles",
+    sub: ["Present", "Past"]
+  },
+  {
+    id: "t3",
+    tense: "Imperative",
+    sub: ["Affirmative", "Negative"]
+  },
+  {
+    id: "t4",
+    tense: "Subjunctive",
+    sub: ["Present", "Imperfect", "Future"]
+  },
+  {
+    id: "t5",
+    tense: "Perfect Subjunctive",
+    sub: ["Present", "Past", "Future"]
+  },
+  {
+    id: "t6",
+    tense: "Progressive",
+    sub: ["Present", "Preterite", "Imperfect", "Conditional", "Future"]
+  },
+  {
+    id: "t7",
+    tense: "Perfect",
+    sub: ["Present", "Preterite", "Pluperfect", "Conditional", "Future"]
+
+  },
+  {
+    id: "t8",
+    tense: "All",
+    sub: ["All tenses"]
+  }
+];
