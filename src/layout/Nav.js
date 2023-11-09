@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from 'framer-motion';
 import classes from "./Nav.module.css";
 
@@ -17,6 +17,26 @@ const navVariant = {
 }
 
 const burgerIconVariant = {
+  opened: {
+    opacity: 0,
+    y: "-100%",
+    transition: {
+      duration: 0.5,
+      ease: "easeInOut"
+    }
+  },
+  closed: {
+    opacity: 1,
+    y: "0%",
+    transition: {
+      delay: 1,
+      duration: 0.5,
+      ease: "easeInOut"
+    }
+  }
+}
+
+const logoVariant = {
   opened: {
     opacity: 0,
     y: "-100%",
@@ -103,6 +123,7 @@ const linkVariant = {
 
 export default function Nav() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const {pathname} = useLocation();
 
   const mobileNav = (
     <motion.nav
@@ -111,15 +132,23 @@ export default function Nav() {
       animate={mobileNavOpen ? "opened" : "closed"}
       variants={navVariant}
     >
+      <motion.div variants={burgerIconVariant}>
+        {pathname !== "/" &&
+          <div className={classes["mobile-nav__logo"]}>
+            <Link to="/">
+              vb
+            </Link>
+          </div>
+        }
 
-      <motion.div
-        className={classes["hamburger"]}
-        variants={burgerIconVariant}
-        onClick={() => setMobileNavOpen(true)}
-      >
-        <span className={classes["hamburger-top"]}></span>
-        <span className={classes["hamburger-middle"]}></span>
-        <span className={classes["hamburger-bottom"]}></span>
+        <div
+          className={classes["hamburger"]}
+          onClick={() => setMobileNavOpen(true)}
+        >
+          <span className={classes["hamburger-top"]}></span>
+          <span className={classes["hamburger-middle"]}></span>
+          <span className={classes["hamburger-bottom"]}></span>
+        </div>
       </motion.div>
 
       <motion.div variants={mobileMenuVariant} className="mobile-navbar_container">
@@ -169,6 +198,11 @@ export default function Nav() {
 
   const desktopNav = (
     <nav className={classes["desktop-nav"]}>
+      {pathname !== "/" &&
+        <Link to="/">
+          <div className={classes["desktop-nav__logo"]}>verbify</div>
+        </Link>
+      }
       <div className={classes["desktop-nav__container"]}>
         <Link to="/verbs">Verb Library</Link>
         <Link to="/flashcards">Flashcards</Link>
