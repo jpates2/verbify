@@ -125,12 +125,6 @@ export default function Nav() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const {pathname} = useLocation();
 
-  function mobileClickLinkHandler() {
-    setMobileNavOpen(prevState => {
-      return !prevState;
-    });
-  }
-
   const mobileNav = (
     <motion.nav
       className={classes["mobile-nav"]}
