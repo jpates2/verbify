@@ -12,16 +12,18 @@
 .tense-item__header {
   display: flex;
   justify-content: space-between;
-  font-size: 2rem;
-  /* margin-bottom: 1rem; */
-  margin-top: 1rem;
+  font-size: 1.5rem;
   color: #F4442E;
   cursor: pointer;
 }
 
-/* .tense-item__icon {
-  margin-top: -0.2rem;
-} */
+.tense-item__name {
+  margin-bottom: 1rem;
+}
+
+.tense-item__icon {
+  margin-top: -5px;
+}
 
 .tense-item__content {
   padding-bottom: 1rem;
@@ -30,29 +32,26 @@
 .tense-item__line {
   display: flex;
   justify-content: space-between;
-  width: 90%;
+  width: 95%;
   margin: 1.5rem 0;
-  padding-left: 2rem;
-}
-
-.tense-item__line-name {
-  font-size: 1.5rem;
+  padding-left: 0.5rem;
 }
 
 .tense-item__line-options {
   display: flex;
   justify-content: space-between;
-  min-width: 16rem;
+  min-width: 14rem;
 }
 
 .tense-item__line-options button {
   all: unset;
   cursor: pointer;
   border: 1px solid #FFB400;
-  padding: 0.2rem 0.5rem;
+  padding: 0.2rem 0.4rem;
   border-radius: 16px;
-  width: 4rem;
+  width: 3.5rem;
   text-align: center;
+  font-size: 0.8rem;
 }
 
 .normalFont {
@@ -61,4 +60,32 @@
 
 .boldFont {
   font-weight: bold;
+}
+
+
+@media (min-width: 600px) {
+  .tense-item__header {
+    font-size: 2rem;
+  }
+
+  .tense-item__line {
+    width: 90%;
+  }
+
+  .tense-item__line-name {
+    font-size: 1.5rem;
+  }
+
+  .tense-item__line-options button {
+    font-size: 1rem;
+    width: 4rem;
+  }
+
+  .tense-item__line-options {
+    min-width: 16rem;
+  }
+
+  .tense-item__line {
+    padding-left: 2rem;
+  }
 }

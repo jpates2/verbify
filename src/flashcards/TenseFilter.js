@@ -8,15 +8,6 @@ export default function TenseFilter() {
 
   const [expanded, setExpanded] = useState(null)
   const [activeTense, setActiveTense] = useState("");
-  const [showTense, setShowTense] = useState(false);
-
-  const openTenseHandler = () => {
-    setShowTense(true);
-  }
-
-  const closeTenseHandler = () => {
-    setShowTense(false);
-  }
 
   function handleExpand(id) {
     setExpanded((prevId) => {
@@ -41,9 +32,6 @@ export default function TenseFilter() {
       onExpand={() => handleExpand(filter.id)}
       isExpanded={expanded === filter.id}
       isActiveTense={activeTense === filter.id}
-      isVisibleTense={showTense}
-      onClose={closeTenseHandler}
-      onOpen={openTenseHandler}
       activeTense={activeTense}
     />
   ))
