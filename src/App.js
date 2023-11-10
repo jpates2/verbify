@@ -9,7 +9,7 @@ import SignupPage from "./pages/Signup";
 const router = createBrowserRouter([
   {path: "/", element: <HomePage />},
   {path: "/flashcards", element: <FlashcardsPage />},
-  {path: "/flashcards/:flashcard", element: <FlashcardPage />},
+  {path: "/flashcards/:flashcard/:tense?/:type?", element: <FlashcardPage />},
   {path: "/verbs", element: <VerbsPage /> },
   {path: "/verbs/:verb", element: <VerbPage />},
   {path: "/signup", element: <SignupPage /> },

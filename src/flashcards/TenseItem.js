@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import classes from "./TenseItem.module.css";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -11,9 +13,15 @@ export default function TenseItem({ tense, sub, onExpand, isExpanded, activeTens
     <div key={`${tense} ${section}`} className={classes["tense-item__line"]}>
       <div className={classes["tense-item__line-name"]}>{section}</div>
       <div className={classes["tense-item__line-options"]}>
-        <motion.button whileHover={buttonHover}>Regular</motion.button>
-        <motion.button whileHover={buttonHover}>Irregular</motion.button>
-        <motion.button whileHover={buttonHover}>All</motion.button>
+        <Link to={`/flashcards/${tense}?tense=${section}&type=regular`}>
+          <motion.button whileHover={buttonHover}>Regular</motion.button>
+        </Link>
+        <Link to={`/flashcards/${tense}?tense=${section}&type=irregular`}>
+          <motion.button whileHover={buttonHover}>Irregular</motion.button>
+        </Link>
+        <Link to={`/flashcards/${tense}?tense=${section}&type=all`}>
+          <motion.button whileHover={buttonHover}>All</motion.button>
+        </Link>
       </div>
     </div>
   ))
