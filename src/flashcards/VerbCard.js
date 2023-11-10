@@ -88,7 +88,7 @@ export default function VerbCard({ verb, translation, regular }) {
         className={classes["verb-card__lower"]}
         variants={lowerMotion}
       >
-        <div className={classes["verb-card__regular"]}>Regular</div>
+        <div className={classes["verb-card__regular"]}>{regular === true ? "Regular" : "Irregular"}</div>
         <Link to={`/flashcards/${verb}`}>
           <button className={classes["verb-card__button"]}>Go to Flashcards</button>
         </Link>
