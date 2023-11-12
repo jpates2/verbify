@@ -11,9 +11,6 @@ export default function FlashcardPage() {
   const tense = location.pathname.split("/").slice(-1).join("").replace("%20", " ");
   const subtense = (location.search.split(/[?=&]+/))[2];
   const filter = (location.search.split(/[?=&]+/))[4];
-  console.log(tense);
-  console.log(subtense);
-  console.log(filter);
 
   return (
     <section className={classes["flashcard-page"]}>

@@ -72,6 +72,7 @@
 }
 
 .card__accent {
+  all: unset;
   border: 1px solid #FFB400;
   color: #F4442E;
   border-radius: 8px;
@@ -80,6 +81,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 @media (min-width: 600px) {
