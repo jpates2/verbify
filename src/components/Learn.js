@@ -13,7 +13,7 @@ export default function Learn() {
           <h2 className={styles["section-header"]}>Learn with Verbify</h2>
           <div className={classes["learn__cards"]}>
             {LearnInfo.map(card => (
-              <LearnCard key={card.title} title={card.title} description={card.description} image={card.img} link={card.link} />
+              <LearnCard key={card.title} title={card.title} description={card.description} image={card.img} link={card.link} to={card.to}/>
             ))}
           </div>
         </div>

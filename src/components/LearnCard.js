@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import classes from "./LearnCard.module.css";
+import { Link } from 'react-router-dom';
 
 const imgMotion = {
   start: {
@@ -51,7 +52,7 @@ const linkMotion = {
 
 
 
-export default function LearnCard(props) {
+export default function LearnCard({ title, description, image, link, to}) {
   const [screenSize, setScreenSize] = useState(window.innerWidth)
 
   const updateMedia = () => {
@@ -66,13 +67,13 @@ export default function LearnCard(props) {
   const mobileLearnCard = (
     <div className={classes["learn-card__container"]}>
       <div className={classes["learn-card__image-container"]}>
-        <img src={props.image} alt="" className={classes["learn-card__image"]} />
+        <img src={image} alt="" className={classes["learn-card__image"]} />
       </div>
       <div className={classes["learn-card__info"]}>
-        <h5 className={classes["learn-card__title"]}>{props.title}</h5>
-        <p className={classes["learn-card__description"]}>{props.description}</p>
+        <h5 className={classes["learn-card__title"]}>{title}</h5>
+        <p className={classes["learn-card__description"]}>{description}</p>
       </div>
-        <button className={classes["learn-card__link"]}>{props.link}</button>
+        <Link to={to}><button className={classes["learn-card__link"]}>{link}</button></Link>
     </div>
   )
 
@@ -83,13 +84,13 @@ export default function LearnCard(props) {
       whileHover="hover"
     >
       <div className={classes["learn-card__image-container"]}>
-        <motion.img src={props.image} alt="" className={classes["learn-card__image"]} variants={imgMotion} />
+        <motion.img src={image} alt="" className={classes["learn-card__image"]} variants={imgMotion} />
       </div>
       <motion.div className={classes["learn-card__info"]} variants={infoMotion}>
-        <h5 className={classes["learn-card__title"]}>{props.title}</h5>
-        <p className={classes["learn-card__description"]}>{props.description}</p>
+        <h5 className={classes["learn-card__title"]}>{title}</h5>
+        <p className={classes["learn-card__description"]}>{description}</p>
       </motion.div>
-        <motion.button className={classes["learn-card__link"]} variants={linkMotion}>{props.link}</motion.button>
+        <Link to={to}><motion.button className={classes["learn-card__link"]} variants={linkMotion}>{link}</motion.button></Link>
     </motion.div>
   )
 
