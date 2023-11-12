@@ -5,6 +5,7 @@ import Nav from "../layout/Nav";
 import FilterButtons from "../flashcards/FilterButtons";
 import VerbFilter from "../flashcards/VerbFilter";
 import TenseFilter from "../flashcards/TenseFilter";
+import Footer from "../layout/Footer";
 
 export default function FlashcardsPage() {
   const [flashcardFilter, setFlashcardFilter] = useState("tense");
@@ -14,7 +15,7 @@ export default function FlashcardsPage() {
   }
 
   return (
-    <AnimatePresence>
+    <>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -27,6 +28,7 @@ export default function FlashcardsPage() {
         {flashcardFilter === "verb" && <VerbFilter />}
         {flashcardFilter === "tense" && <TenseFilter />}
       </motion.div>
-    </AnimatePresence>
+      <Footer />
+    </>
   );
 }

@@ -5,6 +5,7 @@ import Nav from "../layout/Nav";
 import Header from "../verbs/Header";
 import VerbSearch from "../verbs/VerbSearch";
 import VerbCards from "../verbs/VerbCards";
+import Footer from "../layout/Footer";
 
 export default function VerbsPage() {
   const [searchTerms, setSearchTerms] = useState("");
@@ -24,6 +25,7 @@ export default function VerbsPage() {
       <Header />
       <VerbSearch onSearch={handleSearch} />
       <VerbCards searchTerms={searchTerms} />
+      <Footer />
     </motion.div>
   );
 }
