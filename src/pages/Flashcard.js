@@ -8,9 +8,13 @@ import Content from "../flashcard/Content";
 
 export default function FlashcardPage() {
   const location = useLocation();
-  const tense = location.pathname.split("/").slice(-1).join("").replace("%20", " ");
-  const subtense = (location.search.split(/[?=&]+/))[2].replace("%20", " ");
+  let tense, subtense;
+  if (location.search.includes("?")) {
+    tense = location.pathname.split("/").slice(-1).join("").replace("%20", " ");
+    subtense = (location.search.split(/[?=&]+/))[2];
+  }
   const filter = (location.search.split(/[?=&]+/))[4];
+  // console.log(subtense)
 
   return (
     <section className={classes["flashcard-page"]}>

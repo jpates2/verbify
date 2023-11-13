@@ -21,8 +21,6 @@ export default function Card({ tense, subtense }) {
     setEnteredAnswer(event.target.value.toLowerCase())
   }
 
-  console.log(enteredAnswer);
-
   return (
     <div className={classes["card__container"]}>
       <div className={classes["card__tenses-container"]}>
