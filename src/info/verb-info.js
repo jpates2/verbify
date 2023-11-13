@@ -290,6 +290,6 @@ export const AllTenses = [
   {
     id: "t8",
     tense: "All",
-    sub: ["All tenses"]
+    sub: ["All Tenses"]
   }
 ];

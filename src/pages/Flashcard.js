@@ -9,7 +9,7 @@ import Content from "../flashcard/Content";
 export default function FlashcardPage() {
   const location = useLocation();
   const tense = location.pathname.split("/").slice(-1).join("").replace("%20", " ");
-  const subtense = (location.search.split(/[?=&]+/))[2];
+  const subtense = (location.search.split(/[?=&]+/))[2].replace("%20", " ");
   const filter = (location.search.split(/[?=&]+/))[4];
 
   return (
