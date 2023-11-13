@@ -40,7 +40,7 @@ export default function TenseGroup({ children, conjugations, tenses, tenseSectio
     )
   }
 
-  if (tenseSection === "participle") {
+  if (tenseSection === "participles") {
     verbContent = (
       <div>
         <div>{selectedTense}</div>

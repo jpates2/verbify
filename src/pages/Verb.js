@@ -36,10 +36,10 @@ export default function VerbPage() {
       <Nav />
       <Header verb={verb} />
       <TenseGroup verb={verb} conjugations={conjugations} tenseSection="indicative" tenses={["Present", "Preterite", "Imperfect", "Conditional", "Future"]}>
-        Present Indicative
+        Indicative
       </TenseGroup>
-      <TenseGroup verb={verb} conjugations={conjugations} tenseSection="participle" tenses={["Present", "Past"]}>
-        Participle
+      <TenseGroup verb={verb} conjugations={conjugations} tenseSection="participles" tenses={["Present", "Past"]}>
+        Participles
       </TenseGroup>
       <TenseGroup verb={verb} conjugations={conjugations} tenseSection="imperative" tenses={["Affirmative", "Negative"]}>
         Imperative

@@ -38,8 +38,6 @@ export default function FlashcardPage() {
     }
   }, [filter])
 
-
-
   return (
     <section className={classes["flashcard-page"]}>
       <Nav />

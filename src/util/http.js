@@ -31,7 +31,7 @@ export async function fetchConjugations(verb) {
   const currentVerb = verbosData.filter(obj => {return obj.infinitivo === verb})
 
   const allConjugations = {
-    participle: {
+    participles: {
       present: currentVerb[0]["gerundio"].slice(-2) === "se" ? currentVerb[0]["gerundio"].slice(0, -2) : currentVerb[0]["gerundio"],
       past: currentVerb[0]["participioPasado"]
     },

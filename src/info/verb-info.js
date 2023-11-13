@@ -1,56 +1,5 @@
-export const VerbInfo = [
-  {
-    infinitive: "tener",
-    translation: "to have"
-  },
-  {
-    infinitive: "estar",
-    translation: "to be"
-  },
-  {
-    infinitive: "ser",
-    translation: "to be"
-  },
-  {
-    infinitive: "poner",
-    translation: "to put"
-  },
-  {
-    infinitive: "poder",
-    translation: "to be able"
-  },
-  {
-    infinitive: "ganar",
-    translation: "to win"
-  },
-  {
-    infinitive: "comprar",
-    translation: "to buy"
-  },
-  {
-    infinitive: "venir",
-    translation: "to come"
-  },
-  {
-    infinitive: "bajar",
-    translation: "to go down"
-  },
-  {
-    infinitive: "subir",
-    translation: "to go up"
-  },
-  {
-    infinitive: "probar",
-    translation: "to try"
-  },
-  {
-    infinitive: "comer",
-    translation: "to eat"
-  },
-]
-
 export const VerbExample = {
-  participle: {
+  participles: {
     present: "",
     past: ""
   },
@@ -287,9 +236,9 @@ export const AllTenses = [
     sub: ["Present", "Preterite", "Pluperfect", "Conditional", "Future"]
 
   },
-  {
-    id: "t8",
-    tense: "All",
-    sub: ["All Tenses"]
-  }
+  // {
+  //   id: "t8",
+  //   tense: "All",
+  //   sub: ["All Tenses"]
+  // }
 ];
