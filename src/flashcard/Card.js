@@ -1,14 +1,28 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import classes from "./Card.module.css";
+import VerbFlashcard from "./VerbFlashcard";
+import TenseFlashcard from "./TenseFlashcard";
+import { AllTenses } from "../info/verb-info";
 
 const pronouns = ["yo", "tú", "él", "ella", "usted", "nosotros", "nosotras", "vosotros", "vosotras", "ellos", "ellas", "ustedes"];
 
 const accents = ["á", "é", "í", "ñ", "ó", "ú", "ü"];
 
-export default function Card({ tense, subtense }) {
+export default function Card({ tense, subtense, fetchedVerb, filteredVerb, flashcardType }) {
   const pronoun = pronouns[Math.floor(Math.random() * pronouns.length)];
   const [enteredAnswer, setEnteredAnswer] = useState("");
+  const [generatedTense, setGeneratedTense] = useState({});
   const inputRef = useRef(null);
+
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * AllTenses.length);
+    const randomSubIndex = Math.floor(Math.random() * AllTenses[randomIndex].sub.length);
+
+    const randomTense = AllTenses[randomIndex].tense;
+    const randomSub = AllTenses[randomIndex].sub[randomSubIndex];
+
+    setGeneratedTense({randomTense, randomSub});
+  }, [])
 
   function handleAccent(event) {
     setEnteredAnswer((prevAnswer) => {
@@ -21,19 +35,15 @@ export default function Card({ tense, subtense }) {
     setEnteredAnswer(event.target.value.toLowerCase())
   }
 
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
+
   return (
     <div className={classes["card__container"]}>
-      <div className={classes["card__tenses-container"]}>
-        <div>{tense}</div>
-        <div>-</div>
-        <div>{subtense}</div>
-      </div>
-      <div className={classes["card__verb-container"]}>
-        <div className={classes["card__pronoun"]}>{pronoun}</div>
-        <div> &nbsp; &nbsp;</div>
-        <div className={classes["card__verb"]}>decir</div>
-      </div>
-      <form className={classes["card__form"]}>
+      {flashcardType === "verb" && <VerbFlashcard pronoun={pronoun} filteredVerb={filteredVerb} generatedTense={generatedTense} />}
+      {flashcardType === "tense" && <TenseFlashcard pronoun={pronoun} tense={tense} subtense={subtense} fetchedVerb={fetchedVerb} />}
+      <form onSubmit={handleSubmit} className={classes["card__form"]}>
         <div className={classes["card__form-input"]}>
           <input
             ref={inputRef}

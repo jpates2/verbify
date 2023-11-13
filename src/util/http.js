@@ -163,7 +163,30 @@ export async function fetchConjugations(verb) {
   return allConjugations;
 }
 
+export async function fetchRandomVerb(filter) {
+  const verbosData = verbos();
+  verbosData.splice(verbosData.findIndex(function(verb){
+    return verb.id === "haber_verboaux";
+  }), 1);
+  let selectedVerb;
 
+  const filteredRegularVerbos = verbosData.filter(obj => {return obj.regular === true})
+  const filteredIrregularVerbos = verbosData.filter(obj => {return obj.regular === false})
+
+  if (filter === "regular") {
+    selectedVerb = filteredRegularVerbos[Math.floor(Math.random() * filteredRegularVerbos.length)];
+  }
+
+  if (filter === "irregular") {
+    selectedVerb = filteredIrregularVerbos[Math.floor(Math.random() * filteredIrregularVerbos.length)];
+  }
+
+  if (filter === "all") {
+    selectedVerb = verbosData[Math.floor(Math.random() * verbosData.length)];
+  }
+
+  return selectedVerb;
+}
 
 
 // using json

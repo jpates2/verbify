@@ -1,0 +1,33 @@
+
+.card__tenses-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.card__verb-container {
+  display: flex;
+  justify-content: center;
+  color: #F4442E;
+  margin: 0 auto;
+  margin-top: 1.5rem;
+  font-size: 2rem;
+}
+
+.card__verb {
+  font-weight: bold;
+  color: #FFB400;
+}
+
+@media (min-width: 600px) {
+  .card__tenses-container {
+    width: 60%;
+    font-size: 1.2rem;
+  }
+
+  .card__verb-container {
+    font-size: 3rem;
+    margin-top: 2rem;
+  }
+}
