@@ -87,7 +87,7 @@ export const VerbExample = {
       uds: ""
     }
   },
-  "perfect-subjunctive": {
+  "perfect subjunctive": {
     present: {
       yo: "",
       tu: "",

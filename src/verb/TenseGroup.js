@@ -16,7 +16,7 @@ export default function TenseGroup({ children, conjugations, tenses, tenseSectio
   const selectedImperativeTense = conjugations[tenseSection][imperativeTense];
 
   let verbContent;
-  if (["indicative", "subjunctive", "progressive", "perfect", "perfect-subjunctive"].includes(tenseSection)) {
+  if (["indicative", "subjunctive", "progressive", "perfect", "perfect subjunctive"].includes(tenseSection)) {
     verbContent = (
       <div>
         <VerbPair pronoun="yo" conVerb={selectedTense.yo} />

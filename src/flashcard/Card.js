@@ -13,16 +13,17 @@ const mappedImperativePronouns = ["tu", "ud", "ud", "ud", "vosotros", "vosotros"
 const accents = ["á", "é", "í", "ñ", "ó", "ú", "ü"];
 
 export default function Card({ tense, subtense, fetchedVerb, filteredVerb, flashcardType }) {
-  const pronoun = pronouns[Math.floor(Math.random() * pronouns.length)];
-  const imperativePronoun = imperativePronouns[Math.floor(Math.random() * imperativePronouns.length)];
-
   const [enteredAnswer, setEnteredAnswer] = useState("");
+  const [pronoun, setPronoun] = useState("");
+  const [imperativePronoun, setImperativePronoun] = useState("");
   const [generatedTense, setGeneratedTense] = useState({});
   const inputRef = useRef(null);
-
-
+  let correctAnswer;
 
   useEffect(() => {
+    setPronoun(pronouns[Math.floor(Math.random() * pronouns.length)]);
+    setImperativePronoun(imperativePronouns[Math.floor(Math.random() * imperativePronouns.length)]);
+
     const randomIndex = Math.floor(Math.random() * AllTenses.length);
     const randomSubIndex = Math.floor(Math.random() * AllTenses[randomIndex].sub.length);
 
@@ -43,34 +44,53 @@ export default function Card({ tense, subtense, fetchedVerb, filteredVerb, flash
     setEnteredAnswer(event.target.value.toLowerCase())
   }
 
-  let correctAnswer;
   async function checkAnswer() {
     if (flashcardType === "verb") {
       const fetchAnswer = await fetchConjugations(filteredVerb);
-      const tense = generatedTense.randomTense.toLowerCase();
-      const subTense = generatedTense.randomSub.toLowerCase();
+      const checkTense = generatedTense.randomTense.toLowerCase();
+      const checkSubTense = generatedTense.randomSub.toLowerCase();
 
-      if (tense === "participles") correctAnswer = fetchAnswer[tense][subTense];
-      if (tense === "imperative") {
+      if (checkTense === "participles") correctAnswer = fetchAnswer[checkTense][checkSubTense];
+      if (checkTense === "imperative") {
         const currentPronoun = mappedImperativePronouns[imperativePronouns.indexOf(imperativePronoun)];
-        correctAnswer = fetchAnswer[tense][subTense][currentPronoun]
+        correctAnswer = fetchAnswer[checkTense][checkSubTense][currentPronoun]
       }
-      if (tense !== "participles" && tense !== "imperative") {
+      if (checkTense !== "participles" && checkTense !== "imperative") {
         const currentPronoun = mappedPronouns[pronouns.indexOf(pronoun)];
-        correctAnswer = fetchAnswer[tense][subTense][currentPronoun];
+        correctAnswer = fetchAnswer[checkTense][checkSubTense][currentPronoun];
       }
 
-      console.log(tense);
-      console.log(subTense);
-      console.log(correctAnswer);
+      return correctAnswer;
+    }
+
+    if (flashcardType === "tense") {
+      const fetchAnswer = await fetchConjugations(fetchedVerb["infinitivo"]);
+      const checkTense = tense.toLowerCase();
+      const checkSubTense = subtense.toLowerCase();
+
+      if (checkTense === "participles") correctAnswer = fetchAnswer[tense][checkSubTense];
+      if (checkTense === "imperative") {
+        const currentPronoun = mappedImperativePronouns[imperativePronouns.indexOf(imperativePronoun)];
+        correctAnswer = fetchAnswer[checkTense][checkSubTense][currentPronoun]
+      }
+      if (checkTense !== "participles" && checkTense !== "imperative") {
+        const currentPronoun = mappedPronouns[pronouns.indexOf(pronoun)];
+        correctAnswer = fetchAnswer[checkTense][checkSubTense][currentPronoun];
+      }
+
+      return correctAnswer;
     }
   }
 
-  // console.log(correctAnswer);
-
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    checkAnswer();
+    const answer = await checkAnswer();
+    if (answer === enteredAnswer.toLowerCase()) {
+      console.log("correct");
+    }
+    if (answer !== enteredAnswer.toLowerCase()) {
+      console.log("incorrect");
+    }
   }
 
   return (

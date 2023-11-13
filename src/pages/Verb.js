@@ -47,7 +47,7 @@ export default function VerbPage() {
       <TenseGroup verb={verb} conjugations={conjugations} tenseSection="subjunctive" tenses={["Present", "Imperfect", "Future"]}>
         Subjunctive
       </TenseGroup>
-      <TenseGroup verb={verb} conjugations={conjugations} tenseSection="perfect-subjunctive" tenses={["Present", "Past", "Future"]}>
+      <TenseGroup verb={verb} conjugations={conjugations} tenseSection="perfect subjunctive" tenses={["Present", "Past", "Future"]}>
         Perfect Subjunctive
       </TenseGroup>
       <TenseGroup verb={verb} conjugations={conjugations} tenseSection="progressive" tenses={["Present", "Preterite", "Imperfect", "Conditional", "Future"]}>

@@ -48,7 +48,7 @@ export async function fetchConjugations(verb) {
       imperfectAlt: currentVerb[0]["subjuntivo"]["imperfectoAlt"],
       future: currentVerb[0]["subjuntivo"]["futuro"],
     },
-    "perfect-subjunctive": {
+    "perfect subjunctive": {
       present: currentVerb[0]["subjuntivo"]["presentePerfecto"],
       past: currentVerb[0]["subjuntivo"]["pluscuamperfecto"],
       pastAlt: currentVerb[0]["subjuntivo"]["pluscuamperfectoAlt"],
