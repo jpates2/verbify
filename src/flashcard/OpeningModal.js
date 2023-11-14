@@ -19,7 +19,7 @@ export default function OpeningModal({ onGo }) {
 
   function onSubmitGo() {
     onGo();
-    ctx.setGo();
+    ctx.setGo(true);
   }
 
   return (

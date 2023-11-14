@@ -1,0 +1,15 @@
+.timer__title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.timer__time {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #F4442E;
+}
+
+.timer__time-hidden {
+  opacity: 0;
+}

@@ -37,11 +37,9 @@ function TimerProvider ({ children }) {
     dispatchTimerAction({type: "MINUS_MINUTE"});
   }
 
-  function onGo() {
-    console.log("test");
-    setGoStatus(true)
+  function onGo(status) {
+    setGoStatus(status)
   }
-  // console.log("goStatus", goStatus);
 
   const timerContext = {
     timer: contextTimer.timer,
