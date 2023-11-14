@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import FlashcardContext from "./context";
 
 const defaultFlashcardContext = { timer: 1 };
@@ -27,6 +27,7 @@ function timerReducer (state, action) {
 
 function TimerProvider ({ children }) {
   const [contextTimer, dispatchTimerAction] = useReducer(timerReducer, defaultFlashcardContext);
+  const [goStatus, setGoStatus] = useState(false);
 
   function addMinuteTimer() {
     dispatchTimerAction({type: "ADD_MINUTE"});
@@ -36,10 +37,18 @@ function TimerProvider ({ children }) {
     dispatchTimerAction({type: "MINUS_MINUTE"});
   }
 
+  function onGo() {
+    console.log("test");
+    setGoStatus(true)
+  }
+  // console.log("goStatus", goStatus);
+
   const timerContext = {
     timer: contextTimer.timer,
+    go: goStatus,
+    setGo: onGo,
     addMinute: addMinuteTimer,
-    minusMinute: minusMinuteTimer
+    minusMinute: minusMinuteTimer,
   }
 
   return (

@@ -1,19 +1,25 @@
 import { useContext } from "react";
-import Context from "../store/context.js";
+import FlashcardContext from "../store/context.js";
 import classes from "./OpeningModal.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons"
 import { faCaretUp } from "@fortawesome/free-solid-svg-icons"
 
 export default function OpeningModal({ onGo }) {
-  const ctx = useContext(Context);
+  const ctx = useContext(FlashcardContext);
 
   function handleIncreaseTimer() {
+    console.log("adding");
     ctx.addMinute();
   }
 
   function handleDecreaseTimer() {
     ctx.minusMinute();
+  }
+
+  function onSubmitGo() {
+    onGo();
+    ctx.setGo();
   }
 
   return (
@@ -25,7 +31,7 @@ export default function OpeningModal({ onGo }) {
           <input className={classes["flashcard-modal__input"]} type="number" min={1} max={10} step={1} value={ctx.timer} readOnly />
           <i onClick={handleIncreaseTimer} className={classes["flashcard-modal__arrow-up"]}><FontAwesomeIcon icon={faCaretUp} /></i>
         </div>
-        <button onClick={onGo} className={classes["flashcard-modal__button"]}>Go!</button>
+        <button onClick={onSubmitGo} className={classes["flashcard-modal__button"]}>Go!</button>
       </div>
     </div>
   )
