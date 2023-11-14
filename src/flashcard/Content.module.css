@@ -15,3 +15,9 @@
     justify-content: space-between;
   }
 }
+
+@media (min-width: 800px) {
+  .flashcard-page__content {
+    margin: 0 auto 4rem auto;
+  }
+}

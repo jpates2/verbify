@@ -1,9 +1,9 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom'
-import FlashcardContext from "../store/context.js";
 import Border from "../flashcard/Border";
 import Header from "../flashcard/Header";
 import Nav from "../layout/Nav";
+import Footer from "../layout/Footer";
 import classes from "../flashcard/Border.module.css";
 import Content from "../flashcard/Content";
 import { fetchRandomVerb } from '../util/http';
@@ -16,7 +16,6 @@ export default function FlashcardPage() {
   const [fetchedVerb, setFetchedVerb] = useState("");
   const [showModal, setShowModal] = useState(true);
   const flashcardType = location.search.includes("?") ? "tense" : "verb";
-  const ctx = useContext(FlashcardContext);
 
   let tense, subtense, filteredVerb;
   const filter = (location.search.split(/[?=&]+/))[4];
@@ -60,6 +59,7 @@ export default function FlashcardPage() {
         <Header />
         <Content tense={tense} subtense={subtense} filter={filter} fetchedVerb={fetchedVerb} filteredVerb={filteredVerb} flashcardType={flashcardType} />
         <Border />
+        <Footer />
       </section>
     </TimerProvider>
   )
