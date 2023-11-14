@@ -1,0 +1,53 @@
+.flashcard-modal__container {
+  text-align: center;
+}
+
+.flashcard-modal__title {
+  font-size: 1.5rem;
+  color: #FFB400;
+  margin-top: 0;
+  margin-bottom: 4rem;
+}
+
+.flashcard-modal__content {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.flashcard-modal__input-container {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.flashcard-modal__input {
+  all: unset;
+  font-size: 3rem;
+  width: 50%;
+}
+
+.flashcard-modal__arrow-up,
+.flashcard-modal__arrow-down {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.flashcard-modal__button {
+  all: unset;
+  font-weight: bold;
+  background: #F4442E;
+  color: #F9F9F9;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  max-height: 4rem;
+}
+
+@media (min-width: 800px) {
+  .flashcard-modal__title {
+    font-size: 2.5rem;
+  }
+}

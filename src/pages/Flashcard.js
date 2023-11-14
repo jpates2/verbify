@@ -6,10 +6,15 @@ import Nav from "../layout/Nav";
 import classes from "../flashcard/Border.module.css";
 import Content from "../flashcard/Content";
 import { fetchRandomVerb } from '../util/http';
+import Modal from '../layout/Modal';
+import OpeningModal from '../flashcard/OpeningModal';
+import FlashcardContext from '../store/context';
+import TimerProvider from '../store/ContextProvider';
 
 export default function FlashcardPage() {
   const location = useLocation();
   const [fetchedVerb, setFetchedVerb] = useState("");
+  const [showModal, setShowModal] = useState(true);
   const flashcardType = location.search.includes("?") ? "tense" : "verb";
 
   let tense, subtense, filteredVerb;
@@ -38,12 +43,27 @@ export default function FlashcardPage() {
     }
   }, [filter])
 
+  function handleGo() {
+    setShowModal(false);
+  }
+
+  function handleTimeInput() {
+
+  }
+
   return (
-    <section className={classes["flashcard-page"]}>
-      <Nav />
-      <Header />
-      <Content tense={tense} subtense={subtense} filter={filter} fetchedVerb={fetchedVerb} filteredVerb={filteredVerb} flashcardType={flashcardType} />
-      <Border />
-    </section>
+    <TimerProvider>
+      <section className={classes["flashcard-page"]}>
+        <Nav />
+        {showModal &&
+          <Modal>
+            <OpeningModal onGo={handleGo} />
+          </Modal>
+        }
+        <Header />
+        <Content tense={tense} subtense={subtense} filter={filter} fetchedVerb={fetchedVerb} filteredVerb={filteredVerb} flashcardType={flashcardType} />
+        <Border />
+      </section>
+    </TimerProvider>
   )
 }
