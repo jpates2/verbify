@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
+import { motion, useAnimation } from "framer-motion";
 import classes from "./Card.module.css";
 import VerbFlashcard from "./VerbFlashcard";
 import TenseFlashcard from "./TenseFlashcard";
@@ -13,8 +14,22 @@ const mappedImperativePronouns = ["tu", "ud", "ud", "ud", "vosotros", "vosotros"
 
 const accents = ["á", "é", "í", "ñ", "ó", "ú", "ü"];
 
+const variants = {
+  active: {
+    y: [5, -5, 0, 5, -5, 0],
+    transition: {
+      duration: 0.2
+    }
+  },
+  inactive: {
+    y: 0
+  }
+}
+
 export default function Card({ location, markAnswerCorrect, markQuestionCompleted, markAnswerIncorrect }) {
+  const controls = useAnimation();
   const [enteredAnswer, setEnteredAnswer] = useState("");
+  const [answerSubmitted, setAnswerSubmitted] = useState(false);
   const [pronoun, setPronoun] = useState("");
   const [imperativePronoun, setImperativePronoun] = useState("");
   const [generatedTense, setGeneratedTense] = useState({});
@@ -28,11 +43,6 @@ export default function Card({ location, markAnswerCorrect, markQuestionComplete
 
   let tense, subtense, filteredVerb;
   const filter = (location.search.split(/[?=&]+/))[4];
-
-
-
-  // useEffect(() => {
-  // }, [filter])
 
 
   if (location.search.includes("?")) {
@@ -129,6 +139,7 @@ export default function Card({ location, markAnswerCorrect, markQuestionComplete
 
   async function handleSubmit(event) {
     event.preventDefault();
+    setAnswerSubmitted(true);
 
     if (enteredAnswer.trim().length === 0) {
       return;
@@ -142,12 +153,15 @@ export default function Card({ location, markAnswerCorrect, markQuestionComplete
       initiateFlashcard();
       setEnteredAnswer("");
       setIncorrectAnswer(false);
+      setAnswerSubmitted(false);
     }
     if (answer !== enteredAnswer.toLowerCase()) {
       console.log("incorrect");
       setIncorrectAnswer(true);
       markAnswerIncorrect();
       markQuestionCompleted();
+      controls.start("active");
+      setAnswerSubmitted(false);
     }
   }
 
@@ -177,7 +191,7 @@ export default function Card({ location, markAnswerCorrect, markQuestionComplete
           />
           <div className={classes["card__answer-underline"]}></div>
         </div>
-        <button className={classes["card__enter-button"]}>Enter</button>
+        <motion.button initial="inactive" animate={incorrectAnswer && "active"} variants={variants} key={answerSubmitted ? "inactive" : "active"} className={classes["card__enter-button"]}>Enter</motion.button>
       </form>
       <div className={errorMsgClass}>Incorrect - Try Again</div>
       <div className={classes["card__accent-container"]}>

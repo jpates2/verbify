@@ -5,6 +5,7 @@
   text-align: center;
   margin-top: 4rem;
   margin-bottom: 4rem;
+  width: 12rem;
 }
 
 @media (min-width: 1000px) {
