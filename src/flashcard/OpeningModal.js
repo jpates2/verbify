@@ -21,8 +21,6 @@ export default function OpeningModal({ onGo }) {
     ctx.setGo(true);
   }
 
-  console.log(ctx.timer)
-
   return (
     <div className={classes["flashcard-modal__container"]}>
       <h2 className={classes["flashcard-modal__title"]}>Select Time</h2>

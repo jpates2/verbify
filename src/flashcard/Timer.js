@@ -5,7 +5,6 @@ import classes from "./Timer.module.css";
 export default function Timer() {
   const ctx = useContext(Context);
   const [counter, setCounter] = useState(ctx.timerSeconds)
-  console.log(counter, ctx.timerSeconds)
 
   useEffect(() => {
     setCounter(ctx.timerSeconds);
