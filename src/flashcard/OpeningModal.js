@@ -9,7 +9,6 @@ export default function OpeningModal({ onGo }) {
   const ctx = useContext(FlashcardContext);
 
   function handleIncreaseTimer() {
-    console.log("adding");
     ctx.addMinute();
   }
 
@@ -21,6 +20,8 @@ export default function OpeningModal({ onGo }) {
     onGo();
     ctx.setGo(true);
   }
+
+  console.log(ctx.timer)
 
   return (
     <div className={classes["flashcard-modal__container"]}>

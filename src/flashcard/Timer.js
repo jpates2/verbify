@@ -4,8 +4,12 @@ import classes from "./Timer.module.css";
 
 export default function Timer() {
   const ctx = useContext(Context);
-  const ctxTime = ctx.timer * 60;
-  const [counter, setCounter] = useState(ctxTime)
+  const [counter, setCounter] = useState(ctx.timerSeconds)
+  console.log(counter, ctx.timerSeconds)
+
+  useEffect(() => {
+    setCounter(ctx.timerSeconds);
+  }, [ctx.timerSeconds]);
 
   function formatTime (time) {
     const minutes = Math.floor(time / 60);
@@ -29,7 +33,7 @@ export default function Timer() {
       }
     };
   }, [counter, ctx.go]);
-
+  // console.log(counter)
   let timerClass;
   if (ctx.go === true) {
     timerClass = `${classes["timer__time"]}`

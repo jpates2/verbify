@@ -134,6 +134,7 @@ export default function Card({ location, markAnswerCorrect, markQuestionComplete
       markAnswerCorrect();
       markQuestionCompleted();
       initiateFlashcard();
+      setEnteredAnswer("");
     }
     if (answer !== enteredAnswer.toLowerCase()) {
       console.log("incorrect");
