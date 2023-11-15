@@ -36,26 +36,6 @@ const burgerIconVariant = {
   }
 }
 
-const logoVariant = {
-  opened: {
-    opacity: 0,
-    y: "-100%",
-    transition: {
-      duration: 0.5,
-      ease: "easeInOut"
-    }
-  },
-  closed: {
-    opacity: 1,
-    y: "0%",
-    transition: {
-      delay: 1,
-      duration: 0.5,
-      ease: "easeInOut"
-    }
-  }
-}
-
 const mobileMenuVariant = {
   opened: {
     y: "0%",
@@ -121,13 +101,15 @@ const linkVariant = {
   }
 }
 
-export default function Nav() {
+export default function Nav({ showModal }) {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const {pathname} = useLocation();
 
+  const mobileClasses = showModal === true ? `${classes["mobile-nav"]}` : `${classes["mobile-nav"]} ${classes["mobile-nav-absolute"]}`
+
   const mobileNav = (
     <motion.nav
-      className={classes["mobile-nav"]}
+      className={mobileClasses}
       initial="closed"
       animate={mobileNavOpen ? "opened" : "closed"}
       variants={navVariant}

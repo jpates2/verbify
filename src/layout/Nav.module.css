@@ -4,13 +4,16 @@
 }
 
 .mobile-nav {
-  position: absolute;
   width: 100vw;
   height: 4rem;
   top: 0;
   left: 0;
   margin-left: auto;
   overflow-y: hidden;
+}
+
+.mobile-nav-absolute {
+  position: absolute;
 }
 
 .mobile-nav__logo {
@@ -30,7 +33,7 @@
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
-  z-index: 30;
+  /* z-index: 5; */
 }
 
 .hamburger-top,

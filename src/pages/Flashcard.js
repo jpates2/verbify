@@ -14,7 +14,7 @@ import TimerProvider from '../store/ContextProvider';
 export default function FlashcardPage() {
   const location = useLocation();
   const [fetchedVerb, setFetchedVerb] = useState("");
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const flashcardType = location.search.includes("?") ? "tense" : "verb";
 
   let tense, subtense, filteredVerb;
@@ -28,6 +28,10 @@ export default function FlashcardPage() {
   if (!location.search.includes("?")) {
     filteredVerb = location.pathname.split("/").slice(-1).join("");
   }
+
+  useEffect(() => {
+    setShowModal(true)
+  }, [])
 
   useEffect(() => {
     if (filter) {
@@ -50,7 +54,7 @@ export default function FlashcardPage() {
   return (
     <TimerProvider>
       <section className={classes["flashcard-page"]}>
-        <Nav />
+        <Nav showModal={showModal} />
         {showModal &&
           <Modal>
             <OpeningModal onGo={handleGo} />
