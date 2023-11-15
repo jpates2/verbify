@@ -26,7 +26,7 @@ export default function FlashcardPage() {
   }
 
   if (!location.search.includes("?")) {
-    filteredVerb = location.pathname.split("/").slice(-1).join("");
+    filteredVerb = decodeURIComponent(location.pathname.split("/").slice(-1).join(""));
   }
 
   useEffect(() => {

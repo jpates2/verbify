@@ -7,6 +7,7 @@ import TenseGroup from "../verb/TenseGroup";
 import { fetchConjugations } from "../util/http";
 import { VerbExample } from "../info/verb-info";
 import Footer from "../layout/Footer";
+import ActionButton from "../verb/ActionButton";
 
 export default function VerbPage() {
   let params = useParams();
@@ -56,6 +57,7 @@ export default function VerbPage() {
       <TenseGroup verb={verb} conjugations={conjugations} tenseSection="perfect" tenses={["Present", "Preterite", "Pluperfect", "Conditional", "Future"]}>
         Perfect
       </TenseGroup>
+      <ActionButton verb={verb} />
       <Footer />
     </motion.div>
   );
