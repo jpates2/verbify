@@ -18,6 +18,7 @@ export default function Card({ location, markAnswerCorrect, markQuestionComplete
   const [pronoun, setPronoun] = useState("");
   const [imperativePronoun, setImperativePronoun] = useState("");
   const [generatedTense, setGeneratedTense] = useState({});
+  const [incorrectAnswer, setIncorrectAnswer] = useState(false);
   const inputRef = useRef(null);
   let correctAnswer;
 
@@ -128,6 +129,11 @@ export default function Card({ location, markAnswerCorrect, markQuestionComplete
 
   async function handleSubmit(event) {
     event.preventDefault();
+
+    if (enteredAnswer.trim().length === 0) {
+      return;
+    }
+
     const answer = await checkAnswer();
     if (answer === enteredAnswer.toLowerCase()) {
       console.log("correct");
@@ -135,16 +141,28 @@ export default function Card({ location, markAnswerCorrect, markQuestionComplete
       markQuestionCompleted();
       initiateFlashcard();
       setEnteredAnswer("");
+      setIncorrectAnswer(false);
     }
     if (answer !== enteredAnswer.toLowerCase()) {
       console.log("incorrect");
+      setIncorrectAnswer(true);
       markAnswerIncorrect();
       markQuestionCompleted();
     }
   }
 
+  function handleSkip() {
+    initiateFlashcard();
+    setEnteredAnswer("");
+    setIncorrectAnswer(false);
+  }
+
+  const errorMsgClass = incorrectAnswer ? `${classes["card__error-msg"]}` : `${classes["card__error-msg-hidden"]}`
+
+  const skipButtonClass = incorrectAnswer ? `${classes["card__skip-button"]}` : `${classes["card__skip-button-hidden"]}`
 
   return (
+    <div className={classes["container"]}>
     <div className={classes["card__container"]}>
       {flashcardType === "verb" && <VerbFlashcard imperativePronoun={imperativePronoun} pronoun={pronoun} filteredVerb={filteredVerb} generatedTense={generatedTense} />}
       {flashcardType === "tense" && <TenseFlashcard imperativePronoun={imperativePronoun} pronoun={pronoun} tense={tense} subtense={subtense} fetchedVerb={fetchedVerb} />}
@@ -161,12 +179,16 @@ export default function Card({ location, markAnswerCorrect, markQuestionComplete
         </div>
         <button className={classes["card__enter-button"]}>Enter</button>
       </form>
+      <div className={errorMsgClass}>Incorrect - Try Again</div>
       <div className={classes["card__accent-container"]}>
         {accents.map(accent => (
           <button key={accent} onClick={handleAccent} className={classes["card__accent"]}>{accent}</button>
         ))}
       </div>
-
+    </div>
+    <div className={classes["card__skip-button-container"]}>
+      <button onClick={handleSkip} className={skipButtonClass}>Skip</button>
+    </div>
     </div>
   )
 }
