@@ -9,35 +9,33 @@
 }
 
 .modal {
-  max-height: 80%;
-  overflow: scroll;
   position: fixed;
-  top: 10vh;
-  left: 8%;
-  width: 72%;
+  width: 22rem;
+  height: 26rem;
+  top: 50%;
+  left: 50%;
+  margin-top: -13rem;
+  margin-left: -11rem;
   background-color: white;
-  padding: 6%;
   border-radius: 14px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;
   animation: slide-down 300ms ease-out forwards;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  box-sizing: border-box;
 }
 
 .modal::-webkit-scrollbar {
   display: none;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 600px) {
   .modal {
-    top: 20%;
-    left: 30%;
-    width: 40%;
-    max-height: 68vh;
-    overflow: scroll;
-    padding: 4rem;
-    box-sizing: border-box;
+    width: 32rem;
+    height: 20rem;
+    margin-top: -10rem;
+    margin-left: -16rem;
   }
 }
 

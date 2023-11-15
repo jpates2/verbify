@@ -1,9 +1,10 @@
 .flashcard-modal__container {
   text-align: center;
+  padding: 4rem 2rem;
 }
 
 .flashcard-modal__title {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #FFB400;
   margin-top: 0;
   margin-bottom: 4rem;
@@ -11,7 +12,9 @@
 
 .flashcard-modal__content {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 4rem;
+  align-items: center;
   width: 70%;
   margin: 0 auto;
 }
@@ -46,8 +49,14 @@
   max-height: 4rem;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 600px) {
   .flashcard-modal__title {
     font-size: 2.5rem;
+  }
+
+  .flashcard-modal__content {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70%;
   }
 }
