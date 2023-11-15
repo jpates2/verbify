@@ -158,7 +158,6 @@ export default function Card({ location, markAnswerCorrect, markQuestionComplete
     if (answer !== enteredAnswer.toLowerCase()) {
       console.log("incorrect");
       setIncorrectAnswer(true);
-      markAnswerIncorrect();
       markQuestionCompleted();
       controls.start("active");
       setAnswerSubmitted(false);

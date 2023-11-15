@@ -2,13 +2,15 @@ import { useContext, useState, useEffect } from "react";
 import Context from "../store/context.js";
 import classes from "./Timer.module.css";
 
-export default function Timer() {
+export default function Timer({ onUpdateTimer }) {
   const ctx = useContext(Context);
   const [counter, setCounter] = useState(ctx.timerSeconds)
 
   useEffect(() => {
     setCounter(ctx.timerSeconds);
+    console.log(ctx.timerSeconds);
   }, [ctx.timerSeconds]);
+
 
   function formatTime (time) {
     const minutes = Math.floor(time / 60);
@@ -26,12 +28,16 @@ export default function Timer() {
       timer = setTimeout(() => setCounter(c => c - 1), 1000);
     }
 
+    if (counter === 0) {
+      onUpdateTimer("end");
+    }
+
     return () => {
       if (timer) {
         clearTimeout(timer);
       }
     };
-  }, [counter, ctx.go]);
+  }, [counter, ctx.go, onUpdateTimer]);
   // console.log(counter)
   let timerClass;
   if (ctx.go === true) {

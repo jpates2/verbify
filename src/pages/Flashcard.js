@@ -9,10 +9,28 @@ import Content from "../flashcard/Content";
 import Modal from '../layout/Modal';
 import OpeningModal from '../flashcard/OpeningModal';
 import TimerProvider from '../store/ContextProvider';
+import EndingModal from '../flashcard/EndingModal';
 
 export default function FlashcardPage() {
   const location = useLocation();
   const [showModal, setShowModal] = useState(false);
+
+  const [timerStatus, setTimerStatus] = useState("inactive");
+
+  const [questionsAnswered, setQuestionsAnswered] = useState(0);
+  const [correctAnswers, setCorrectAnswers] = useState(0);
+
+  function markAnswerCorrect() {
+    setCorrectAnswers(prevCorrect => {
+      return prevCorrect + 1;
+    })
+  }
+
+  function markQuestionCompleted() {
+    setQuestionsAnswered(prevCompleted => {
+      return prevCompleted + 1;
+    })
+  }
 
   useEffect(() => {
     setShowModal(true)
@@ -20,6 +38,7 @@ export default function FlashcardPage() {
 
   function handleGo() {
     setShowModal(false);
+    setTimerStatus("active");
   }
 
   return (
@@ -31,8 +50,13 @@ export default function FlashcardPage() {
             <OpeningModal onGo={handleGo} />
           </Modal>
         }
+        {timerStatus === "end" &&
+          <Modal>
+            <EndingModal />
+          </Modal>
+        }
         <Header />
-        <Content location={location} />
+        <Content location={location} onUpdateTimer={setTimerStatus} markAnswerCorrect={markAnswerCorrect} markQuestionCompleted={markQuestionCompleted} correctAnswers={correctAnswers} questionsAnswered={questionsAnswered} />
         <Border />
         <Footer />
       </section>
