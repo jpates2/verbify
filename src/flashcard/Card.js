@@ -1,9 +1,10 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import classes from "./Card.module.css";
 import VerbFlashcard from "./VerbFlashcard";
 import TenseFlashcard from "./TenseFlashcard";
 import { AllTenses } from "../info/verb-info";
 import { fetchConjugations } from "../util/http";
+import { fetchRandomVerb } from '../util/http';
 
 const pronouns = ["yo", "tú", "él", "ella", "usted", "nosotros", "nosotras", "vosotros", "vosotras", "ellos", "ellas", "ustedes"];
 const imperativePronouns = ["tú", "él", "ella", "usted", "vosotros", "vosotras", "ellos", "ellas", "ustedes"];
@@ -12,7 +13,7 @@ const mappedImperativePronouns = ["tu", "ud", "ud", "ud", "vosotros", "vosotros"
 
 const accents = ["á", "é", "í", "ñ", "ó", "ú", "ü"];
 
-export default function Card({ tense, subtense, fetchedVerb, filteredVerb, flashcardType }) {
+export default function Card({ location, markAnswerCorrect, markQuestionCompleted, markAnswerIncorrect }) {
   const [enteredAnswer, setEnteredAnswer] = useState("");
   const [pronoun, setPronoun] = useState("");
   const [imperativePronoun, setImperativePronoun] = useState("");
@@ -20,7 +21,44 @@ export default function Card({ tense, subtense, fetchedVerb, filteredVerb, flash
   const inputRef = useRef(null);
   let correctAnswer;
 
-  useEffect(() => {
+
+  const [fetchedVerb, setFetchedVerb] = useState("");
+  const flashcardType = location.search.includes("?") ? "tense" : "verb";
+
+  let tense, subtense, filteredVerb;
+  const filter = (location.search.split(/[?=&]+/))[4];
+
+
+
+  // useEffect(() => {
+  // }, [filter])
+
+
+  if (location.search.includes("?")) {
+    tense = location.pathname.split("/").slice(-1).join("").replace("%20", " ");
+    subtense = (location.search.split(/[?=&]+/))[2].replace("%20", " ");
+  }
+
+  if (!location.search.includes("?")) {
+    filteredVerb = decodeURIComponent(location.pathname.split("/").slice(-1).join(""));
+  }
+
+
+  const initiateFlashcard = useCallback(() => {
+
+    if (filter) {
+      async function getVerbs() {
+        try {
+          const verb = await fetchRandomVerb(filter);
+          setFetchedVerb(verb);
+        } catch (error) {
+
+        }
+      }
+      getVerbs();
+    }
+
+
     setPronoun(pronouns[Math.floor(Math.random() * pronouns.length)]);
     setImperativePronoun(imperativePronouns[Math.floor(Math.random() * imperativePronouns.length)]);
 
@@ -31,7 +69,12 @@ export default function Card({ tense, subtense, fetchedVerb, filteredVerb, flash
     const randomSub = AllTenses[randomIndex].sub[randomSubIndex];
 
     setGeneratedTense({randomTense, randomSub});
-  }, [])
+  }, [filter])
+
+
+  useEffect(() => {
+    initiateFlashcard()
+  }, [initiateFlashcard])
 
   function handleAccent(event) {
     setEnteredAnswer((prevAnswer) => {
@@ -45,10 +88,11 @@ export default function Card({ tense, subtense, fetchedVerb, filteredVerb, flash
   }
 
   async function checkAnswer() {
+
     if (flashcardType === "verb") {
       const fetchAnswer = await fetchConjugations(filteredVerb);
-      const checkTense = generatedTense.randomTense.toLowerCase();
-      const checkSubTense = generatedTense.randomSub.toLowerCase();
+      const checkTense = await generatedTense.randomTense.toLowerCase();
+      const checkSubTense = await generatedTense.randomSub.toLowerCase();
 
       if (checkTense === "participles") correctAnswer = fetchAnswer[checkTense][checkSubTense];
       if (checkTense === "imperative") {
@@ -68,7 +112,7 @@ export default function Card({ tense, subtense, fetchedVerb, filteredVerb, flash
       const checkTense = tense.toLowerCase();
       const checkSubTense = subtense.toLowerCase();
 
-      if (checkTense === "participles") correctAnswer = fetchAnswer[tense][checkSubTense];
+      if (checkTense === "participles") correctAnswer = await fetchAnswer[tense][checkSubTense];
       if (checkTense === "imperative") {
         const currentPronoun = mappedImperativePronouns[imperativePronouns.indexOf(imperativePronoun)];
         correctAnswer = fetchAnswer[checkTense][checkSubTense][currentPronoun]
@@ -87,11 +131,17 @@ export default function Card({ tense, subtense, fetchedVerb, filteredVerb, flash
     const answer = await checkAnswer();
     if (answer === enteredAnswer.toLowerCase()) {
       console.log("correct");
+      markAnswerCorrect();
+      markQuestionCompleted();
+      initiateFlashcard();
     }
     if (answer !== enteredAnswer.toLowerCase()) {
       console.log("incorrect");
+      markAnswerIncorrect();
+      markQuestionCompleted();
     }
   }
+
 
   return (
     <div className={classes["card__container"]}>

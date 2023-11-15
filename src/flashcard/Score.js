@@ -2,7 +2,7 @@ import { useContext } from "react";
 import Context from "../store/context.js";
 import classes from "./Score.module.css";
 
-export default function Score() {
+export default function Score({ correctAnswers, questionsAnswered }) {
   const ctx = useContext(Context);
 
   let scoreClass;
@@ -16,7 +16,7 @@ export default function Score() {
   return (
     <div>
       <div className={classes["scorer__title"]}>Score</div>
-      <div className={scoreClass}>0 / 0</div>
+      <div className={scoreClass}>{correctAnswers} / {questionsAnswered}</div>
     </div>
   )
 }
