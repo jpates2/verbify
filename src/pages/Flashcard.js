@@ -52,7 +52,7 @@ export default function FlashcardPage() {
         }
         {timerStatus === "end" &&
           <Modal>
-            <EndingModal />
+            <EndingModal correctAnswers={correctAnswers} questionsAnswered={questionsAnswered} />
           </Modal>
         }
         <Header />
