@@ -44,7 +44,7 @@ export default function FlashcardPage() {
   return (
     <TimerProvider>
       <section className={classes["flashcard-page"]}>
-        <Nav showModal={showModal} />
+        <Nav showModal={showModal} timerStatus={timerStatus} />
         {showModal &&
           <Modal>
             <OpeningModal onGo={handleGo} />

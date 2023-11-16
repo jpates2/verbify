@@ -101,11 +101,11 @@ const linkVariant = {
   }
 }
 
-export default function Nav({ showModal }) {
+export default function Nav({ showModal, timerStatus }) {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const {pathname} = useLocation();
 
-  const mobileClasses = showModal === true ? `${classes["mobile-nav"]}` : `${classes["mobile-nav"]} ${classes["mobile-nav-absolute"]}`
+  const mobileClasses = (showModal === true || timerStatus === "end") ? `${classes["mobile-nav"]}` : `${classes["mobile-nav"]} ${classes["mobile-nav-absolute"]}`
 
   const mobileNav = (
     <motion.nav
