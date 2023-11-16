@@ -1,3 +1,7 @@
+.timer__container {
+  width: 50%;
+}
+
 .timer__title {
   font-size: 1.5rem;
   font-weight: bold;
@@ -15,6 +19,10 @@
 }
 
 @media (min-width: 600px) {
+  .timer__container {
+    width: 100%;
+  }
+
   .timer__title {
     font-size: 2rem;
   }

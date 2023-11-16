@@ -48,7 +48,7 @@ export default function Timer({ onUpdateTimer }) {
   }
 
   return (
-    <div>
+    <div className={classes["timer__container"]}>
       <div className={classes["timer__title"]}>Timer</div>
       <div className={timerClass}>{formatTime(counter)}</div>
     </div>

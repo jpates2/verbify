@@ -14,7 +14,7 @@ export default function Score({ correctAnswers, questionsAnswered }) {
   }
 
   return (
-    <div>
+    <div className={classes["scorer__container"]}>
       <div className={classes["scorer__title"]}>Score</div>
       <div className={scoreClass}>{correctAnswers} / {questionsAnswered}</div>
     </div>
