@@ -152,11 +152,13 @@ export default function Card({ location, markAnswerCorrect, markQuestionComplete
       markQuestionCompleted();
       initiateFlashcard();
       setEnteredAnswer("");
+      inputRef.current.focus();
       setIncorrectAnswer(false);
       setAnswerSubmitted(false);
     }
     if (answer !== enteredAnswer.toLowerCase()) {
       console.log("incorrect");
+      inputRef.current.focus();
       setIncorrectAnswer(true);
       markQuestionCompleted();
       controls.start("active");
