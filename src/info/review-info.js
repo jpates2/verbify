@@ -1,26 +1,26 @@
 export const ReviewInfo = [
   {
-    text: `"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur ipsa officiis tenetur. Ad pariatur recusandae inventore cumque. Esse quibusdam vel ipsam incidunt veniam ullam! Numquam nulla nisi id ex! Eius velit totam nesciunt praesentium."`,
+    text: `"Hola, conjugation confidence! Mastering Spanish verbs is a breeze now. My confidence in conversation has grown and my ability to speak Spanish spontaneously has significantly improved."`,
     name: "Tom",
     location: "Kent, UK"
   },
   {
-    text: `"deleniti suscipit assumenda atque optio vel at excepturi reprehenderit aperiam, nam accusantium maxime molestias!"`,
+    text: `"Tracking progress has never been so motivating. The ability to see where I stumbled in past exercises and work on those verbs is great. Solid tool for anyone serious about mastering Spanish."`,
     name: "Cat",
     location: "Brisbane, Australia"
   },
   {
-    text: `"Totam ipsa vero, officia architecto quaerat dolores veniam facere necessitatibus tempora autem et praesentium natus recusandae maiores rem ipsam."`,
+    text: `"The flashcards are like my daily Spanish workout. Clear, concise, and no distractions. Perfect for a quick Spanish conjugation session."`,
     name: "Luke",
     location: "Southampton, UK"
   },
   {
-    text: `"quo earum quis! Dolorem ducimus quisquam ullam aut eos accusantium nulla perspiciatis repudiandae nobis, a soluta consequuntur!"`,
+    text: `"I stumbled upon this site when desperate to improve my Spanish. The flashcards are no-nonsense, and through my personalized profile it's like having a virtual tutor. Definitely helped me step up my game."`,
     name: "Ellis",
     location: "Sydney, Australia"
   },
   {
-    text: `"assumenda facere doloremque, cupiditate laboriosam eum ullam animi. Corporis illum ratione fuga corrupti quisquam eum nobis enim explicabo dolore."`,
+    text: `"What sets this site apart is the progress tracking. It's not just about acing flashcards; it's about learning from mistakes. The ability to review past errors keeps me on my toes."`,
     name: "Pauline",
     location: "Zagreb, Croatia"
   }
