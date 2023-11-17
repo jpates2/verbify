@@ -1,8 +1,10 @@
 .buttons__container {
   display: flex;
-  justify-content: space-between;
-  max-width: 28rem;
-  margin: 0 auto;
+  flex-direction: column;
+  margin: 0 auto 4rem auto;
+  width: 100%;
+  align-items: center;
+  gap: 1rem;
 }
 
 .signup__button {
@@ -21,4 +23,12 @@
 .signup__button-active {
   color: white;
   background: #F4442E;
+}
+
+@media (min-width: 800px) {
+  .buttons__container {
+    flex-direction: row;
+    max-width: 28rem;
+    justify-content: space-between;
+  }
 }
