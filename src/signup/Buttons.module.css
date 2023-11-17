@@ -1,0 +1,24 @@
+.buttons__container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 28rem;
+  margin: 0 auto;
+}
+
+.signup__button {
+  all: unset;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border-radius: 16px;
+  cursor: pointer;
+  background: white;
+  padding: 1rem 2rem;
+  width: 12rem;
+  color: #F4442E;
+  box-sizing: border-box;
+}
+
+.signup__button-active {
+  color: white;
+  background: #F4442E;
+}

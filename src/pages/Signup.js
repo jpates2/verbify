@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Nav from "../layout/Nav";
 import Header from "../signup/Header"
+import FormContainer from "../signup/FormContainer";
 
 export default function SignupPage() {
   return (
@@ -13,6 +14,7 @@ export default function SignupPage() {
     >
       <Nav />
       <Header />
+      <FormContainer />
     </motion.div>
   );
 }
