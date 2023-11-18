@@ -1,0 +1,7 @@
+.signup-form {
+  min-height: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 1rem;
+}

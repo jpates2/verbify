@@ -1,7 +1,9 @@
-import Input from "../layout/Input";
 import { useInput } from '../hooks/useInput';
 import { isEmail, hasMinLength, isNotEmpty } from '../util/validation';
+import Input from "../layout/Input";
 import classes from "./LoginForm.module.css";
+import styles from "../styles/forms.module.css";
+import LoginFormButton from './LoginFormButton';
 
 export default function LoginForm() {
 
@@ -15,70 +17,38 @@ export default function LoginForm() {
     hasError: nameHasError
   } = useInput("", (value => isNotEmpty(value)))
 
+  function handleLogin(event) {
+    event.preventDefault();
+  }
 
   return (
     <div>
-      <form className={classes["signup-form"]}>
-        <div className={classes["signup-form__details"]}>
-          <Input
-            label="Name"
-            id="name"
-            type="text"
-            tag="input"
-            // value={nameValue}
-            className={nameHasError ? `${classes["signup-form__input"]} ${classes["signup-form__invalid"]}` : `${classes["signup-form__input"]}`}
-            // onChange={handleNameChange}
-            // onBlur={handleNameBlur}
-          />
-        </div>
-        <div className={classes["signup-form__details"]}>
-          <Input
-            label="Phone"
-            id="phone"
-            type="text"
-            tag="input"
-            // value={nameValue}
-            className={nameHasError ? `${classes["signup-form__input"]} ${classes["signup-form__invalid"]}` : `${classes["signup-form__input"]}`}
-            // onChange={handleNameChange}
-            // onBlur={handleNameBlur}
-          />
-        </div>
-        <div className={classes["signup-form__details"]}>
+      <form onSubmit={handleLogin} className={classes["login-form"]}>
+        <div className={styles["form__details"]}>
           <Input
             label="Email"
             id="email"
             type="text"
             tag="input"
             // value={nameValue}
-            className={nameHasError ? `${classes["signup-form__input"]} ${classes["signup-form__invalid"]}` : `${classes["signup-form__input"]}`}
+            className={nameHasError ? `${styles["form__input"]} ${styles["form__invalid"]}` : `${styles["form__input"]}`}
             // onChange={handleNameChange}
             // onBlur={handleNameBlur}
           />
         </div>
-        <div className={classes["signup-form__details"]}>
+        <div className={styles["form__details"]}>
           <Input
             label="Password"
             id="password"
             type="password"
             tag="input"
             // value={nameValue}
-            className={nameHasError ? `${classes["signup-form__input"]} ${classes["signup-form__invalid"]}` : `${classes["signup-form__input"]}`}
+            className={nameHasError ? `${styles["form__input"]} ${styles["form__invalid"]}` : `${styles["form__input"]}`}
             // onChange={handleNameChange}
             // onBlur={handleNameBlur}
           />
         </div>
-        <div className={classes["signup-form__details"]}>
-          <Input
-            label="Confirm Password"
-            id="confirm-password"
-            type="password"
-            tag="input"
-            // value={nameValue}
-            className={nameHasError ? `${classes["signup-form__input"]} ${classes["signup-form__invalid"]}` : `${classes["signup-form__input"]}`}
-            // onChange={handleNameChange}
-            // onBlur={handleNameBlur}
-          />
-        </div>
+        <LoginFormButton />
       </form>
     </div>
   )
