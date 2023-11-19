@@ -31,7 +31,6 @@
 
 .form__submit-container {
   margin-top: 1rem;
-
 }
 
 .form__submit {
@@ -42,6 +41,10 @@
   border-radius: 16px;
   padding: 0.5rem 1rem;
   cursor: pointer;
+}
+
+.form__invalid {
+  border: 1px solid #F4442E;
 }
 
 @media (min-width: 800px) {

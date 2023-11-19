@@ -1,11 +1,14 @@
-import Input from "../layout/Input";
+import { useState } from "react";
 import { useInput } from '../hooks/useInput';
+import Input from "../layout/Input";
+import LoginFormButton from "./LoginFormButton";
+import Modal from "../layout/Modal";
 import { isEmail, hasMinLength, isNotEmpty } from '../util/validation';
 import classes from "./SignupForm.module.css";
 import styles from "../styles/forms.module.css";
-import LoginFormButton from "./LoginFormButton";
 
 export default function SignupForm() {
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const {
     value: nameValue,
@@ -17,12 +20,76 @@ export default function SignupForm() {
     hasError: nameHasError
   } = useInput("", (value => isNotEmpty(value)))
 
+  const {
+    value: phoneValue,
+    isValid: phoneIsValid,
+    handleInputChange: handlePhoneChange,
+    handleInputBlur: handlePhoneBlur,
+    handleInputSubmit: handlePhoneSubmit,
+    handleInputReset: handlePhoneReset,
+    hasError: phoneHasError
+  } = useInput("", (value => hasMinLength(value, 6)))
+
+  const {
+    value: emailValue,
+    isValid: emailIsValid,
+    handleInputChange: handleEmailChange,
+    handleInputBlur: handleEmailBlur,
+    handleInputSubmit: handleEmailSubmit,
+    handleInputReset: handleEmailReset,
+    hasError: emailHasError
+  } = useInput("", (value => isEmail(value) && hasMinLength(value, 6)))
+
+  const {
+    value: passwordValue,
+    isValid: passwordIsValid,
+    handleInputChange: handlePasswordChange,
+    handleInputBlur: handlePasswordBlur,
+    handleInputSubmit: handlePasswordSubmit,
+    handleInputReset: handlePasswordReset,
+    hasError: passwordHasError
+  } = useInput("", (value => hasMinLength(value, 6)))
+
+  const {
+    value: confirmValue,
+    isValid: confirmIsValid,
+    handleInputChange: handleConfirmChange,
+    handleInputBlur: handleConfirmBlur,
+    handleInputSubmit: handleConfirmSubmit,
+    handleInputReset: handleConfirmReset,
+    hasError: confirmHasError
+  } = useInput("", (value => hasMinLength(value, 6)))
+
+  let formIsValid;
+  formIsValid = nameIsValid && phoneIsValid && emailIsValid && passwordIsValid && confirmIsValid;
+
   function handleSignup(event) {
     event.preventDefault();
+
+    handleNameSubmit();
+    handlePhoneSubmit();
+    handleEmailSubmit();
+    handlePasswordSubmit();
+    handleConfirmSubmit();
+    setFormSubmitted(true);
+
+    if (!formIsValid) {return};
+
+    handleNameReset();
+    handlePhoneReset();
+    handleEmailReset();
+    handlePasswordReset();
+    handleConfirmReset();
+    console.log(emailValue, passwordValue);
   }
 
   return (
     <div>
+      {formSubmitted &&
+        <Modal>
+          username
+        </Modal>
+      }
       <form onSubmit={handleSignup} className={classes["signup-form"]}>
         <div className={styles["form__details"]}>
           <Input
@@ -30,10 +97,10 @@ export default function SignupForm() {
             id="name"
             type="text"
             tag="input"
-            // value={nameValue}
+            value={nameValue}
             className={nameHasError ? `${styles["form__input"]} ${styles["form__invalid"]}` : `${styles["form__input"]}`}
-            // onChange={handleNameChange}
-            // onBlur={handleNameBlur}
+            onChange={handleNameChange}
+            onBlur={handleNameBlur}
           />
         </div>
         <div className={styles["form__details"]}>
@@ -42,10 +109,10 @@ export default function SignupForm() {
             id="phone"
             type="text"
             tag="input"
-            // value={nameValue}
-            className={nameHasError ? `${styles["form__input"]} ${styles["form__invalid"]}` : `${styles["form__input"]}`}
-            // onChange={handleNameChange}
-            // onBlur={handleNameBlur}
+            value={phoneValue}
+            className={phoneHasError ? `${styles["form__input"]} ${styles["form__invalid"]}` : `${styles["form__input"]}`}
+            onChange={handlePhoneChange}
+            onBlur={handlePhoneBlur}
           />
         </div>
         <div className={styles["form__details"]}>
@@ -54,10 +121,10 @@ export default function SignupForm() {
             id="email"
             type="text"
             tag="input"
-            // value={nameValue}
-            className={nameHasError ? `${styles["form__input"]} ${styles["form__invalid"]}` : `${styles["form__input"]}`}
-            // onChange={handleNameChange}
-            // onBlur={handleNameBlur}
+            value={emailValue}
+            className={emailHasError ? `${styles["form__input"]} ${styles["form__invalid"]}` : `${styles["form__input"]}`}
+            onChange={handleEmailChange}
+            onBlur={handleEmailBlur}
           />
         </div>
         <div className={styles["form__details"]}>
@@ -66,10 +133,10 @@ export default function SignupForm() {
             id="password"
             type="password"
             tag="input"
-            // value={nameValue}
-            className={nameHasError ? `${styles["form__input"]} ${styles["form__invalid"]}` : `${styles["form__input"]}`}
-            // onChange={handleNameChange}
-            // onBlur={handleNameBlur}
+            value={passwordValue}
+            className={(passwordHasError || passwordValue !== confirmValue) ? `${styles["form__input"]} ${styles["form__invalid"]}` : `${styles["form__input"]}`}
+            onChange={handlePasswordChange}
+            onBlur={handlePasswordBlur}
           />
         </div>
         <div className={styles["form__details"]}>
@@ -78,10 +145,10 @@ export default function SignupForm() {
             id="confirm-password"
             type="password"
             tag="input"
-            // value={nameValue}
-            className={nameHasError ? `${styles["form__input"]} ${styles["form__invalid"]}` : `${styles["form__input"]}`}
-            // onChange={handleNameChange}
-            // onBlur={handleNameBlur}
+            value={confirmValue}
+            className={(confirmHasError || passwordValue !== confirmValue) ? `${styles["form__input"]} ${styles["form__invalid"]}` : `${styles["form__input"]}`}
+            onChange={handleConfirmChange}
+            onBlur={handleConfirmBlur}
           />
         </div>
         <LoginFormButton />

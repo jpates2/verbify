@@ -1,28 +1,59 @@
+import { useState } from "react";
 import { useInput } from '../hooks/useInput';
-import { isEmail, hasMinLength, isNotEmpty } from '../util/validation';
+import LoginFormButton from './LoginFormButton';
 import Input from "../layout/Input";
+import Modal from "../layout/Modal";
+import { isEmail, hasMinLength, isNotEmpty } from '../util/validation';
 import classes from "./LoginForm.module.css";
 import styles from "../styles/forms.module.css";
-import LoginFormButton from './LoginFormButton';
 
 export default function LoginForm() {
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const {
-    value: nameValue,
-    isValid: nameIsValid,
-    handleInputChange: handleNameChange,
-    handleInputBlur: handleNameBlur,
-    handleInputSubmit: handleNameSubmit,
-    handleInputReset: handleNameReset,
-    hasError: nameHasError
+    value: emailValue,
+    isValid: emailIsValid,
+    handleInputChange: handleEmailChange,
+    handleInputBlur: handleEmailBlur,
+    handleInputSubmit: handleEmailSubmit,
+    handleInputReset: handleEmailReset,
+    hasError: emailHasError
+  } = useInput("", (value => isEmail(value) && hasMinLength(value, 6)))
+
+  const {
+    value: passwordValue,
+    isValid: passwordIsValid,
+    handleInputChange: handlePasswordChange,
+    handleInputBlur: handlePasswordBlur,
+    handleInputSubmit: handlePasswordSubmit,
+    handleInputReset: handlePasswordReset,
+    hasError: passwordHasError
   } = useInput("", (value => isNotEmpty(value)))
+
+  let formIsValid;
+  formIsValid = emailIsValid && passwordIsValid;
 
   function handleLogin(event) {
     event.preventDefault();
+
+    handleEmailSubmit();
+    handlePasswordSubmit();
+
+    if (!formIsValid) {return};
+
+    setFormSubmitted(true);
+    handleEmailReset();
+    handlePasswordReset();
+    console.log(emailValue, passwordValue);
   }
 
   return (
     <div>
+      {formSubmitted &&
+        <Modal>
+          username
+        </Modal>
+      }
       <form onSubmit={handleLogin} className={classes["login-form"]}>
         <div className={styles["form__details"]}>
           <Input
@@ -30,10 +61,10 @@ export default function LoginForm() {
             id="email"
             type="text"
             tag="input"
-            // value={nameValue}
-            className={nameHasError ? `${styles["form__input"]} ${styles["form__invalid"]}` : `${styles["form__input"]}`}
-            // onChange={handleNameChange}
-            // onBlur={handleNameBlur}
+            value={emailValue}
+            className={emailHasError ? `${styles["form__input"]} ${styles["form__invalid"]}` : `${styles["form__input"]}`}
+            onChange={handleEmailChange}
+            onBlur={handleEmailBlur}
           />
         </div>
         <div className={styles["form__details"]}>
@@ -42,10 +73,10 @@ export default function LoginForm() {
             id="password"
             type="password"
             tag="input"
-            // value={nameValue}
-            className={nameHasError ? `${styles["form__input"]} ${styles["form__invalid"]}` : `${styles["form__input"]}`}
-            // onChange={handleNameChange}
-            // onBlur={handleNameBlur}
+            value={passwordValue}
+            className={passwordHasError ? `${styles["form__input"]} ${styles["form__invalid"]}` : `${styles["form__input"]}`}
+            onChange={handlePasswordChange}
+            onBlur={handlePasswordBlur}
           />
         </div>
         <LoginFormButton />
