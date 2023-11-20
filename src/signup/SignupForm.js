@@ -7,9 +7,16 @@ import { isEmail, hasMinLength, isNotEmpty } from '../util/validation';
 import classes from "./SignupForm.module.css";
 import styles from "../styles/forms.module.css";
 import UsernameModal from "./UsernameModal";
+import BuddyModal from "./BuddyModal";
 
 export default function SignupForm() {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [usernameGenerated, setUsernameGenerated] = useState(false);
+
+  function handleUsernameCreation() {
+    setUsernameGenerated(true);
+    setFormSubmitted(false);
+  }
 
   const {
     value: nameValue,
@@ -87,7 +94,12 @@ export default function SignupForm() {
     <div>
       {formSubmitted &&
         <Modal>
-          <UsernameModal />
+          <UsernameModal onUsernameCreation={handleUsernameCreation} />
+        </Modal>
+      }
+      {usernameGenerated &&
+        <Modal>
+          <BuddyModal />
         </Modal>
       }
       <form onSubmit={handleSignup} className={classes["signup-form"]}>
