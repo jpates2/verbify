@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useInput } from '../hooks/useInput';
 import LoginFormButton from './LoginFormButton';
 import Input from "../layout/Input";
-import Modal from "../layout/Modal";
 import { isEmail, hasMinLength, isNotEmpty } from '../util/validation';
 import classes from "./LoginForm.module.css";
 import styles from "../styles/forms.module.css";
@@ -44,16 +43,10 @@ export default function LoginForm() {
     setFormSubmitted(true);
     handleEmailReset();
     handlePasswordReset();
-    console.log(emailValue, passwordValue);
   }
 
   return (
     <div>
-      {formSubmitted &&
-        <Modal>
-          username
-        </Modal>
-      }
       <form onSubmit={handleLogin} className={classes["login-form"]}>
         <div className={styles["form__details"]}>
           <Input

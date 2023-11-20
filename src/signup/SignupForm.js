@@ -6,6 +6,7 @@ import Modal from "../layout/Modal";
 import { isEmail, hasMinLength, isNotEmpty } from '../util/validation';
 import classes from "./SignupForm.module.css";
 import styles from "../styles/forms.module.css";
+import UsernameModal from "./UsernameModal";
 
 export default function SignupForm() {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -80,14 +81,13 @@ export default function SignupForm() {
     handleEmailReset();
     handlePasswordReset();
     handleConfirmReset();
-    console.log(emailValue, passwordValue);
   }
 
   return (
     <div>
       {formSubmitted &&
         <Modal>
-          username
+          <UsernameModal />
         </Modal>
       }
       <form onSubmit={handleSignup} className={classes["signup-form"]}>
