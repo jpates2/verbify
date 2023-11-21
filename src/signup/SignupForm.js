@@ -12,10 +12,15 @@ import BuddyModal from "./BuddyModal";
 export default function SignupForm() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [usernameGenerated, setUsernameGenerated] = useState(false);
+  const [buddySelected, setBuddySelected] = useState(false);
 
   function handleUsernameCreation() {
     setUsernameGenerated(true);
     setFormSubmitted(false);
+  }
+
+  function handleBuddySelection() {
+    setBuddySelected(true);
   }
 
   const {
@@ -99,7 +104,12 @@ export default function SignupForm() {
       }
       {usernameGenerated &&
         <Modal>
-          <BuddyModal />
+          <BuddyModal onBuddySelection={handleBuddySelection} />
+        </Modal>
+      }
+      {buddySelected &&
+        <Modal>
+
         </Modal>
       }
       <form onSubmit={handleSignup} className={classes["signup-form"]}>

@@ -1,14 +1,83 @@
 .buddy-modal__container {
-  padding: 4rem 0;
+  padding: 3rem 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   text-align: center;
+  height: 26rem;
+  box-sizing: border-box;
 }
 
 .buddy-modal__header {
   font-size: 2rem;
   font-weight: bold;
   color: #F4442E;
-  margin-bottom: 3rem;
+}
+
+.buddy-modal__image-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 60%;
+  margin: 0 auto;
+  grid-row-gap: 2rem;
+}
+
+.buddy-modal__image-circle {
+  height: 3rem;
+  width: 3rem;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  cursor: pointer;
+  border: red 1px solid;
+}
+
+.buddy-modal__image-circle-active {
+}
+
+.buddy-modal__image-container img {
+  height: 2rem;
+}
+
+.buddy-modal__button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.buddy-modal__button {
+  all: unset;
+  font-weight: bold;
+  font-size: 1.5rem;
+  background: #FFB400;
+  color: white;
+  border-radius: 16px;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+}
+
+@media (min-width: 600px) {
+  .buddy-modal__container {
+    height: 20rem;
+  }
+
+  .buddy-modal__image-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    width: 90%;
+    gap: 0;
+  }
+
+  .buddy-modal__image-circle {
+    height: 4rem;
+    width: 4rem;
+  }
+
+  .buddy-modal__image-container img {
+    height: 3rem;
+  }
 }
