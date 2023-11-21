@@ -1,0 +1,31 @@
+.buddy-modal__image-circle {
+  height: 3rem;
+  width: 3rem;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  cursor: pointer;
+  border: red 1px solid;
+}
+
+.buddy-modal__image-circle-active {
+}
+
+.buddy-modal__image {
+  height: 2rem;
+}
+
+
+@media (min-width: 600px) {
+  .buddy-modal__image-circle {
+    height: 4rem;
+    width: 4rem;
+  }
+
+  .buddy-modal__image {
+    height: 3rem;
+  }
+}

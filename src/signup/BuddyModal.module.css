@@ -23,26 +23,6 @@
   grid-row-gap: 2rem;
 }
 
-.buddy-modal__image-circle {
-  height: 3rem;
-  width: 3rem;
-  background: white;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-self: center;
-  cursor: pointer;
-  border: red 1px solid;
-}
-
-.buddy-modal__image-circle-active {
-}
-
-.buddy-modal__image-container img {
-  height: 2rem;
-}
-
 .buddy-modal__button-container {
   width: 100%;
   display: flex;
@@ -70,14 +50,5 @@
     grid-template-rows: 1fr;
     width: 90%;
     gap: 0;
-  }
-
-  .buddy-modal__image-circle {
-    height: 4rem;
-    width: 4rem;
-  }
-
-  .buddy-modal__image-container img {
-    height: 3rem;
   }
 }
