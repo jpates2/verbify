@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useInput } from '../hooks/useInput';
+import UserDetailsContext from "../store/UserDetailsContext";
 import Input from "../layout/Input";
 import LoginFormButton from "./LoginFormButton";
 import Modal from "../layout/Modal";
@@ -11,6 +12,8 @@ import BuddyModal from "./BuddyModal";
 import ConfirmSignupModal from "./ConfirmSignupModal";
 
 export default function SignupForm() {
+  const userDetailsCtx = useContext(UserDetailsContext);
+
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [usernameGenerated, setUsernameGenerated] = useState(false);
   const [buddySelected, setBuddySelected] = useState(false);
@@ -92,6 +95,7 @@ export default function SignupForm() {
 
     if (!formIsValid) {return};
 
+    userDetailsCtx.newUserDetails({fullName: nameValue, phone: phoneValue, email: emailValue});
     handleNameReset();
     handlePhoneReset();
     handleEmailReset();
@@ -113,7 +117,7 @@ export default function SignupForm() {
       }
       {buddySelected &&
         <Modal>
-          <ConfirmSignupModal userName={nameValue} />
+          <ConfirmSignupModal />
         </Modal>
       }
       <form onSubmit={handleSignup} className={classes["signup-form"]}>
