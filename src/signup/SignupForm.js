@@ -19,10 +19,6 @@ export default function SignupForm() {
     setFormSubmitted(false);
   }
 
-  function handleBuddySelection() {
-    setBuddySelected(true);
-  }
-
   const {
     value: nameValue,
     isValid: nameIsValid,
@@ -104,12 +100,12 @@ export default function SignupForm() {
       }
       {usernameGenerated &&
         <Modal>
-          <BuddyModal onBuddySelection={handleBuddySelection} />
+          <BuddyModal />
         </Modal>
       }
       {buddySelected &&
         <Modal>
-
+          Lets' go
         </Modal>
       }
       <form onSubmit={handleSignup} className={classes["signup-form"]}>
