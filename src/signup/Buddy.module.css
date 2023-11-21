@@ -8,10 +8,11 @@
   align-items: center;
   justify-self: center;
   cursor: pointer;
-  border: red 1px solid;
+  box-sizing: border-box;
 }
 
 .buddy-modal__image-circle-active {
+  border: #F4442E 1px solid;
 }
 
 .buddy-modal__image {

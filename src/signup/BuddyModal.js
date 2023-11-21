@@ -39,14 +39,12 @@ export default function BuddyModal() {
     buddyCtx.selectBuddy(event.target.id)
   }
 
-  console.log(buddyCtx.buddy);
-
   return (
     <div className={classes["buddy-modal__container"]}>
       <div className={classes["buddy-modal__header"]}>Choose your learning buddy...</div>
       <div className={classes["buddy-modal__image-container"]}>
         {buddyList.map(buddy => (
-          <Buddy key={buddy.buddyName} buddyName={buddy.buddyName} image={buddy.image} onBuddySelection={handleBuddySelection} />
+          <Buddy key={buddy.buddyName} activeBuddy={buddyCtx.buddy === buddy.buddyName} buddyName={buddy.buddyName} image={buddy.image} onBuddySelection={handleBuddySelection} />
         ))}
       </div>
       <div className={classes["buddy-modal__button-container"]}>
