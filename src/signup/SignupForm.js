@@ -8,16 +8,24 @@ import classes from "./SignupForm.module.css";
 import styles from "../styles/forms.module.css";
 import UsernameModal from "./UsernameModal";
 import BuddyModal from "./BuddyModal";
+import ConfirmSignupModal from "./ConfirmSignupModal";
 
 export default function SignupForm() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [usernameGenerated, setUsernameGenerated] = useState(false);
   const [buddySelected, setBuddySelected] = useState(false);
+  const [signupComplete, setSignupComplete] = useState(false);
 
   function handleUsernameCreation() {
     setUsernameGenerated(true);
     setFormSubmitted(false);
   }
+
+  function handleBuddySelected() {
+    setBuddySelected(true);
+    setUsernameGenerated(false);
+  }
+
 
   const {
     value: nameValue,
@@ -100,12 +108,12 @@ export default function SignupForm() {
       }
       {usernameGenerated &&
         <Modal>
-          <BuddyModal />
+          <BuddyModal onBuddySelected={handleBuddySelected} />
         </Modal>
       }
       {buddySelected &&
         <Modal>
-          Lets' go
+          <ConfirmSignupModal userName={nameValue} />
         </Modal>
       }
       <form onSubmit={handleSignup} className={classes["signup-form"]}>

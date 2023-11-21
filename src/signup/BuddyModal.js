@@ -32,7 +32,7 @@ const buddyList = [
   }
 ]
 
-export default function BuddyModal() {
+export default function BuddyModal({ onBuddySelected }) {
   const buddyCtx = useContext(BuddyContext);
 
   function handleBuddySelection(event) {
@@ -49,7 +49,7 @@ export default function BuddyModal() {
       </div>
       <div className={classes["buddy-modal__button-container"]}>
         <motion.button
-          // onClick={onBuddySelection}
+          onClick={onBuddySelected}
           initial={{opacity: 0}}
           animate={{opacity: 1}}
           whileHover={{
