@@ -10,7 +10,7 @@ export default function ConfirmSignupModal({ onConfirmSignup }) {
   const userDetailsCtx = useContext(UserDetailsContext);
 
   const userBuddy = buddyInfo.filter(buddy => {
-    return buddy.buddyName === buddyCtx.buddy;
+    return buddy.buddyName === buddyCtx.buddyName;
   })
 
   console.log(userBuddy[0].image);
