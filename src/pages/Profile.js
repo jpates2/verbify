@@ -6,11 +6,11 @@ import { UserDetailsContextProvider } from "../store/UserDetailsContext";
 
 export default function ProfilePage() {
   return (
-    <BuddyContextProvider>
-      <UserDetailsContextProvider>
+    <UserDetailsContextProvider>
+      <BuddyContextProvider>
         <Nav />
         <Header />
-      </UserDetailsContextProvider>
-    </BuddyContextProvider>
+      </BuddyContextProvider>
+    </UserDetailsContextProvider>
   )
 }

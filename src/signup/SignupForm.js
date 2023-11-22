@@ -31,7 +31,7 @@ export default function SignupForm({ onSignupStatus }) {
 
   function handleConfirmSignup() {
     setBuddySelected(false);
-    onSignupStatus(false)
+    onSignupStatus(false);
     // setSignupInProgress(false);
   }
 

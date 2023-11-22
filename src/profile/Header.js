@@ -1,19 +1,17 @@
 import { useContext } from "react";
 import UserDetailsContext from "../store/UserDetailsContext";
 import BuddyContext from "../store/BuddyContext";
-import { buddyInfo } from "../info/buddy-info";
 
 export default function Header() {
   const buddyCtx = useContext(BuddyContext);
   const userDetailsCtx = useContext(UserDetailsContext);
-
-
-
+  console.log("header:", buddyCtx)
   return (
     <section>
       <div>Profile</div>
       <div>{userDetailsCtx.username}</div>
-      {/* <img src={buddyInfo[buddyCtx.buddy].image} alt="buddy" /> */}
+      <div>{buddyCtx.buddyName}</div>
+      <img src={buddyCtx.buddyImg} alt="buddy" />
     </section>
   )
 }

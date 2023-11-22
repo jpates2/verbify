@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-import { buddyInfo } from "../info/buddy-info";
 
 const BuddyContext = createContext({
   buddyName: "",
@@ -8,19 +7,18 @@ const BuddyContext = createContext({
 })
 
 export function BuddyContextProvider({ children }) {
-  const [userBuddy, setUserBuddy] = useState({});
-
+  const [userBuddy, setUserBuddy] = useState({buddyName: "**", buddyImg: "**"});
   function selectBuddy(buddy) {
     setUserBuddy({buddyName: buddy.name, buddyImg: buddy.image});
+    console.log("buddy function");
   }
-
 
   const buddyCtx = {
     buddyName: userBuddy.buddyName,
     buddyImg: userBuddy.buddyImg,
     selectBuddy
   }
-  console.log(buddyCtx)
+  // console.log("buddy context:", buddyCtx)
 
   return (
     <BuddyContext.Provider value={buddyCtx}>
