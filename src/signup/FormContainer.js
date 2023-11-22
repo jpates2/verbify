@@ -4,7 +4,7 @@ import classes from "./FormContainer.module.css";
 import SignupForm from "./SignupForm";
 import LoginForm from "./LoginForm";
 
-export default function FormContainer() {
+export default function FormContainer({ onSignupStatus }) {
   const [signupFormFilter, setSignupFormFilter] = useState("signup");
 
   function handleFormFilter(input) {
@@ -14,7 +14,7 @@ export default function FormContainer() {
   return (
     <div className={classes["signup-form__container"]}>
       <Buttons onFilter={handleFormFilter} filter={signupFormFilter} />
-      {signupFormFilter === "signup" && <SignupForm />}
+      {signupFormFilter === "signup" && <SignupForm onSignupStatus={onSignupStatus} />}
       {signupFormFilter === "login" && <LoginForm />}
     </div>
   )

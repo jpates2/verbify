@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { motion } from "framer-motion";
 import Nav from "../layout/Nav";
 import Header from "../signup/Header"
@@ -7,6 +7,12 @@ import { BuddyContextProvider } from "../store/BuddyContext";
 import { UserDetailsContextProvider } from "../store/UserDetailsContext";
 
 export default function SignupPage() {
+  const [showModal, setShowModal] = useState(false);
+
+  function handleSignupStatus(input) {
+    setShowModal(input);
+  }
+
   return (
     <UserDetailsContextProvider>
       <BuddyContextProvider>
@@ -16,9 +22,9 @@ export default function SignupPage() {
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
         >
-          <Nav />
+          <Nav showModal={showModal} />
           <Header />
-          <FormContainer />
+          <FormContainer onSignupStatus={handleSignupStatus} />
         </motion.div>
       </BuddyContextProvider>
     </UserDetailsContextProvider>

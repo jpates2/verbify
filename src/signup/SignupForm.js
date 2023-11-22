@@ -11,13 +11,13 @@ import UsernameModal from "./UsernameModal";
 import BuddyModal from "./BuddyModal";
 import ConfirmSignupModal from "./ConfirmSignupModal";
 
-export default function SignupForm() {
+export default function SignupForm({ onSignupStatus }) {
   const userDetailsCtx = useContext(UserDetailsContext);
 
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [usernameGenerated, setUsernameGenerated] = useState(false);
   const [buddySelected, setBuddySelected] = useState(false);
-  const [signupComplete, setSignupComplete] = useState(false);
+  // const [signupInProgress, setSignupInProgress] = useState(false);
 
   function handleUsernameCreation() {
     setUsernameGenerated(true);
@@ -31,7 +31,8 @@ export default function SignupForm() {
 
   function handleConfirmSignup() {
     setBuddySelected(false);
-    setSignupComplete(true);
+    onSignupStatus(false)
+    // setSignupInProgress(false);
   }
 
   const {
@@ -89,6 +90,7 @@ export default function SignupForm() {
 
   function handleSignup(event) {
     event.preventDefault();
+    onSignupStatus(true);
 
     handleNameSubmit();
     handlePhoneSubmit();
