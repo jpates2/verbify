@@ -5,6 +5,7 @@ import VerbPage from "./pages/Verb";
 import FlashcardsPage from "./pages/Flashcards";
 import FlashcardPage from "./pages/Flashcard";
 import SignupPage from "./pages/Signup";
+import ProfilePage from "./pages/Profile";
 
 const router = createBrowserRouter([
   {path: "/", element: <HomePage />},
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
   {path: "/verbs", element: <VerbsPage /> },
   {path: "/verbs/:verb", element: <VerbPage />},
   {path: "/signup", element: <SignupPage /> },
+  {path: "/profile/:username", element: <ProfilePage />},
 ])
 
 function App() {

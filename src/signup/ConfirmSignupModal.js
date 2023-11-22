@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import BuddyContext from "../store/BuddyContext";
 import UserDetailsContext from "../store/UserDetailsContext";
 import classes from "./ConfirmSignupModal.module.css";
@@ -23,7 +24,7 @@ export default function ConfirmSignupModal({ onConfirmSignup }) {
         <div>I'm here to help you learn and keep you on track!</div>
       </div>
       <div className={classes["confirm-modal__button-container"]}>
-        <button onClick={onConfirmSignup} className={classes["confirm-modal__button"]}>Let's Go!</button>
+        <Link to={`/profile/${userDetailsCtx.username}`}><button onClick={onConfirmSignup} className={classes["confirm-modal__button"]}>Let's Go!</button></Link>
       </div>
     </div>
   )
