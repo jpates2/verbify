@@ -2,35 +2,8 @@ import { useContext } from "react";
 import { motion } from "framer-motion";
 import BuddyContext from "../store/BuddyContext";
 import classes from "./BuddyModal.module.css";
-import buddyOne from "../assets/images/buddy1.png";
 import Buddy from "./Buddy";
-
-const buddyList = [
-  {
-    buddyName: "Pablo",
-    image: buddyOne,
-  },
-  {
-    buddyName: "Javi",
-    image: buddyOne
-  },
-  {
-    buddyName: "Rosita",
-    image: buddyOne,
-  },
-  {
-    buddyName: "Carlos",
-    image: buddyOne,
-  },
-  {
-    buddyName: "Lola",
-    image: buddyOne,
-  },
-  {
-    buddyName: "Sofia",
-    image: buddyOne,
-  }
-]
+import { buddyInfo } from "../info/buddy-info";
 
 export default function BuddyModal({ onBuddySelected }) {
   const buddyCtx = useContext(BuddyContext);
@@ -43,7 +16,7 @@ export default function BuddyModal({ onBuddySelected }) {
     <div className={classes["buddy-modal__container"]}>
       <div className={classes["buddy-modal__header"]}>Choose your learning buddy...</div>
       <div className={classes["buddy-modal__image-container"]}>
-        {buddyList.map(buddy => (
+        {buddyInfo.map(buddy => (
           <Buddy key={buddy.buddyName} activeBuddy={buddyCtx.buddy === buddy.buddyName} buddyName={buddy.buddyName} image={buddy.image} onBuddySelection={handleBuddySelection} />
         ))}
       </div>

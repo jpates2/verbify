@@ -1,0 +1,49 @@
+.confirm-modal__container {
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: 26rem;
+  box-sizing: border-box;
+}
+
+.confirm-modal__greeting {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FFB400;
+}
+
+.confirm-modal__intro {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.confirm-modal__image {
+  height: 4rem;
+  width: 4rem;
+}
+
+.confirm-modal__button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.confirm-modal__button {
+  all: unset;
+  font-weight: bold;
+  font-size: 1.5rem;
+  background: #FFB400;
+  color: white;
+  border-radius: 16px;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+}
+
+@media (min-width: 800px) {
+  .confirm-modal__container {
+    height: 20rem;
+  }
+}

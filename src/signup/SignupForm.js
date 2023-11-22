@@ -29,6 +29,10 @@ export default function SignupForm() {
     setUsernameGenerated(false);
   }
 
+  function handleConfirmSignup() {
+    setBuddySelected(false);
+    setSignupComplete(true);
+  }
 
   const {
     value: nameValue,
@@ -103,8 +107,6 @@ export default function SignupForm() {
     handleConfirmReset();
   }
 
-  console.log(userDetailsCtx.fullName, userDetailsCtx.phone, userDetailsCtx.email, userDetailsCtx.username)
-
   return (
     <div>
       {formSubmitted &&
@@ -119,7 +121,7 @@ export default function SignupForm() {
       }
       {buddySelected &&
         <Modal>
-          <ConfirmSignupModal />
+          <ConfirmSignupModal onConfirmSignup={handleConfirmSignup} />
         </Modal>
       }
       <form onSubmit={handleSignup} className={classes["signup-form"]}>

@@ -21,7 +21,6 @@ function userDetailsReducer(state, action) {
   }
 
   if (action.type === "ADD_USERNAME") {
-    console.log(state)
     const user = {
       ...state,
       username: action.user.username,
