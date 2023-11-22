@@ -8,7 +8,7 @@ export default function ConfirmSignupModal({ userName }) {
 
   return (
     <div>
-      <div>Hi {userDetailsCtx.fullName}!</div>
+      <div>¡Hola {userDetailsCtx.fullName}!</div>
       <div>My name is {buddyCtx.buddy}</div>
     </div>
   )

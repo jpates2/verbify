@@ -95,13 +95,15 @@ export default function SignupForm() {
 
     if (!formIsValid) {return};
 
-    userDetailsCtx.newUserDetails({fullName: nameValue, phone: phoneValue, email: emailValue});
+    userDetailsCtx.newUserDetails({fullName: nameValue, phone: phoneValue, email: emailValue})
     handleNameReset();
     handlePhoneReset();
     handleEmailReset();
     handlePasswordReset();
     handleConfirmReset();
   }
+
+  console.log(userDetailsCtx.fullName, userDetailsCtx.phone, userDetailsCtx.email, userDetailsCtx.username)
 
   return (
     <div>

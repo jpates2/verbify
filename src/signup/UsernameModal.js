@@ -1,13 +1,23 @@
+import { useContext } from "react";
+import UserDetailsContext from "../store/UserDetailsContext";
 import classes from "./UsernameModal.module.css";
 import { motion } from "framer-motion";
 import { UsernameInfo } from "../info/username-info";
 
 export default function UsernameModal({ onUsernameCreation }) {
+  const userDetailsCtx = useContext(UserDetailsContext);
+
   const randomAdj = UsernameInfo.adj[Math.floor(Math.random() * UsernameInfo.adj.length)];
   const randomAnimal = UsernameInfo.animal[Math.floor(Math.random() * UsernameInfo.animal.length)];
   const randomNum = UsernameInfo.number[Math.floor(Math.random() * UsernameInfo.number.length)];
   const formattedNum = randomNum < 10 ? "0" + randomNum.toString() : randomNum.toString();
   const randomUsername = [randomAdj, "_", randomAnimal, "_", formattedNum];
+  const formattedUsername = randomUsername.join("")
+
+  function handleUsername() {
+    userDetailsCtx.newUsername({username: formattedUsername})
+    onUsernameCreation();
+  }
 
   return (
     <div className={classes["username-modal__container"]}>
@@ -48,7 +58,7 @@ export default function UsernameModal({ onUsernameCreation }) {
       </motion.div>
       <div className={classes["username-modal__button-container"]}>
         <motion.button
-          onClick={onUsernameCreation}
+          onClick={handleUsername}
           initial={{opacity: 0}}
           animate={{opacity: 1}}
           transition={{delay: 5}}
