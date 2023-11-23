@@ -1,7 +1,7 @@
 .profile__header {
   background-color: #FFB400;
   text-align: center;
-  height: 50vh;
+  height: 56vh;
   width: 100vw;
   padding-top: 16vh;
   box-sizing: border-box;
@@ -16,7 +16,7 @@
 
 .profile__header-username {
   font-size: 2rem;
-  color: #F4442E;
+  color: #F9F9F9;
   font-weight: bold;
   font-style: italic;
   margin-bottom: 3rem;
