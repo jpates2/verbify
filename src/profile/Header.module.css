@@ -1,0 +1,50 @@
+.profile__header {
+  background-color: #FFB400;
+  text-align: center;
+  height: 50vh;
+  width: 100vw;
+  padding-top: 16vh;
+  box-sizing: border-box;
+}
+
+.profile__header-title {
+  font-size: 3rem;
+  color: #F4442E;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.profile__header-username {
+  font-size: 2rem;
+  color: #F4442E;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 3rem;
+}
+
+.profile__header-image-container {
+  height: 6rem;
+  width: 6rem;
+  margin: 0 auto;
+  background: #F9F9F9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.profile__header-image {
+  height: 4rem;
+  width: 4rem;
+}
+
+@media (min-width: 800px) {
+  .profile__header {
+    height: 66vh;
+    padding-top: 20vh;
+  }
+
+  .profile__header-title {
+    font-size: 6rem;
+  }
+}
