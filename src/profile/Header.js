@@ -1,17 +1,20 @@
 import { useContext } from "react";
 import UserDetailsContext from "../store/UserDetailsContext";
 import BuddyContext from "../store/BuddyContext";
+import { useSelector } from 'react-redux';
 
 export default function Header() {
-  const buddyCtx = useContext(BuddyContext);
+  const buddyDetails = useSelector(state => state.buddy);
+
+  // const buddyCtx = useContext(BuddyContext);
   const userDetailsCtx = useContext(UserDetailsContext);
-  console.log("header:", buddyCtx)
+
   return (
     <section>
       <div>Profile</div>
       <div>{userDetailsCtx.username}</div>
-      <div>{buddyCtx.buddyName}</div>
-      <img src={buddyCtx.buddyImg} alt="buddy" />
+      <div>{buddyDetails.buddyName}</div>
+      <img src={buddyDetails.buddyImg} alt="buddy" />
     </section>
   )
 }
