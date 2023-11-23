@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import Nav from "../layout/Nav";
 import Header from "../signup/Header"
 import FormContainer from "../signup/FormContainer";
-import { BuddyContextProvider } from "../store/BuddyContext";
 import { UserDetailsContextProvider } from "../store/UserDetailsContext";
 
 export default function SignupPage() {
@@ -15,7 +14,6 @@ export default function SignupPage() {
 
   return (
     <UserDetailsContextProvider>
-      <BuddyContextProvider>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -26,7 +24,6 @@ export default function SignupPage() {
           <Header />
           <FormContainer onSignupStatus={handleSignupStatus} />
         </motion.div>
-      </BuddyContextProvider>
     </UserDetailsContextProvider>
   );
 }

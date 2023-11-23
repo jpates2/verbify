@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Header from "../flashcards/Header";
 import Nav from "../layout/Nav";
 import FilterButtons from "../flashcards/FilterButtons";

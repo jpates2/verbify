@@ -1,6 +1,5 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useInput } from '../hooks/useInput';
-import UserDetailsContext from "../store/UserDetailsContext";
 import Input from "../layout/Input";
 import LoginFormButton from "./LoginFormButton";
 import Modal from "../layout/Modal";
@@ -11,8 +10,11 @@ import UsernameModal from "./UsernameModal";
 import BuddyModal from "./BuddyModal";
 import ConfirmSignupModal from "./ConfirmSignupModal";
 
+import { useDispatch } from 'react-redux';
+import { userActions } from "../store/user-slice";
+
 export default function SignupForm({ onSignupStatus }) {
-  const userDetailsCtx = useContext(UserDetailsContext);
+  const dispatch = useDispatch();
 
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [usernameGenerated, setUsernameGenerated] = useState(false);
@@ -32,7 +34,6 @@ export default function SignupForm({ onSignupStatus }) {
   function handleConfirmSignup() {
     setBuddySelected(false);
     onSignupStatus(false);
-    // setSignupInProgress(false);
   }
 
   const {
@@ -88,6 +89,15 @@ export default function SignupForm({ onSignupStatus }) {
   let formIsValid;
   formIsValid = nameIsValid && phoneIsValid && emailIsValid && passwordIsValid && confirmIsValid;
 
+  function setUser() {
+    dispatch(userActions.addUser({
+      fullName: nameValue,
+      phone: phoneValue,
+      email: emailValue,
+      password: passwordValue
+    }))
+  }
+
   function handleSignup(event) {
     event.preventDefault();
     onSignupStatus(true);
@@ -101,7 +111,8 @@ export default function SignupForm({ onSignupStatus }) {
 
     if (!formIsValid) {return};
 
-    userDetailsCtx.newUserDetails({fullName: nameValue, phone: phoneValue, email: emailValue})
+    setUser();
+
     handleNameReset();
     handlePhoneReset();
     handleEmailReset();

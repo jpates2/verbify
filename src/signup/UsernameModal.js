@@ -1,11 +1,12 @@
-import { useContext } from "react";
-import UserDetailsContext from "../store/UserDetailsContext";
 import classes from "./UsernameModal.module.css";
 import { motion } from "framer-motion";
 import { UsernameInfo } from "../info/username-info";
 
+import { useDispatch } from 'react-redux';
+import { userActions } from "../store/user-slice";
+
 export default function UsernameModal({ onUsernameCreation }) {
-  const userDetailsCtx = useContext(UserDetailsContext);
+  const dispatch = useDispatch();
 
   const randomAdj = UsernameInfo.adj[Math.floor(Math.random() * UsernameInfo.adj.length)];
   const randomAnimal = UsernameInfo.animal[Math.floor(Math.random() * UsernameInfo.animal.length)];
@@ -15,7 +16,9 @@ export default function UsernameModal({ onUsernameCreation }) {
   const formattedUsername = randomUsername.join("")
 
   function handleUsername() {
-    userDetailsCtx.newUsername({username: formattedUsername})
+    dispatch(userActions.addUsername({
+      username: formattedUsername
+    }))
     onUsernameCreation();
   }
 
