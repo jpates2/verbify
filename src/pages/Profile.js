@@ -1,5 +1,6 @@
 import Nav from "../layout/Nav";
 import Header from "../profile/Header";
+import PersonalDetails from "../profile/PersonalDetails";
 import Practice from "../profile/Practice";
 import Results from "../profile/Results";
 import Stats from "../profile/Stats";
@@ -16,6 +17,7 @@ export default function ProfilePage() {
           <Results />
           <Practice />
         </div>
+        <PersonalDetails />
     </UserDetailsContextProvider>
   )
 }
