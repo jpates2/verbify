@@ -1,0 +1,16 @@
+.results_practice {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  max-width: 70rem;
+  margin: 0 auto 4rem auto;
+  box-sizing: border-box;
+  padding: 0 2rem;
+}
+
+@media (min-width: 800px) {
+  .results_practice {
+    grid-template-columns: 1fr 1fr;
+    gap: 5%;
+  }
+}
