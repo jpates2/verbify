@@ -7,7 +7,7 @@
 }
 
 .practice__title {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
   margin-bottom: 3rem;
   text-align: center;
@@ -15,14 +15,20 @@
 }
 
 .practice__past-verbs {
-  max-width: 24rem;
+  max-width: 20rem;
   margin: 0 auto 3rem auto;
+  padding: 0;
 }
 
 .practice__past-verb {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-bottom: 1rem;
+}
+
+.practice__past-inf,
+.practice__past-conj {
+  justify-self: center;
 }
 
 .practice__button-container {
