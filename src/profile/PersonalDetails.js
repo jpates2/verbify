@@ -23,6 +23,9 @@ export default function PersonalDetails() {
             <div className={classes["details__info"]}>******</div>
           </div>
         </div>
+        <div className={classes["details__button_container"]}>
+          <button className={classes["details__button"]}>Edit</button>
+        </div>
       </div>
     </section>
   )
