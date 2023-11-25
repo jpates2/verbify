@@ -1,4 +1,5 @@
 import classes from "./Practice.module.css";
+import styles from "../styles/profile.module.css";
 
 export default function Practice() {
   return (
@@ -19,7 +20,7 @@ export default function Practice() {
       </li>
     </ul>
     <div className={classes["practice__button-container"]}>
-      <button className={classes["practice__button"]}>Practice</button>
+      <button className={styles["profile__button"]}>Practice</button>
     </div>
   </div>
   )

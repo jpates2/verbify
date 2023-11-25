@@ -50,18 +50,6 @@
   text-align: center;
 }
 
-.details__button {
-  all: unset;
-  font-weight: bold;
-  border-radius: 16px;
-  cursor: pointer;
-  background: #F4442E;
-  padding: 0.5rem 1rem;
-  text-align: center;
-  color: #F9F9F9;
-  box-sizing: border-box;
-}
-
 @media (min-width: 800px) {
   .details__container {
     padding: 4rem;

@@ -1,4 +1,5 @@
 import classes from "./Results.module.css";
+import styles from "../styles/profile.module.css";
 
 export default function Results() {
   return (
@@ -19,7 +20,7 @@ export default function Results() {
         </li>
       </ul>
       <div className={classes["results__button-container"]}>
-        <button className={classes["results__button"]}>More</button>
+        <button className={styles["profile__button"]}>More</button>
       </div>
     </div>
   )

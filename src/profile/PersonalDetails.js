@@ -1,4 +1,5 @@
 import classes from "./PersonalDetails.module.css";
+import styles from "../styles/profile.module.css";
 
 export default function PersonalDetails() {
   return (
@@ -24,7 +25,7 @@ export default function PersonalDetails() {
           </div>
         </div>
         <div className={classes["details__button_container"]}>
-          <button className={classes["details__button"]}>Edit</button>
+          <button className={styles["profile__button"]}>Edit</button>
         </div>
       </div>
     </section>
