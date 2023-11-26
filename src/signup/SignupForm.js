@@ -34,10 +34,22 @@ export default function SignupForm({ onSignupStatus }) {
     setUsernameGenerated(false);
   }
 
+  async function submitUserDetails() {
+    await fetch("https://verbify-94228-default-rtdb.europe-west1.firebasedatabase.app/users.json", {
+      method: "POST",
+      body: JSON.stringify(signupDetails)
+    })
+    await fetch("https://verbify-94228-default-rtdb.europe-west1.firebasedatabase.app/usernames.json", {
+      method: "POST",
+      body: JSON.stringify(signupDetails.username)
+    })
+  }
+
   function handleConfirmSignup() {
     setBuddySelected(false);
     onSignupStatus(false);
     localStorage.setItem('signupDetails', JSON.stringify(signupDetails));
+    submitUserDetails();
   }
 
   const {

@@ -4,11 +4,7 @@ import { useSelector } from 'react-redux';
 
 export default function ConfirmSignupModal({ onConfirmSignup }) {
   const buddyDetails = useSelector(state => state.buddy);
-  const userDetails = useSelector(state => state.user)
-
-  const signupDetails = { ...userDetails, ...buddyDetails }
-
-  localStorage.setItem('signupDetails', JSON.stringify(signupDetails));
+  const userDetails = useSelector(state => state.user);
 
   return (
     <div className={classes["confirm-modal__container"]}>
