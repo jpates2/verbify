@@ -1,7 +1,7 @@
 import classes from "./PersonalDetails.module.css";
 import styles from "../styles/profile.module.css";
 
-export default function PersonalDetails() {
+export default function PersonalDetails({ localSignupDetails }) {
   return (
     <section className={classes["details__section"]}>
       <div className={classes["details__container"]}>
@@ -9,19 +9,19 @@ export default function PersonalDetails() {
         <div className={classes["details__grid"]}>
           <div className={classes["details__detail"]}>
             <div className={classes["details__category"]}>Name</div>
-            <div className={classes["details__info"]}>Tom Riddle</div>
+            <div className={classes["details__info"]}>{localSignupDetails.fullName}</div>
           </div>
           <div className={classes["details__detail"]}>
             <div className={classes["details__category"]}>Email</div>
-            <div className={classes["details__info"]}>tomriddle@email.com</div>
+            <div className={classes["details__info"]}>{localSignupDetails.email}</div>
           </div>
           <div className={classes["details__detail"]}>
             <div className={classes["details__category"]}>Phone</div>
-            <div className={classes["details__info"]}>07121343456</div>
+            <div className={classes["details__info"]}>{localSignupDetails.phone}</div>
           </div>
           <div className={classes["details__detail"]}>
             <div className={classes["details__category"]}>Password</div>
-            <div className={classes["details__info"]}>******</div>
+            <div className={classes["details__info"]}>{"*".repeat(localSignupDetails.password.length)}</div>
           </div>
         </div>
         <div className={classes["details__button_container"]}>

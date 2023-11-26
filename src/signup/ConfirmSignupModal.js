@@ -10,7 +10,6 @@ export default function ConfirmSignupModal({ onConfirmSignup }) {
 
   localStorage.setItem('signupDetails', JSON.stringify(signupDetails));
 
-
   return (
     <div className={classes["confirm-modal__container"]}>
       <div className={classes["confirm-modal__greeting"]}>¡Hola {userDetails.fullName}!</div>

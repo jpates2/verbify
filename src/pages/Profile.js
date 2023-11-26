@@ -8,16 +8,19 @@ import { UserDetailsContextProvider } from "../store/UserDetailsContext";
 import styles from "../styles/profile.module.css";
 
 export default function ProfilePage() {
+  const signupDetails = JSON.parse(localStorage.getItem('signupDetails'));
+  console.log(signupDetails);
+
   return (
     <UserDetailsContextProvider>
         <Nav />
-        <Header />
+        <Header localSignupDetails={signupDetails} />
         <Stats />
         <div className={styles["results_practice"]}>
           <Results />
           <Practice />
         </div>
-        <PersonalDetails />
+        <PersonalDetails localSignupDetails={signupDetails} />
     </UserDetailsContextProvider>
   )
 }
