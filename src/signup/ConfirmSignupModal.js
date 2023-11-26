@@ -6,6 +6,11 @@ export default function ConfirmSignupModal({ onConfirmSignup }) {
   const buddyDetails = useSelector(state => state.buddy);
   const userDetails = useSelector(state => state.user)
 
+  const signupDetails = { ...userDetails, ...buddyDetails }
+
+  localStorage.setItem('signupDetails', JSON.stringify(signupDetails));
+
+
   return (
     <div className={classes["confirm-modal__container"]}>
       <div className={classes["confirm-modal__greeting"]}>¡Hola {userDetails.fullName}!</div>

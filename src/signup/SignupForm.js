@@ -10,11 +10,14 @@ import UsernameModal from "./UsernameModal";
 import BuddyModal from "./BuddyModal";
 import ConfirmSignupModal from "./ConfirmSignupModal";
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from "../store/user-slice";
 
 export default function SignupForm({ onSignupStatus }) {
   const dispatch = useDispatch();
+  const buddyDetails = useSelector(state => state.buddy);
+  const userDetails = useSelector(state => state.user);
+  const signupDetails = { ...userDetails, ...buddyDetails };
 
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [usernameGenerated, setUsernameGenerated] = useState(false);
@@ -34,6 +37,7 @@ export default function SignupForm({ onSignupStatus }) {
   function handleConfirmSignup() {
     setBuddySelected(false);
     onSignupStatus(false);
+    localStorage.setItem('signupDetails', JSON.stringify(signupDetails));
   }
 
   const {
