@@ -46,18 +46,19 @@ export default function SignupForm({ onSignupStatus }) {
     })
   }
 
-  function setStatus() {
-    dispatch(statusActions.updateLoggedInStatus({
-      loggedInStatus: true
-    }))
-  }
+  // function setStatus() {
+    // dispatch(statusActions.updateLoggedInStatus({
+    //   loggedInStatus: true
+    // }))
+  // }
 
   function handleConfirmSignup() {
     setBuddySelected(false);
     onSignupStatus(false);
-    localStorage.setItem('signupDetails', JSON.stringify(signupDetails));
     submitUserDetails();
-    setStatus();
+    // setStatus();
+    localStorage.setItem('signupDetails', JSON.stringify(signupDetails));
+    localStorage.setItem('loggedInStatus', JSON.stringify({ loggedInStatus: true }));
   }
 
   const {

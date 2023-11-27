@@ -105,8 +105,12 @@ const linkVariant = {
 export default function Nav({ showModal, timerStatus }) {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const {pathname} = useLocation();
-  const userDetails = useSelector(state => state.user);
-  const { loggedInStatus } = useSelector(state => state.status);
+  // const userDetails = useSelector(state => state.user);
+  // const { loggedInStatus } = useSelector(state => state.status);
+
+  const userDetails = JSON.parse(localStorage.getItem('signupDetails')) || ""
+  const { loggedInStatus } = JSON.parse(localStorage.getItem('loggedInStatus')) || { loggedInStatus: false };
+  // console.log(loggedInStatus)
 
   const mobileClasses = (showModal === true || timerStatus === "end") ? `${classes["mobile-nav"]}` : `${classes["mobile-nav"]} ${classes["mobile-nav-absolute"]}`
 
