@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useState } from "react";
 import classes from "./UsernameModal.module.css";
 import { motion } from "framer-motion";
 import { UsernameInfo } from "../info/username-info";
@@ -7,13 +8,36 @@ import { userActions } from "../store/user-slice";
 
 export default function UsernameModal({ onUsernameCreation }) {
   const dispatch = useDispatch();
+  const [randomUsername, setRandomUsername] = useState([]);
+  const [formattedUsername, setFormattedUsername] = useState("");
+  const [usernamesData, setUsernamesData] = useState([]);
 
-  const randomAdj = UsernameInfo.adj[Math.floor(Math.random() * UsernameInfo.adj.length)];
-  const randomAnimal = UsernameInfo.animal[Math.floor(Math.random() * UsernameInfo.animal.length)];
-  const randomNum = UsernameInfo.number[Math.floor(Math.random() * UsernameInfo.number.length)];
-  const formattedNum = randomNum < 10 ? "0" + randomNum.toString() : randomNum.toString();
-  const randomUsername = [randomAdj, "_", randomAnimal, "_", formattedNum];
-  const formattedUsername = randomUsername.join("")
+  const generateUsername = useCallback(() => {
+    const randomAdj = UsernameInfo.adj[Math.floor(Math.random() * UsernameInfo.adj.length)];
+    const randomAnimal = UsernameInfo.animal[Math.floor(Math.random() * UsernameInfo.animal.length)];
+    const randomNum = UsernameInfo.number[Math.floor(Math.random() * UsernameInfo.number.length)];
+    const formattedNum = randomNum < 10 ? "0" + randomNum.toString() : randomNum.toString();
+    const newRandomUsername = [randomAdj, "_", randomAnimal, "_", formattedNum];
+    const newFormattedUsername = newRandomUsername.join("");
+    setRandomUsername(newRandomUsername);
+    setFormattedUsername(newFormattedUsername);
+  }, [])
+
+  useEffect(() => {
+    async function getUsernames() {
+      const usernames = await fetch("https://verbify-94228-default-rtdb.europe-west1.firebasedatabase.app/usernames.json");
+      const usernamesData = await usernames.json();
+      setUsernamesData(Object.values(usernamesData) || []);
+    }
+
+    getUsernames();
+  }, [])
+
+  useEffect(() => {
+    if (randomUsername.length === 0 || usernamesData.includes(randomUsername)) {
+      generateUsername();
+    }
+  }, [randomUsername, usernamesData, generateUsername]);
 
   function handleUsername() {
     dispatch(userActions.addUsername({
@@ -21,6 +45,7 @@ export default function UsernameModal({ onUsernameCreation }) {
     }))
     onUsernameCreation();
   }
+
 
   return (
     <div className={classes["username-modal__container"]}>
