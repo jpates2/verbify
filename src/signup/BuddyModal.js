@@ -17,6 +17,8 @@ export default function BuddyModal({ onBuddySelected }) {
     }))
   }
 
+  console.log(buddyDetails.buddyName)
+
   return (
     <div className={classes["buddy-modal__container"]}>
       <div className={classes["buddy-modal__header"]}>Choose your learning buddy...</div>
@@ -27,6 +29,7 @@ export default function BuddyModal({ onBuddySelected }) {
       </div>
       <div className={classes["buddy-modal__button-container"]}>
         <motion.button
+          disabled={buddyDetails.buddyName === ""}
           onClick={onBuddySelected}
           initial={{opacity: 0}}
           animate={{opacity: 1}}

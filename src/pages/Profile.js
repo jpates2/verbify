@@ -11,7 +11,6 @@ import styles from "../styles/profile.module.css";
 export default function ProfilePage() {
   // const localSignupDetails = JSON.parse(localStorage.getItem('signupDetails'));
   const signupDetails = useLoaderData();
-  console.log(signupDetails)
 
   return (
     <UserDetailsContextProvider>

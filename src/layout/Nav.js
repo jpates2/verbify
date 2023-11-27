@@ -107,7 +107,6 @@ export default function Nav({ showModal, timerStatus }) {
   const {pathname} = useLocation();
   const userDetails = useSelector(state => state.user);
   const { loggedInStatus } = useSelector(state => state.status);
-  console.log(loggedInStatus);
 
   const mobileClasses = (showModal === true || timerStatus === "end") ? `${classes["mobile-nav"]}` : `${classes["mobile-nav"]} ${classes["mobile-nav-absolute"]}`
 
