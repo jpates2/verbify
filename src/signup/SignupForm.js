@@ -48,7 +48,7 @@ export default function SignupForm({ onSignupStatus }) {
 
   function setStatus() {
     dispatch(statusActions.updateLoggedInStatus({
-      status: true
+      loggedInStatus: true
     }))
   }
 

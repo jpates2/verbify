@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const statusSlice = createSlice({
   name: "status",
-  initialState: { status: false },
+  initialState: { loggedInStatus: false },
   reducers: {
     updateLoggedInStatus(state, action) {
       return {
-        status: action.payload.loggedInStatus,
+        loggedInStatus: action.payload.loggedInStatus,
       }
     }
   }

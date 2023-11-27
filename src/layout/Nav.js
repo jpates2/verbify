@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { motion } from 'framer-motion';
 import classes from "./Nav.module.css";
+import { useSelector } from 'react-redux';
 
 const navVariant = {
   opened: {
@@ -104,6 +105,9 @@ const linkVariant = {
 export default function Nav({ showModal, timerStatus }) {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const {pathname} = useLocation();
+  const userDetails = useSelector(state => state.user);
+  const { loggedInStatus } = useSelector(state => state.status);
+  console.log(loggedInStatus);
 
   const mobileClasses = (showModal === true || timerStatus === "end") ? `${classes["mobile-nav"]}` : `${classes["mobile-nav"]} ${classes["mobile-nav-absolute"]}`
 
@@ -153,7 +157,7 @@ export default function Nav({ showModal, timerStatus }) {
           <div className={classes["mobile-navbar__bottom-links"]}>
             <motion.div variants={linkVariant} className={classes["mobile-navbar__line"]}></motion.div>
             <motion.div variants={linkVariant}>
-              <Link to="/signup" className={classes["mobile-navbar__link"]}>
+              {!loggedInStatus && <Link to="/signup" className={classes["mobile-navbar__link"]}>
                 <motion.button
                   className={classes["mobile-nav__button"]}
                   whileHover={{
@@ -169,7 +173,24 @@ export default function Nav({ showModal, timerStatus }) {
                 >
                   Sign Up
                 </motion.button>
-              </Link>
+              </Link>}
+              {loggedInStatus && <Link to={`/profile/${userDetails.username}`} className={classes["mobile-navbar__link"]}>
+                <motion.button
+                  className={classes["mobile-nav__button"]}
+                  whileHover={{
+                    scale: 1.1,
+                    transition: {
+                      duration: 0.3
+                    }
+                  }}
+                  whileTap={{
+                    scale: 0.9,
+                    color: "#FFB400",
+                  }}
+                >
+                  Profile
+                </motion.button>
+              </Link>}
             </motion.div>
           </div>
 
@@ -188,7 +209,7 @@ export default function Nav({ showModal, timerStatus }) {
       <div className={classes["desktop-nav__container"]}>
         <Link to="/verbs">Verb Library</Link>
         <Link to="/flashcards">Flashcards</Link>
-        <Link to="/signup">
+        {!loggedInStatus && <Link to="/signup">
           <motion.button
             className={classes["nav__button"]}
             whileHover={{
@@ -202,7 +223,22 @@ export default function Nav({ showModal, timerStatus }) {
               color: "#FFB400",
             }}
           >Sign Up</motion.button>
-        </Link>
+        </Link>}
+        {loggedInStatus && <Link to={`/profile/${userDetails.username}`}>
+          <motion.button
+            className={classes["nav__button"]}
+            whileHover={{
+              scale: 1.1,
+              transition: {
+                duration: 0.3
+              }
+            }}
+            whileTap={{
+              scale: 0.9,
+              color: "#FFB400",
+            }}
+          >Profile</motion.button>
+        </Link>}
       </div>
     </nav>
   )
