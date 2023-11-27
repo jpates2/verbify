@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Nav from "../layout/Nav";
 import Header from "../profile/Header";
@@ -8,16 +7,11 @@ import Results from "../profile/Results";
 import Stats from "../profile/Stats";
 import { UserDetailsContextProvider } from "../store/UserDetailsContext";
 import styles from "../styles/profile.module.css";
-import { useSelector } from 'react-redux';
+import Signout from '../profile/Signout';
+import Footer from '../layout/Footer';
 
 export default function ProfilePage() {
-  // const localSignupDetails = JSON.parse(localStorage.getItem('signupDetails'));
-  // const loggedInStatus = useSelector(state => state.status);
   const signupDetails = useLoaderData();
-
-  // useEffect(() => {
-  //   localStorage.setItem('loggedInStatus', JSON.stringify(loggedInStatus));
-  // }, [loggedInStatus]);
 
   return (
     <UserDetailsContextProvider>
@@ -29,6 +23,8 @@ export default function ProfilePage() {
           <Practice />
         </div>
         <PersonalDetails localSignupDetails={signupDetails} />
+        <Signout />
+        <Footer />
     </UserDetailsContextProvider>
   )
 }
