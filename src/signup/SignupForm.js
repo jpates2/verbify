@@ -12,6 +12,7 @@ import ConfirmSignupModal from "./ConfirmSignupModal";
 
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from "../store/user-slice";
+import { statusActions } from "../store/status-slice";
 
 export default function SignupForm({ onSignupStatus }) {
   const dispatch = useDispatch();
@@ -45,11 +46,18 @@ export default function SignupForm({ onSignupStatus }) {
     })
   }
 
+  function setStatus() {
+    dispatch(statusActions.updateLoggedInStatus({
+      status: true
+    }))
+  }
+
   function handleConfirmSignup() {
     setBuddySelected(false);
     onSignupStatus(false);
     localStorage.setItem('signupDetails', JSON.stringify(signupDetails));
     submitUserDetails();
+    setStatus();
   }
 
   const {
