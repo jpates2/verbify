@@ -89,7 +89,7 @@ export default function UsernameModal({ onUsernameCreation }) {
           onClick={handleUsername}
           initial={{opacity: 0}}
           animate={{opacity: 1}}
-          transition={{delay: 5}}
+          transition={{delay: 4}}
           whileHover={{
             scale: 1.1,
             transition: {

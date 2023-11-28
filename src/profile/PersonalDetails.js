@@ -1,7 +1,7 @@
 import classes from "./PersonalDetails.module.css";
 import styles from "../styles/profile.module.css";
 
-export default function PersonalDetails({ localSignupDetails }) {
+export default function PersonalDetails({ onEditDetails, localSignupDetails }) {
   return (
     <section className={classes["details__section"]}>
       <div className={classes["details__container"]}>
@@ -25,7 +25,7 @@ export default function PersonalDetails({ localSignupDetails }) {
           </div>
         </div>
         <div className={classes["details__button_container"]}>
-          <button className={styles["profile__button"]}>Edit</button>
+          <button onClick={() => onEditDetails(true)} className={styles["profile__button"]}>Edit</button>
         </div>
       </div>
     </section>

@@ -10,9 +10,17 @@ import { UserDetailsContextProvider } from "../store/UserDetailsContext";
 import styles from "../styles/profile.module.css";
 import Signout from '../profile/Signout';
 import Footer from '../layout/Footer';
+import { useState } from 'react';
+import Modal from '../layout/Modal';
+import EditDetailsModal from '../profile/EditDetailsModal';
 
 export default function ProfilePage() {
   const signupDetails = useLoaderData();
+  const [isEditing, setIsEditing] = useState(false);
+
+  function handleEditDetails (input) {
+    setIsEditing(input)
+  }
 
   return (
     <UserDetailsContextProvider>
@@ -22,6 +30,11 @@ export default function ProfilePage() {
         exit={{ opacity: 0 }}
         transition={{ duration: 1 }}
       >
+        {isEditing &&
+          <Modal>
+            <EditDetailsModal />
+          </Modal>
+        }
         <Nav />
         <Header localSignupDetails={signupDetails} />
         <Stats />
@@ -29,7 +42,7 @@ export default function ProfilePage() {
           <Results />
           <Practice />
         </div>
-        <PersonalDetails localSignupDetails={signupDetails} />
+        <PersonalDetails onEditDetails={handleEditDetails} localSignupDetails={signupDetails} />
         <Signout />
         <Footer />
       </motion.div>
