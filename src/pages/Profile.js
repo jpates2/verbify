@@ -1,4 +1,5 @@
 import { useLoaderData } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import Nav from "../layout/Nav";
 import Header from "../profile/Header";
 import PersonalDetails from "../profile/PersonalDetails";
@@ -15,6 +16,12 @@ export default function ProfilePage() {
 
   return (
     <UserDetailsContextProvider>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1 }}
+      >
         <Nav />
         <Header localSignupDetails={signupDetails} />
         <Stats />
@@ -25,6 +32,7 @@ export default function ProfilePage() {
         <PersonalDetails localSignupDetails={signupDetails} />
         <Signout />
         <Footer />
+      </motion.div>
     </UserDetailsContextProvider>
   )
 }
