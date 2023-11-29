@@ -43,6 +43,10 @@ export default function SignupForm({ onSignupStatus }) {
       method: "POST",
       body: JSON.stringify(signupDetails.username)
     })
+    await fetch("https://verbify-94228-default-rtdb.europe-west1.firebasedatabase.app/emails.json", {
+      method: "POST",
+      body: JSON.stringify(signupDetails.email)
+    })
   }
 
   function handleConfirmSignup() {

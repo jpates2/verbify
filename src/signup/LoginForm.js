@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useInput } from '../hooks/useInput';
 import LoginFormButton from './LoginFormButton';
 import Input from "../layout/Input";
@@ -6,7 +7,14 @@ import { isEmail, hasMinLength, isNotEmpty } from '../util/validation';
 import classes from "./LoginForm.module.css";
 import styles from "../styles/forms.module.css";
 
-export default function LoginForm() {
+export default function LoginForm({ emailsData }) {
+  const navigate = useNavigate();
+  const [loginStatus, setLoginStatus] = useState();
+  const [errorMessage, setErrorMessage] = useState("");
+  const [emails, setEmails] = useState(emailsData);
+  const [validUser, setValidUser] = useState(false);
+  const [correctPassword, setCorrectPassword] = useState(false);
+  const [loginUsername, setLoginUsername] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const {
@@ -29,20 +37,70 @@ export default function LoginForm() {
     hasError: passwordHasError
   } = useInput("", (value => isNotEmpty(value)))
 
+  function checkLoginDetails () {
+    if (emails.includes(emailValue)) {
+      setValidUser(true);
+      setErrorMessage("");
+    } else {
+      setErrorMessage("email");
+      setValidUser(false);
+    }
+  }
+
+  async function checkPassword(emailValue, passwordValue) {
+    if (validUser) {
+      const response = await fetch("https://verbify-94228-default-rtdb.europe-west1.firebasedatabase.app/users.json");
+
+      if (!response.ok) { throw new Error("Failed to load data.") }
+
+      const userData = await response.json();
+
+      for (const userObject of Object.values(userData)) {
+        for (const userDetails of Object.values(userObject)) {
+          if (userDetails.email === emailValue) {
+            setLoginUsername(userDetails.username);
+            const storedPassword = userDetails.password;
+            if (storedPassword === passwordValue) {
+              setCorrectPassword(true);
+            } else {
+              setErrorMessage("password")
+            }
+          }
+        }
+      }
+
+
+    }
+  }
+
   let formIsValid;
   formIsValid = emailIsValid && passwordIsValid;
 
   function handleLogin(event) {
     event.preventDefault();
 
+    checkLoginDetails();
     handleEmailSubmit();
     handlePasswordSubmit();
 
-    if (!formIsValid) {return};
+    if (!formIsValid || !validUser) {return};
+
+    checkPassword(emailValue, passwordValue);
+
+    if (!correctPassword) {return};
 
     setFormSubmitted(true);
     handleEmailReset();
     handlePasswordReset();
+    navigate(`/profile/${loginUsername}`)
+  }
+
+  let errorContent = "";
+  if (errorMessage === "email") {
+    errorContent = "Email does not exist. Please sign up."
+  }
+  if (errorMessage === "password") {
+    errorContent = "Password incorrect. Please try again."
   }
 
   return (
@@ -72,6 +130,7 @@ export default function LoginForm() {
             onBlur={handlePasswordBlur}
           />
         </div>
+        <p>{errorContent}</p>
         <LoginFormButton />
       </form>
     </div>

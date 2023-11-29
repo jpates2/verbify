@@ -4,7 +4,7 @@ import VerbsPage from "./pages/Verbs";
 import VerbPage from "./pages/Verb";
 import FlashcardsPage from "./pages/Flashcards";
 import FlashcardPage from "./pages/Flashcard";
-import SignupPage from "./pages/Signup";
+import SignupPage, { loader as emailsDataLoader } from "./pages/Signup";
 import ProfilePage, { loader as userDetailsLoader } from "./pages/Profile";
 
 const router = createBrowserRouter([
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
   {path: "/flashcards/:flashcard/:tense?/:type?", element: <FlashcardPage />},
   {path: "/verbs", element: <VerbsPage /> },
   {path: "/verbs/:verb", element: <VerbPage />},
-  {path: "/signup", element: <SignupPage /> },
+  {path: "/signup", element: <SignupPage />, loader: emailsDataLoader },
   {path: "/profile/:username", element: <ProfilePage />, loader: userDetailsLoader},
 ])
 
