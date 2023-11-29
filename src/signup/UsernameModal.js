@@ -27,7 +27,7 @@ export default function UsernameModal({ onUsernameCreation }) {
     async function getUsernames() {
       const usernames = await fetch("https://verbify-94228-default-rtdb.europe-west1.firebasedatabase.app/usernames.json");
       const usernamesData = await usernames.json();
-      setUsernamesData(Object.values(usernamesData) || []);
+      setUsernamesData(usernamesData ? Object.values(usernamesData) : []);
     }
 
     getUsernames();

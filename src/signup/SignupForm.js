@@ -36,7 +36,7 @@ export default function SignupForm({ onSignupStatus }) {
   }
 
   async function submitUserDetails() {
-    await fetch("https://verbify-94228-default-rtdb.europe-west1.firebasedatabase.app/users.json", {
+    await fetch(`https://verbify-94228-default-rtdb.europe-west1.firebasedatabase.app/users/${userDetails.username}.json`, {
       method: "POST",
       body: JSON.stringify(signupDetails)
     })

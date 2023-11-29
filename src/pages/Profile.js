@@ -19,7 +19,7 @@ export default function ProfilePage() {
   const [isEditing, setIsEditing] = useState(false);
 
   function handleEditDetails (input) {
-    setIsEditing(input)
+    setIsEditing(input);
   }
 
   return (
@@ -32,7 +32,7 @@ export default function ProfilePage() {
       >
         {isEditing &&
           <Modal>
-            <EditDetailsModal />
+            <EditDetailsModal onEdit={handleEditDetails} />
           </Modal>
         }
         <Nav />
@@ -52,7 +52,7 @@ export default function ProfilePage() {
 
 export async function loader({ params }) {
   try {
-    const response = await fetch("https://verbify-94228-default-rtdb.europe-west1.firebasedatabase.app/users.json");
+    const response = await fetch(`https://verbify-94228-default-rtdb.europe-west1.firebasedatabase.app/users/${params.username}.json`);
     if (!response.ok) {
       throw new Error("Failed to fetch data. Please reload the page.")
     }

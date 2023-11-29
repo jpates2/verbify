@@ -21,12 +21,17 @@
   font-weight: bold;
 }
 
-.edit__form-details input {
+.edit__form-details-input {
   justify-self: end;
-  width: 80%;
+  width: 60%;
   all: unset;
+  padding-bottom: 0.2rem;
   border-bottom: 0.1rem solid #FFB400;
   text-align: center;
+}
+
+.input__invalid {
+  border-bottom: 0.1rem solid #F4442E;
 }
 
 .edit__button-container {
