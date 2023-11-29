@@ -17,8 +17,6 @@ export default function BuddyModal({ onBuddySelected }) {
     }))
   }
 
-  console.log(buddyDetails.buddyName)
-
   return (
     <div className={classes["buddy-modal__container"]}>
       <div className={classes["buddy-modal__header"]}>Choose your learning buddy...</div>

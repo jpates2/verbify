@@ -19,8 +19,6 @@ export default function ProfilePage() {
   const [userDetails, setUserDetails] = useState(signupDetails);
   const [isEditing, setIsEditing] = useState(false);
 
-  console.log("userdetails", userDetails);
-
   function handleEdit(input) {
     setIsEditing(input);
   }

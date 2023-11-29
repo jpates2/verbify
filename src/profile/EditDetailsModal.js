@@ -101,11 +101,8 @@ export default function EditDetailsModal({ onEditDetails }) {
     editDetailsDatabase();
     editUserRedux();
 
-    console.log(editedDetails);
     onEditDetails(false, editedDetails);
   }
-
-  console.log(userDetailsRedux);
 
   return (
     <div className={classes["edit__container"]}>
