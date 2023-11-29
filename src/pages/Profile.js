@@ -16,10 +16,18 @@ import EditDetailsModal from '../profile/EditDetailsModal';
 
 export default function ProfilePage() {
   const signupDetails = useLoaderData();
+  const [userDetails, setUserDetails] = useState(signupDetails);
   const [isEditing, setIsEditing] = useState(false);
 
-  function handleEditDetails (input) {
+  console.log("userdetails", userDetails);
+
+  function handleEdit(input) {
     setIsEditing(input);
+  }
+
+  function handleEditDetails (input, details) {
+    setIsEditing(input);
+    setUserDetails(details)
   }
 
   return (
@@ -32,17 +40,17 @@ export default function ProfilePage() {
       >
         {isEditing &&
           <Modal>
-            <EditDetailsModal onEdit={handleEditDetails} />
+            <EditDetailsModal onEditDetails={handleEditDetails} />
           </Modal>
         }
         <Nav />
-        <Header localSignupDetails={signupDetails} />
+        <Header localSignupDetails={userDetails} />
         <Stats />
         <div className={styles["results_practice"]}>
           <Results />
           <Practice />
         </div>
-        <PersonalDetails onEditDetails={handleEditDetails} localSignupDetails={signupDetails} />
+        <PersonalDetails onEditDetails={handleEdit} localSignupDetails={userDetails} />
         <Signout />
         <Footer />
       </motion.div>

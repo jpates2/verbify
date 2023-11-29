@@ -6,7 +6,7 @@ import Input from "../layout/Input";
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from "../store/user-slice";
 
-export default function EditDetailsModal({ onEdit }) {
+export default function EditDetailsModal({ onEditDetails }) {
   const dispatch = useDispatch();
   const userDetailsRedux = useSelector(state => state.user);
   const userDetails = JSON.parse(localStorage.getItem('signupDetails')) || "";
@@ -101,7 +101,8 @@ export default function EditDetailsModal({ onEdit }) {
     editDetailsDatabase();
     editUserRedux();
 
-    onEdit(false);
+    console.log(editedDetails);
+    onEditDetails(false, editedDetails);
   }
 
   console.log(userDetailsRedux);
