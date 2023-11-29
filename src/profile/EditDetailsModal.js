@@ -30,15 +30,6 @@ export default function EditDetailsModal({ onEditDetails }) {
   } = useInput(userDetails.phone, (value => hasMinLength(value, 6)))
 
   const {
-    value: emailValue,
-    isValid: emailIsValid,
-    handleInputChange: handleEmailChange,
-    handleInputBlur: handleEmailBlur,
-    handleInputSubmit: handleEmailSubmit,
-    hasError: emailHasError
-  } = useInput(userDetails.email, (value => isEmail(value)))
-
-  const {
     value: passwordValue,
     isValid: passwordIsValid,
     handleInputChange: handlePasswordChange,
@@ -48,7 +39,7 @@ export default function EditDetailsModal({ onEditDetails }) {
   } = useInput(userDetails.password, (value => hasMinLength(value, 6)))
 
   let formIsValid;
-  formIsValid = fullNameIsValid && phoneIsValid && emailIsValid && passwordIsValid;
+  formIsValid = fullNameIsValid && phoneIsValid && passwordIsValid;
 
   async function editDetailsDatabase () {
     const user = userDetails.username;
@@ -65,7 +56,6 @@ export default function EditDetailsModal({ onEditDetails }) {
       body: JSON.stringify({
         fullName: fullNameValue,
         phone: phoneValue,
-        email: emailValue,
         password: passwordValue
       })
     })
@@ -75,7 +65,6 @@ export default function EditDetailsModal({ onEditDetails }) {
     dispatch(userActions.addUser({
       fullName: fullNameValue,
       phone: phoneValue,
-      email: emailValue,
       password: passwordValue
     }))
   }
@@ -84,7 +73,6 @@ export default function EditDetailsModal({ onEditDetails }) {
     event.preventDefault();
     handleFullNameSubmit();
     handlePhoneSubmit();
-    handleEmailSubmit();
     handlePasswordSubmit();
 
     if (!formIsValid) { return }
@@ -93,7 +81,6 @@ export default function EditDetailsModal({ onEditDetails }) {
       ...userDetails,
       fullName: fullNameValue,
       phone: phoneValue,
-      email: emailValue,
       password: passwordValue
     }
 
@@ -130,18 +117,6 @@ export default function EditDetailsModal({ onEditDetails }) {
             className={phoneHasError ? `${classes["edit__form-details-input"]} ${classes["input__invalid"]}` : `${classes["edit__form-details-input"]}`}
             onChange={handlePhoneChange}
             onBlur={handlePhoneBlur}
-          />
-        </div>
-        <div className={classes["edit__form-details"]}>
-          <Input
-            label="Email"
-            id="email"
-            type="text"
-            tag="input"
-            value={emailValue}
-            className={emailHasError ? `${classes["edit__form-details-input"]} ${classes["input__invalid"]}` : `${classes["edit__form-details-input"]}`}
-            onChange={handleEmailChange}
-            onBlur={handleEmailBlur}
           />
         </div>
         <div className={classes["edit__form-details"]}>

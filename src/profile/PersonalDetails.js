@@ -12,10 +12,6 @@ export default function PersonalDetails({ onEditDetails, localSignupDetails }) {
             <div className={classes["details__info"]}>{localSignupDetails.fullName}</div>
           </div>
           <div className={classes["details__detail"]}>
-            <div className={classes["details__category"]}>Email</div>
-            <div className={classes["details__info"]}>{localSignupDetails.email}</div>
-          </div>
-          <div className={classes["details__detail"]}>
             <div className={classes["details__category"]}>Phone</div>
             <div className={classes["details__info"]}>{localSignupDetails.phone}</div>
           </div>

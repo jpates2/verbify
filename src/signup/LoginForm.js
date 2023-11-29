@@ -9,11 +9,11 @@ import styles from "../styles/forms.module.css";
 
 export default function LoginForm({ emailsData }) {
   const navigate = useNavigate();
-  const [loginStatus, setLoginStatus] = useState();
   const [errorMessage, setErrorMessage] = useState("");
   const [emails, setEmails] = useState(emailsData);
   const [validUser, setValidUser] = useState(false);
   const [correctPassword, setCorrectPassword] = useState(false);
+  const [allDetails, setAllDetails] = useState({});
   const [loginUsername, setLoginUsername] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -58,6 +58,7 @@ export default function LoginForm({ emailsData }) {
       for (const userObject of Object.values(userData)) {
         for (const userDetails of Object.values(userObject)) {
           if (userDetails.email === emailValue) {
+            setAllDetails(userDetails);
             setLoginUsername(userDetails.username);
             const storedPassword = userDetails.password;
             if (storedPassword === passwordValue) {
@@ -68,8 +69,6 @@ export default function LoginForm({ emailsData }) {
           }
         }
       }
-
-
     }
   }
 
@@ -93,6 +92,7 @@ export default function LoginForm({ emailsData }) {
     handleEmailReset();
     handlePasswordReset();
     localStorage.setItem('loggedInStatus', JSON.stringify({ loggedInStatus: true }));
+    localStorage.setItem('signupDetails', JSON.stringify(allDetails));
     navigate(`/profile/${loginUsername}`);
   }
 
