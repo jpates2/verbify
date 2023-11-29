@@ -92,7 +92,8 @@ export default function LoginForm({ emailsData }) {
     setFormSubmitted(true);
     handleEmailReset();
     handlePasswordReset();
-    navigate(`/profile/${loginUsername}`)
+    localStorage.setItem('loggedInStatus', JSON.stringify({ loggedInStatus: true }));
+    navigate(`/profile/${loginUsername}`);
   }
 
   let errorContent = "";
