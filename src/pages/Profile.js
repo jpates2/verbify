@@ -15,8 +15,8 @@ import Modal from '../layout/Modal';
 import EditDetailsModal from '../profile/EditDetailsModal';
 
 export default function ProfilePage() {
-  const signupDetails = useLoaderData();
-  const [userDetails, setUserDetails] = useState(signupDetails);
+  const loggedInUserDetails = useLoaderData();
+  const [userDetails, setUserDetails] = useState(loggedInUserDetails);
   const [isEditing, setIsEditing] = useState(false);
 
   function handleEdit(input) {
@@ -43,7 +43,7 @@ export default function ProfilePage() {
         }
         <Nav />
         <Header localSignupDetails={userDetails} />
-        <Stats />
+        <Stats userResults={userDetails.results} />
         <div className={styles["results_practice"]}>
           <Results />
           <Practice />
