@@ -20,6 +20,9 @@ export default function FlashcardPage() {
   const [questionsAnswered, setQuestionsAnswered] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
 
+  const [incorrectAnswersArray, setIncorrectAnswersArray] = useState([]);
+  const [correctAnswersArray, setCorrectAnswersArray] = useState([]);
+
   function markAnswerCorrect() {
     setCorrectAnswers(prevCorrect => {
       return prevCorrect + 1;
@@ -41,6 +44,25 @@ export default function FlashcardPage() {
     setTimerStatus("active");
   }
 
+  if (timerStatus === "end") {
+    console.log("correct:", correctAnswersArray);
+    console.log("incorrect:", incorrectAnswersArray);
+  }
+
+
+  function handleCorrectAnswer(answer) {
+    setCorrectAnswersArray((prevArray) => {
+      return [...prevArray, answer]
+    })
+  }
+
+  function handleIncorrectAnswer(answer) {
+    setIncorrectAnswersArray((prevArray) => {
+      return [...prevArray, answer]
+    })
+  }
+
+
   return (
     <TimerProvider>
       <section className={classes["flashcard-page"]}>
@@ -56,7 +78,7 @@ export default function FlashcardPage() {
           </Modal>
         }
         <Header />
-        <Content location={location} onUpdateTimer={setTimerStatus} markAnswerCorrect={markAnswerCorrect} markQuestionCompleted={markQuestionCompleted} correctAnswers={correctAnswers} questionsAnswered={questionsAnswered} />
+        <Content location={location} onUpdateTimer={setTimerStatus} markAnswerCorrect={markAnswerCorrect} markQuestionCompleted={markQuestionCompleted} correctAnswers={correctAnswers} questionsAnswered={questionsAnswered} onCorrectAnswer={handleCorrectAnswer} onIncorrectAnswer={handleIncorrectAnswer} />
         <Border />
         <Footer />
       </section>

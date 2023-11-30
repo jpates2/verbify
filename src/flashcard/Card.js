@@ -26,7 +26,7 @@ const variants = {
   }
 }
 
-export default function Card({ location, markAnswerCorrect, markQuestionCompleted, markAnswerIncorrect }) {
+export default function Card({ location, markAnswerCorrect, markQuestionCompleted, onCorrectAnswer, onIncorrectAnswer }) {
   const controls = useAnimation();
   const [enteredAnswer, setEnteredAnswer] = useState("");
   const [answerSubmitted, setAnswerSubmitted] = useState(false);
@@ -137,8 +137,6 @@ export default function Card({ location, markAnswerCorrect, markQuestionComplete
     }
   }
 
-  const [incorrectAnswersArray, setIncorrectAnswersArray] = useState([]);
-  const [correctAnswersArray, setCorrectAnswersArray] = useState([]);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -152,14 +150,10 @@ export default function Card({ location, markAnswerCorrect, markQuestionComplete
     if (answer === enteredAnswer.toLowerCase()) {
       markAnswerCorrect();
       if (fetchedVerb) {
-        setCorrectAnswersArray((prevArray) => {
-          return [...prevArray, [pronoun, fetchedVerb.infinitivo, answer, enteredAnswer.toLowerCase()]]
-        })
+        onCorrectAnswer([pronoun, fetchedVerb.infinitivo, answer, enteredAnswer.toLowerCase()]);
       }
       if (filteredVerb) {
-        setCorrectAnswersArray((prevArray) => {
-          return [...prevArray, [pronoun, filteredVerb, answer, enteredAnswer.toLowerCase()]]
-        })
+        onCorrectAnswer([pronoun, filteredVerb, answer, enteredAnswer.toLowerCase()]);
       }
       markQuestionCompleted();
       initiateFlashcard();
@@ -170,14 +164,10 @@ export default function Card({ location, markAnswerCorrect, markQuestionComplete
     }
     if (answer !== enteredAnswer.toLowerCase()) {
       if (fetchedVerb) {
-        setIncorrectAnswersArray((prevArray) => {
-          return [...prevArray, [pronoun, fetchedVerb.infinitivo, answer, enteredAnswer.toLowerCase()]]
-        })
+        onIncorrectAnswer([pronoun, fetchedVerb.infinitivo, answer, enteredAnswer.toLowerCase()]);
       }
       if (filteredVerb) {
-        setIncorrectAnswersArray((prevArray) => {
-          return [...prevArray, [pronoun, filteredVerb, answer, enteredAnswer.toLowerCase()]]
-        })
+        onIncorrectAnswer([pronoun, filteredVerb, answer, enteredAnswer.toLowerCase()]);
       }
       inputRef.current.focus();
       setIncorrectAnswer(true);
@@ -186,7 +176,6 @@ export default function Card({ location, markAnswerCorrect, markQuestionComplete
       setAnswerSubmitted(false);
     }
   }
-
 
   function handleSkip() {
     initiateFlashcard();
