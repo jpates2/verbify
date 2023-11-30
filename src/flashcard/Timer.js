@@ -8,7 +8,6 @@ export default function Timer({ onUpdateTimer }) {
 
   useEffect(() => {
     setCounter(ctx.timerSeconds);
-    console.log(ctx.timerSeconds);
   }, [ctx.timerSeconds]);
 
 
@@ -38,7 +37,6 @@ export default function Timer({ onUpdateTimer }) {
       }
     };
   }, [counter, ctx.go, onUpdateTimer]);
-  // console.log(counter)
   let timerClass;
   if (ctx.go === true) {
     timerClass = `${classes["timer__time"]}`
