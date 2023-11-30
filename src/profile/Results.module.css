@@ -20,16 +20,6 @@
   padding: 0;
 }
 
-.results__past-result {
-  display: grid;
-  grid-template-columns: 4fr 1fr;
-  margin-bottom: 1rem;
-}
-
-.results__past-score {
-  justify-self: end;
-}
-
 .results__button-container {
   display: flex;
   justify-content: center;

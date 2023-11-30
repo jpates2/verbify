@@ -45,7 +45,7 @@ export default function ProfilePage() {
         <Header localSignupDetails={userDetails} />
         <Stats userResults={userDetails.results} />
         <div className={styles["results_practice"]}>
-          <Results />
+          <Results userResults={userDetails.results} />
           <Practice />
         </div>
         <PersonalDetails onEditDetails={handleEdit} localSignupDetails={userDetails} />

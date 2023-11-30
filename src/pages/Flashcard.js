@@ -15,7 +15,8 @@ export default function FlashcardPage() {
   const location = useLocation();
   const userDetails = JSON.parse(localStorage.getItem('signupDetails')) || "";
   let finalScore;
-  const today = new Date();
+  const today = new Date().setUTCHours(0,0,0,0);
+  const [type, setType] = useState("");
 
   const [showModal, setShowModal] = useState(false);
 
@@ -65,7 +66,8 @@ export default function FlashcardPage() {
         score: finalScore,
         correctAnswers: correctAnswersArray,
         incorrectAnswers: incorrectAnswersArray,
-        date: today
+        date: today,
+        type: type
       })
     })
   }
@@ -107,7 +109,7 @@ export default function FlashcardPage() {
           </Modal>
         }
         <Header />
-        <Content location={location} onUpdateTimer={setTimerStatus} markAnswerCorrect={markAnswerCorrect} markQuestionCompleted={markQuestionCompleted} correctAnswers={correctAnswers} questionsAnswered={questionsAnswered} onCorrectAnswer={handleCorrectAnswer} onIncorrectAnswer={handleIncorrectAnswer} />
+        <Content location={location} onUpdateTimer={setTimerStatus} markAnswerCorrect={markAnswerCorrect} markQuestionCompleted={markQuestionCompleted} correctAnswers={correctAnswers} questionsAnswered={questionsAnswered} onCorrectAnswer={handleCorrectAnswer} onIncorrectAnswer={handleIncorrectAnswer} setType={setType} />
         <Border />
         <Footer />
       </section>

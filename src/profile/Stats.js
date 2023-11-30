@@ -1,13 +1,18 @@
-import { useState } from "react";
 import classes from "./Stats.module.css";
 
 export default function Stats({ userResults }) {
-  const [avgScore, setAvgScore] = useState();
+  let avgScore;
 
   if (userResults) {
     const scores = Object.values(userResults).map(result => result.score);
-    const newAvgScore = Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length);
-    setAvgScore(newAvgScore);
+    avgScore = Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length);
+
+    const incorrectAnswers = Object.values(userResults).map(result => result.incorrectAnswers).filter(answers => answers !== undefined);
+
+    const correctAnswers = Object.values(userResults).map(result => result.correctAnswers).filter(answers => answers !== undefined);
+
+    console.log(incorrectAnswers);
+    console.log(correctAnswers);
   }
 
   return (

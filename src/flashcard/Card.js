@@ -26,7 +26,7 @@ const variants = {
   }
 }
 
-export default function Card({ location, markAnswerCorrect, markQuestionCompleted, onCorrectAnswer, onIncorrectAnswer }) {
+export default function Card({ location, markAnswerCorrect, markQuestionCompleted, onCorrectAnswer, onIncorrectAnswer, setType }) {
   const controls = useAnimation();
   const [enteredAnswer, setEnteredAnswer] = useState("");
   const [answerSubmitted, setAnswerSubmitted] = useState(false);
@@ -150,10 +150,12 @@ export default function Card({ location, markAnswerCorrect, markQuestionComplete
     if (answer === enteredAnswer.toLowerCase()) {
       markAnswerCorrect();
       if (fetchedVerb) {
-        onCorrectAnswer([pronoun, fetchedVerb.infinitivo, answer, enteredAnswer.toLowerCase(), tense, subtense]);
+        onCorrectAnswer([pronoun, fetchedVerb.infinitivo, answer, enteredAnswer.toLowerCase()]);
+        setType(["tense", tense, subtense]);
       }
       if (filteredVerb) {
         onCorrectAnswer([pronoun, filteredVerb, answer, enteredAnswer.toLowerCase()]);
+        setType(["verb", filteredVerb]);
       }
       markQuestionCompleted();
       initiateFlashcard();
@@ -164,10 +166,12 @@ export default function Card({ location, markAnswerCorrect, markQuestionComplete
     }
     if (answer !== enteredAnswer.toLowerCase()) {
       if (fetchedVerb) {
-        onIncorrectAnswer([pronoun, fetchedVerb.infinitivo, answer, enteredAnswer.toLowerCase(), tense, subtense]);
+        onIncorrectAnswer([pronoun, fetchedVerb.infinitivo, answer, enteredAnswer.toLowerCase()]);
+        setType(["tense", tense, subtense]);
       }
       if (filteredVerb) {
-        onIncorrectAnswer([pronoun, filteredVerb, answer, enteredAnswer.toLowerCase()]);
+        onIncorrectAnswer([pronoun, filteredVerb, answer, enteredAnswer.toLowerCase()], "verb");
+        setType(["verb", filteredVerb]);
       }
       inputRef.current.focus();
       setIncorrectAnswer(true);
