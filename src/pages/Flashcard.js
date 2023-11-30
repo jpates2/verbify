@@ -13,6 +13,10 @@ import EndingModal from '../flashcard/EndingModal';
 
 export default function FlashcardPage() {
   const location = useLocation();
+  const userDetails = JSON.parse(localStorage.getItem('signupDetails')) || "";
+  let finalScore;
+  const today = new Date();
+
   const [showModal, setShowModal] = useState(false);
 
   const [timerStatus, setTimerStatus] = useState("inactive");
@@ -44,9 +48,34 @@ export default function FlashcardPage() {
     setTimerStatus("active");
   }
 
+  async function addResults () {
+    const user = userDetails.username;
+
+    const response = await fetch("https://verbify-94228-default-rtdb.europe-west1.firebasedatabase.app/users.json");
+
+    if (!response.ok) { throw new Error("Failed to load data.") }
+
+    const userData = await response.json();
+    const userId = Object.keys(userData[user])[0];
+    console.log(userId);
+
+    await fetch(`https://verbify-94228-default-rtdb.europe-west1.firebasedatabase.app/users/${user}/${userId}/results.json`, {
+      method: "POST",
+      body: JSON.stringify({
+        score: finalScore,
+        correctAnswers: correctAnswersArray,
+        incorrectAnswers: incorrectAnswersArray,
+        date: today
+      })
+    })
+  }
+
   if (timerStatus === "end") {
-    console.log("correct:", correctAnswersArray);
-    console.log("incorrect:", incorrectAnswersArray);
+    finalScore = questionsAnswered > 0 ? Math.round((correctAnswers / questionsAnswered) * 100) : 0;
+
+    if (userDetails) {
+      addResults();
+    }
   }
 
 

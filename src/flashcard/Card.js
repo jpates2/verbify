@@ -150,7 +150,7 @@ export default function Card({ location, markAnswerCorrect, markQuestionComplete
     if (answer === enteredAnswer.toLowerCase()) {
       markAnswerCorrect();
       if (fetchedVerb) {
-        onCorrectAnswer([pronoun, fetchedVerb.infinitivo, answer, enteredAnswer.toLowerCase()]);
+        onCorrectAnswer([pronoun, fetchedVerb.infinitivo, answer, enteredAnswer.toLowerCase(), tense, subtense]);
       }
       if (filteredVerb) {
         onCorrectAnswer([pronoun, filteredVerb, answer, enteredAnswer.toLowerCase()]);
@@ -164,7 +164,7 @@ export default function Card({ location, markAnswerCorrect, markQuestionComplete
     }
     if (answer !== enteredAnswer.toLowerCase()) {
       if (fetchedVerb) {
-        onIncorrectAnswer([pronoun, fetchedVerb.infinitivo, answer, enteredAnswer.toLowerCase()]);
+        onIncorrectAnswer([pronoun, fetchedVerb.infinitivo, answer, enteredAnswer.toLowerCase(), tense, subtense]);
       }
       if (filteredVerb) {
         onIncorrectAnswer([pronoun, filteredVerb, answer, enteredAnswer.toLowerCase()]);
