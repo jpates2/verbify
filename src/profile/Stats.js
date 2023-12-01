@@ -10,9 +10,6 @@ export default function Stats({ userResults }) {
     const incorrectAnswers = Object.values(userResults).map(result => result.incorrectAnswers).filter(answers => answers !== undefined);
 
     const correctAnswers = Object.values(userResults).map(result => result.correctAnswers).filter(answers => answers !== undefined);
-
-    console.log(incorrectAnswers);
-    console.log(correctAnswers);
   }
 
   return (
