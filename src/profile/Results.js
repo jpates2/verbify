@@ -3,6 +3,7 @@ import styles from "../styles/profile.module.css";
 import { useState } from "react";
 import Result from "./Result";
 import Modal from "../layout/Modal";
+import ResultsModal from "./ResultsModal";
 
 export default function Results({ userResults }) {
   const [more, setMore] = useState(false);
@@ -44,7 +45,7 @@ export default function Results({ userResults }) {
       {
         more && (
           <Modal onClose={handleClose}>
-            results
+            <ResultsModal results={summary} />
           </Modal>
         )
       }
