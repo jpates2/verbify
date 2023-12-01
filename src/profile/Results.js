@@ -45,7 +45,7 @@ export default function Results({ userResults }) {
       {
         more && (
           <Modal onClose={handleClose}>
-            <ResultsModal results={summary} />
+            <ResultsModal onClose={handleClose} results={summary} />
           </Modal>
         )
       }

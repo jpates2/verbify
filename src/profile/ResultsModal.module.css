@@ -1,0 +1,26 @@
+.results__modal-container {
+  padding: 2rem;
+  max-height: 24rem;
+  overflow: scroll;
+  box-sizing: border-box;
+}
+
+.results__modal-button-container {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.results__modal-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #FFB400;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 800px) {
+  .results__modal-container {
+    max-height: 18rem;
+    padding: 2rem 6rem;
+  }
+}
