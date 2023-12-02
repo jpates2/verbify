@@ -15,7 +15,11 @@ export default function FlashcardPage() {
   const location = useLocation();
   const userDetails = JSON.parse(localStorage.getItem('signupDetails')) || "";
   let finalScore;
-  const today = new Date().setUTCHours(0,0,0,0);
+
+  const today = new Date();
+  const timestamp = today.toLocaleString().replace(/\W/g, '');
+  const formattedDate = today.toLocaleString().replace(/\W/g, '').slice(0, -6) + "000000";
+
   const [type, setType] = useState("");
 
   const [showModal, setShowModal] = useState(false);
@@ -58,7 +62,6 @@ export default function FlashcardPage() {
 
     const userData = await response.json();
     const userId = Object.keys(userData[user])[0];
-    console.log(userId);
 
     await fetch(`https://verbify-94228-default-rtdb.europe-west1.firebasedatabase.app/users/${user}/${userId}/results.json`, {
       method: "POST",
@@ -66,7 +69,8 @@ export default function FlashcardPage() {
         score: finalScore,
         correctAnswers: correctAnswersArray,
         incorrectAnswers: incorrectAnswersArray,
-        date: today,
+        timestamp: timestamp,
+        date: formattedDate,
         type: type
       })
     })

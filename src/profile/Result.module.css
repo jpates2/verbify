@@ -4,6 +4,11 @@
   margin-bottom: 1rem;
 }
 
+.results__past-result:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .results__past-score {
   justify-self: end;
 }
