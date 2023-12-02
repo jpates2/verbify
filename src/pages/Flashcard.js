@@ -92,6 +92,7 @@ export default function FlashcardPage() {
   }
 
   function handleIncorrectAnswer(answer) {
+    console.log(answer);
     setIncorrectAnswersArray((prevArray) => {
       return [...prevArray, answer]
     })

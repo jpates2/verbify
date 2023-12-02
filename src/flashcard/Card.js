@@ -154,7 +154,7 @@ export default function Card({ location, markAnswerCorrect, markQuestionComplete
         setType(["tense", tense, subtense]);
       }
       if (filteredVerb) {
-        onCorrectAnswer([pronoun, filteredVerb, answer, enteredAnswer.toLowerCase()]);
+        onCorrectAnswer([pronoun, filteredVerb, answer, enteredAnswer.toLowerCase(), generatedTense.randomTense, generatedTense.randomSub]);
         setType(["verb", filteredVerb]);
       }
       markQuestionCompleted();
@@ -170,7 +170,7 @@ export default function Card({ location, markAnswerCorrect, markQuestionComplete
         setType(["tense", tense, subtense]);
       }
       if (filteredVerb) {
-        onIncorrectAnswer([pronoun, filteredVerb, answer, enteredAnswer.toLowerCase()], "verb");
+        onIncorrectAnswer([pronoun, filteredVerb, answer, enteredAnswer.toLowerCase(), generatedTense.randomTense, generatedTense.randomSub]);
         setType(["verb", filteredVerb]);
       }
       inputRef.current.focus();
