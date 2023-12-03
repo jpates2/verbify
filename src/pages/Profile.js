@@ -28,6 +28,19 @@ export default function ProfilePage() {
     setUserDetails(details)
   }
 
+  let uniqueErrors = [];
+  let errors = [];
+
+  Object.values(userDetails.results).forEach(function (result) {
+    const incorrectArrays = result.incorrectAnswers;
+    incorrectArrays.forEach(array => {
+      if (!uniqueErrors.includes(array[2])) {
+        errors.push([array[0], array[1], array[2]]);
+        uniqueErrors.push(array[2]);
+      }
+    })
+  })
+
   return (
     <UserDetailsContextProvider>
       <motion.div
@@ -46,7 +59,7 @@ export default function ProfilePage() {
         <Stats userResults={userDetails.results} />
         <div className={styles["results_practice"]}>
           <Results userResults={userDetails.results} />
-          <Practice userResults={userDetails.results} />
+          <Practice userResults={userDetails.results} initialErrors={errors} initialUniqueErrors={uniqueErrors} />
         </div>
         <PersonalDetails onEditDetails={handleEdit} localSignupDetails={userDetails} />
         <Signout />

@@ -4,8 +4,10 @@ import styles from "../styles/profile.module.css";
 import Modal from "../layout/Modal";
 import PracticeModal from "./PracticeModal";
 
-export default function Practice({ userResults }) {
+export default function Practice({ userResults, initialErrors, initialUniqueErrors }) {
   const [more, setMore] = useState(false);
+  const [errors, setErrors] = useState(initialErrors);
+  const [uniqueErrors, setUniqueErrors] = useState(initialUniqueErrors);
 
   function handleMore() {
     setMore(true);
@@ -15,17 +17,16 @@ export default function Practice({ userResults }) {
     setMore(false);
   }
 
-  let errors = [];
-  let uniqueErrors = [];
-  Object.values(userResults).forEach(function (result) {
-    const incorrectArrays = result.incorrectAnswers;
-    incorrectArrays.forEach(array => {
-      if (!uniqueErrors.includes(array[2])) {
-        errors.push([array[0], array[1], array[2]])
-        uniqueErrors.push(array[2])
-      }
-    })
-  });
+  function handleRemoveVerb(event) {
+    const text = event.target.innerText;
+    const removedVerb = text.substring(text.indexOf(' ') + 1);
+
+    const updatedUniqueErrors = uniqueErrors.filter(error => error[2] !== removedVerb);
+    setUniqueErrors(updatedUniqueErrors);
+
+    const updatedErrors = errors.filter(error => error[2] !== removedVerb);
+    setErrors(updatedErrors);
+  }
 
   const limitedErrors = errors.slice(0, 5);
 
@@ -42,7 +43,7 @@ export default function Practice({ userResults }) {
           {errors.length === 0 && <div>Complete your first set of flashcards to view verbs to practise here!</div>}
           {errors.length > 0 && (
             limitedErrors.map((error, i) => (
-              <li key={i} className={classes["practice__past-verb"]}>
+              <li key={i} onClick={handleRemoveVerb} className={classes["practice__past-verb"]}>
                 <div className={classes["practice__past-inf"]}>{error[1]}</div>
                 <div className={classes["practice__past-conj"]}>{error[0]} {error[2]}</div>
               </li>
