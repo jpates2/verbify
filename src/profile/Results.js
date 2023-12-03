@@ -73,14 +73,19 @@ export default function Results({ userResults }) {
       }
       <div className={classes["results__container"]}>
         <div className={classes["results__title"]}>Results</div>
-        <ul className={classes["results__past-results"]}>
-          {editSummary.map((result) => (
-            <Result key={result.timestamp} score={result.score} correct={result.correct} incorrect={result.incorrect} timestamp={result.timestamp} date={result.date} type={result.infinitive === "" ? `${result.tense} - ${result.subtense}` : (result.infinitive.charAt(0).toUpperCase() + result.infinitive.slice(1))} onResult={() => handleResult(result)} />
-          ))}
-        </ul>
-        <div className={classes["results__button-container"]}>
-          <button onClick={handleMore} className={styles["profile__button"]}>More</button>
-        </div>
+        {!summary && <div className={classes["results__message"]}>Complete your first set of flashcards to view results here!</div>}
+        {summary && (
+          <>
+            <ul className={classes["results__past-results"]}>
+            {editSummary && editSummary.map((result) => (
+              <Result key={result.timestamp} score={result.score} correct={result.correct} incorrect={result.incorrect} timestamp={result.timestamp} date={result.date} type={result.infinitive === "" ? `${result.tense} - ${result.subtense}` : (result.infinitive.charAt(0).toUpperCase() + result.infinitive.slice(1))} onResult={() => handleResult(result)} />
+            ))}
+          </ul>
+          {summary.length > 5 && <div className={classes["results__button-container"]}>
+            <button onClick={handleMore} className={styles["profile__button"]}>More</button>
+          </div>}
+          </>
+        )}
       </div>
     </>
   )

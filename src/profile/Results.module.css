@@ -26,6 +26,12 @@
   width: 100%;
 }
 
+.results__message {
+  max-width: 20rem;
+  text-align: center;
+  margin: 0 auto 0 auto;
+}
+
 @media (min-width: 800px) {
   .results__container {
     padding: 4rem 2rem;
