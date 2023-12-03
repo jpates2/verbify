@@ -15,21 +15,21 @@
 }
 
 .practice__past-verbs {
-  max-width: 20rem;
   margin: 0 auto 3rem auto;
   padding: 0;
 }
 
 .practice__past-verb {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
   margin-bottom: 1rem;
 }
 
-.practice__past-inf,
+/* .practice__past-inf,
 .practice__past-conj {
   justify-self: center;
-}
+} */
 
 .practice__button-container {
   display: flex;
@@ -39,6 +39,10 @@
 
 @media (min-width: 800px) {
   .practice__container {
-    padding: 4rem 2rem;
+    padding: 4rem;
+  }
+
+  .practice__past-verb {
+    gap: 2rem;
   }
 }
