@@ -1,7 +1,20 @@
+import { useState } from "react";
 import classes from "./Practice.module.css";
 import styles from "../styles/profile.module.css";
+import Modal from "../layout/Modal";
+import PracticeModal from "./PracticeModal";
 
 export default function Practice({ userResults }) {
+  const [more, setMore] = useState(false);
+
+  function handleMore() {
+    setMore(true);
+  }
+
+  function handleClose() {
+    setMore(false);
+  }
+
   let errors = [];
   let uniqueErrors = [];
   Object.values(userResults).forEach(function (result) {
@@ -14,25 +27,32 @@ export default function Practice({ userResults }) {
     })
   });
 
-  const limitedErrors = errors.slice(0, 5)
+  const limitedErrors = errors.slice(0, 5);
 
   return (
-    <div className={classes["practice__container"]}>
-    <div className={classes["practice__title"]}>Verb Bank</div>
-    <ul className={classes["practice__past-verbs"]}>
-      {errors.length === 0 && <div>Complete your first set of flashcards to view verbs to practise here!</div>}
-      {errors.length > 0 && (
-        limitedErrors.map((error, i) => (
-          <li key={i} className={classes["practice__past-verb"]}>
-            <div className={classes["practice__past-inf"]}>{error[1]}</div>
-            <div className={classes["practice__past-conj"]}>{error[0]} {error[2]}</div>
-          </li>
-        ))
+    <>
+      {more && (
+        <Modal onClose={handleClose}>
+          <PracticeModal onClose={handleClose} pastErrors={errors} />
+        </Modal>
       )}
-    </ul>
-    <div className={classes["practice__button-container"]}>
-      <button className={styles["profile__button"]}>More</button>
-    </div>
-  </div>
+      <div className={classes["practice__container"]}>
+        <div className={classes["practice__title"]}>Verb Bank</div>
+        <ul className={classes["practice__past-verbs"]}>
+          {errors.length === 0 && <div>Complete your first set of flashcards to view verbs to practise here!</div>}
+          {errors.length > 0 && (
+            limitedErrors.map((error, i) => (
+              <li key={i} className={classes["practice__past-verb"]}>
+                <div className={classes["practice__past-inf"]}>{error[1]}</div>
+                <div className={classes["practice__past-conj"]}>{error[0]} {error[2]}</div>
+              </li>
+            ))
+          )}
+        </ul>
+        {errors.length > 5 && <div className={classes["practice__button-container"]}>
+          <button onClick={handleMore} className={styles["profile__button"]}>More</button>
+        </div>}
+      </div>
+    </>
   )
 }
