@@ -2,7 +2,6 @@ import classes from "./ResultModal.module.css";
 import styles from "../styles/profile.module.css";
 
 export default function ResultModal({ resultInfo, onAllResults }) {
-  console.log(resultInfo.incorrect);
   let content;
   if (resultInfo.infinitive) {
     content = (
