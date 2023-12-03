@@ -22,7 +22,7 @@ export default function ResultModal({ resultInfo }) {
         </div>
         <div>
           <div className={classes["result-modal__subheader"]}>Incorrect: {resultInfo.incorrect.length}</div>
-          <ol>
+          <ol className={classes["result-modal__list"]}>
             {resultInfo.incorrect.map((info, i) => (
               <li key={i} className={classes["result-grid-item"]}>
                 <div className={classes["result-grid"]}><div className={classes["result-grid-bold"]}>Pronoun: </div><div>{info[0]}</div></div>
@@ -39,22 +39,31 @@ export default function ResultModal({ resultInfo }) {
 
   if (!resultInfo.infinitive) {
     content = (
-      <div>
-        <div>{resultInfo.tense} - {resultInfo.subtense}</div>
-        <div>{resultInfo.score}%</div>
+      <div className={classes["result-modal__container"]}>
+        <div className={classes["result-modal__title"]}>{resultInfo.tense} - {resultInfo.subtense}</div>
+        <div className={classes["result-modal__score"]}>{resultInfo.score}%</div>
         <div>
-          <div>Correct: {resultInfo.correct.length}</div>
-          <ol>
+          <div className={classes["result-modal__subheader"]}>Correct: {resultInfo.correct.length}</div>
+          <ol className={classes["result-modal__list"]}>
             {resultInfo.correct.map((info, i) => (
-              <li key={i}>{info}</li>
+              <li key={i} className={classes["result-grid-item"]}>
+              <div className={classes["result-grid"]}><div className={classes["result-grid-bold"]}>Pronoun: </div><div>{info[0]}</div></div>
+              <div className={classes["result-grid"]}><div className={classes["result-grid-bold"]}>Tense: </div><div>{info[1]}</div></div>
+              <div className={classes["result-grid"]}><div className={classes["result-grid-bold"]}>Answer: </div><div>{info[3]}</div></div>
+            </li>
             ))}
           </ol>
         </div>
         <div>
-          <div>Incorrect: {resultInfo.incorrect.length}</div>
-          <ol>
+          <div className={classes["result-modal__subheader"]}>Incorrect: {resultInfo.incorrect.length}</div>
+          <ol className={classes["result-modal__list"]}>
             {resultInfo.incorrect.map((info, i) => (
-              <li key={i}>{info}</li>
+              <li key={i} className={classes["result-grid-item"]}>
+              <div className={classes["result-grid"]}><div className={classes["result-grid-bold"]}>Pronoun: </div><div>{info[0]}</div></div>
+              <div className={classes["result-grid"]}><div className={classes["result-grid-bold"]}>Tense: </div><div>{info[1]}</div></div>
+              <div className={classes["result-grid"]}><div className={classes["result-grid-bold"]}>Response: </div><div>{info[3]}</div></div>
+              <div className={classes["result-grid"]}><div className={classes["result-grid-bold"]}>Answer: </div><div>{info[2]}</div></div>
+            </li>
             ))}
           </ol>
         </div>
