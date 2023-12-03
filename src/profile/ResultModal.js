@@ -1,11 +1,12 @@
 import classes from "./ResultModal.module.css";
+import styles from "../styles/profile.module.css";
 
-export default function ResultModal({ resultInfo }) {
+export default function ResultModal({ resultInfo, onAllResults }) {
   console.log(resultInfo.incorrect);
   let content;
   if (resultInfo.infinitive) {
     content = (
-      <div className={classes["result-modal__container"]}>
+      <>
         <div className={classes["result-modal__title"]}>{resultInfo.infinitive.charAt(0).toUpperCase() + resultInfo.infinitive.slice(1)}</div>
         <div className={classes["result-modal__score"]}>{resultInfo.score}%</div>
         <div>
@@ -33,13 +34,13 @@ export default function ResultModal({ resultInfo }) {
             ))}
           </ol>
         </div>
-      </div>
+      </>
     )
   }
 
   if (!resultInfo.infinitive) {
     content = (
-      <div className={classes["result-modal__container"]}>
+      <>
         <div className={classes["result-modal__title"]}>{resultInfo.tense} - {resultInfo.subtense}</div>
         <div className={classes["result-modal__score"]}>{resultInfo.score}%</div>
         <div>
@@ -48,7 +49,7 @@ export default function ResultModal({ resultInfo }) {
             {resultInfo.correct.map((info, i) => (
               <li key={i} className={classes["result-grid-item"]}>
               <div className={classes["result-grid"]}><div className={classes["result-grid-bold"]}>Pronoun: </div><div>{info[0]}</div></div>
-              <div className={classes["result-grid"]}><div className={classes["result-grid-bold"]}>Tense: </div><div>{info[1]}</div></div>
+              <div className={classes["result-grid"]}><div className={classes["result-grid-bold"]}>Verb: </div><div>{info[1]}</div></div>
               <div className={classes["result-grid"]}><div className={classes["result-grid-bold"]}>Answer: </div><div>{info[3]}</div></div>
             </li>
             ))}
@@ -60,21 +61,24 @@ export default function ResultModal({ resultInfo }) {
             {resultInfo.incorrect.map((info, i) => (
               <li key={i} className={classes["result-grid-item"]}>
               <div className={classes["result-grid"]}><div className={classes["result-grid-bold"]}>Pronoun: </div><div>{info[0]}</div></div>
-              <div className={classes["result-grid"]}><div className={classes["result-grid-bold"]}>Tense: </div><div>{info[1]}</div></div>
+              <div className={classes["result-grid"]}><div className={classes["result-grid-bold"]}>Verb: </div><div>{info[1]}</div></div>
               <div className={classes["result-grid"]}><div className={classes["result-grid-bold"]}>Response: </div><div>{info[3]}</div></div>
               <div className={classes["result-grid"]}><div className={classes["result-grid-bold"]}>Answer: </div><div>{info[2]}</div></div>
             </li>
             ))}
           </ol>
         </div>
-      </div>
+      </>
     )
   }
 
 
   return (
-    <>
+    <div className={classes["result-modal__container"]}>
       {content}
-    </>
+      <div className={classes["result-modal__button-container"]}>
+        <button onClick={onAllResults} className={styles["profile__button"]}>All Results</button>
+      </div>
+    </div>
   )
 }

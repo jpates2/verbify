@@ -48,6 +48,10 @@
   color: #FFB400;
 }
 
+.result-modal__button-container {
+  text-align: center;
+}
+
 @media (min-width: 800px) {
   .result-modal__container {
     max-height: 18rem;

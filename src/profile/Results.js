@@ -29,6 +29,11 @@ export default function Results({ userResults }) {
     setActiveResult("");
   }
 
+  function handleAllResults() {
+    setMore(true);
+    setActiveResult("");
+  }
+
   if (userResults) {
     summary = Object.values(userResults).map(result => ({
       score: result.score,
@@ -55,14 +60,14 @@ export default function Results({ userResults }) {
       {
         more && (
           <Modal onClose={handleClose}>
-            <ResultsModal onClose={handleClose} onResult={handleResult} results={summary} />
+            <ResultsModal onClose={handleClose} onResult={handleResult} onAllResults={handleAllResults} results={summary} />
           </Modal>
         )
       }
       {
         activeResult !== "" && (
           <Modal onClose={handleCloseResult}>
-            <ResultModal resultInfo={activeResult} />
+            <ResultModal onAllResults={handleAllResults} resultInfo={activeResult} />
           </Modal>
         )
       }
