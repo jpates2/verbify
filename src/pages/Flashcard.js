@@ -74,6 +74,13 @@ export default function FlashcardPage() {
         type: type
       })
     })
+
+    await fetch(`https://verbify-94228-default-rtdb.europe-west1.firebasedatabase.app/users/${user}/${userId}/incorrect.json`, {
+      method: "POST",
+      body: JSON.stringify({
+        incorrectAnswers: incorrectAnswersArray,
+      })
+    })
   }
 
   if (timerStatus === "end") {

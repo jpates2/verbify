@@ -30,8 +30,7 @@ export default function ProfilePage() {
 
   let uniqueErrors = [];
   let errors = [];
-
-  Object.values(userDetails.results).forEach(function (result) {
+  Object.values(userDetails.incorrect).forEach(function (result) {
     const incorrectArrays = result.incorrectAnswers;
     incorrectArrays.forEach(array => {
       if (!uniqueErrors.includes(array[2])) {
