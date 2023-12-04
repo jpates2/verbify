@@ -40,7 +40,7 @@ export default function Practice({ userResults, initialErrors, initialUniqueErro
       <div className={classes["practice__container"]}>
         <div className={classes["practice__title"]}>Verb Bank</div>
         <ul className={classes["practice__past-verbs"]}>
-          {errors.length === 0 && <div>Complete your first set of flashcards to view verbs to practise here!</div>}
+          {errors.length === 0 && <div className={classes["practice__message"]}>Complete your first set of flashcards to view verbs to practise here!</div>}
           {errors.length > 0 && (
             limitedErrors.map((error, i) => (
               <li key={i} onClick={handleRemoveVerb} className={classes["practice__past-verb"]}>

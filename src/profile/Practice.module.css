@@ -26,10 +26,11 @@
   margin-bottom: 1rem;
 }
 
-/* .practice__past-inf,
-.practice__past-conj {
-  justify-self: center;
-} */
+.practice__message {
+  max-width: 20rem;
+  text-align: center;
+  margin: 0 auto 0 auto;
+}
 
 .practice__button-container {
   display: flex;
