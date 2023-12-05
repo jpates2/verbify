@@ -30,15 +30,18 @@ export default function ProfilePage() {
 
   let uniqueErrors = [];
   let errors = [];
-  Object.values(userDetails.incorrect).forEach(function (result) {
-    const incorrectArrays = result.incorrectAnswers;
-    incorrectArrays.forEach(array => {
-      if (!uniqueErrors.includes(array[2])) {
-        errors.push([array[0], array[1], array[2]]);
-        uniqueErrors.push(array[2]);
-      }
+  if (userDetails.incorrect) {
+    Object.values(userDetails.incorrect).forEach(function (result) {
+      const incorrectArrays = result.incorrectAnswers;
+      // console.log(result.incorrectAnswers);
+      incorrectArrays.forEach(array => {
+        if (!uniqueErrors.includes(array[2])) {
+          errors.push([array[0], array[1], array[2]]);
+          uniqueErrors.push(array[2]);
+        }
+      })
     })
-  })
+  }
 
   return (
     <UserDetailsContextProvider>
@@ -58,7 +61,7 @@ export default function ProfilePage() {
         <Stats userResults={userDetails.results} />
         <div className={styles["results_practice"]}>
           <Results userResults={userDetails.results} />
-          <Practice userResults={userDetails.results} initialErrors={errors} initialUniqueErrors={uniqueErrors} />
+          <Practice username={userDetails.username} userResults={userDetails.results} initialErrors={errors} initialUniqueErrors={uniqueErrors} />
         </div>
         <PersonalDetails onEditDetails={handleEdit} localSignupDetails={userDetails} />
         <Signout />
