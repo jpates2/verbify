@@ -1,12 +1,12 @@
 import classes from "./PracticeModal.module.css";
 import styles from "../styles/profile.module.css";
 
-export default function PracticeModal({ pastErrors, onClose }) {
+export default function PracticeModal({ pastErrors, onClose, onRemoveVerb }) {
   return (
     <div className={classes["practice-modal__container"]}>
       <div className={classes["practice-modal__title"]}>Verb Bank</div>
       {pastErrors.map((error, i) => (
-        <li key={i} className={classes["practice-modal__verb"]}>
+        <li key={i} onClick={onRemoveVerb} className={classes["practice-modal__verb"]}>
         <div className={classes["practice-modal__inf"]}>{error[1]}</div>
         <div className={classes["practice-modal__conj"]}>{error[0]} {error[2]}</div>
       </li>

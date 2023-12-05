@@ -38,8 +38,6 @@ export default function Practice({ userResults, username, initialErrors, initial
         }
       })
     })
-
-
   }
 
   function handleRemoveVerb(event) {
@@ -61,7 +59,7 @@ export default function Practice({ userResults, username, initialErrors, initial
     <>
       {more && (
         <Modal onClose={handleClose}>
-          <PracticeModal onClose={handleClose} pastErrors={errors} />
+          <PracticeModal onRemoveVerb={handleRemoveVerb} onClose={handleClose} pastErrors={errors} />
         </Modal>
       )}
       <div className={classes["practice__container"]}>
