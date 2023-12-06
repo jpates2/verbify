@@ -19,10 +19,10 @@
 .details__grid {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   grid-row-gap: 1.5rem;
   grid-row-column: 8rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .details__detail {
