@@ -35,7 +35,7 @@ export default function Results({ userResults }) {
   }
 
   if (userResults) {
-    summary = Object.values(userResults).map(result => ({
+    summary = Object.values(userResults).reverse().map(result => ({
       score: result.score,
       correct: result.correctAnswers,
       incorrect: result.incorrectAnswers,
