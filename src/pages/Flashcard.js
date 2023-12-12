@@ -17,8 +17,11 @@ export default function FlashcardPage() {
   let finalScore;
 
   const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
   const timestamp = today.toLocaleString().replace(/\W/g, '');
-  const formattedDate = today.toLocaleString().replace(/\W/g, '').slice(0, -6) + "000000";
+  const formattedDate = Number(year + month + day);
 
   const [type, setType] = useState("");
 

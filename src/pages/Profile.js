@@ -18,15 +18,33 @@ export default function ProfilePage() {
   const loggedInUserDetails = useLoaderData();
   const [userDetails, setUserDetails] = useState(loggedInUserDetails);
   const [isEditing, setIsEditing] = useState(false);
-
   function handleEdit(input) {
     setIsEditing(input);
   }
 
   function handleEditDetails (input, details) {
     setIsEditing(input);
-    setUserDetails(details)
+    setUserDetails(details);
   }
+
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  const formattedDate = Number(year + month + day);
+
+  let dates = [];
+  if (userDetails.results) {
+    Object.values(userDetails.results).forEach(function(result) {
+      if (!dates.includes(result.date.slice(0, 8))) {
+        dates.push(result.date.slice(0, 8))
+      }
+    })
+  }
+  const datesNum = dates.map(date => Number(date));
+  console.log(dates)
+  console.log(datesNum)
+  console.log(formattedDate)
 
   let uniqueErrors = [];
   let errors = [];
