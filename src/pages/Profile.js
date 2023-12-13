@@ -10,7 +10,7 @@ import { UserDetailsContextProvider } from "../store/UserDetailsContext";
 import styles from "../styles/profile.module.css";
 import Signout from '../profile/Signout';
 import Footer from '../layout/Footer';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from '../layout/Modal';
 import EditDetailsModal from '../profile/EditDetailsModal';
 
@@ -18,6 +18,9 @@ export default function ProfilePage() {
   const loggedInUserDetails = useLoaderData();
   const [userDetails, setUserDetails] = useState(loggedInUserDetails);
   const [isEditing, setIsEditing] = useState(false);
+  const [currentStreak, setCurrentStreak] = useState(0);
+  const [dates, setDates] = useState([]);
+
   function handleEdit(input) {
     setIsEditing(input);
   }
@@ -31,27 +34,41 @@ export default function ProfilePage() {
   const year = today.getFullYear();
   const month = String(today.getMonth() + 1).padStart(2, '0');
   const day = String(today.getDate()).padStart(2, '0');
-  const formattedDate = Number(year + month + day);
+  const formattedDateToday = Number(year + month + day);
 
-  let dates = [];
   if (userDetails.results) {
     Object.values(userDetails.results).forEach(function(result) {
-      if (!dates.includes(result.date.slice(0, 8))) {
-        dates.push(result.date.slice(0, 8))
+      if (!dates.includes(result.date)) {
+        setDates(prevDates => [...prevDates, result.date])
       }
     })
   }
-  const datesNum = dates.map(date => Number(date));
-  console.log(dates)
-  console.log(datesNum)
-  console.log(formattedDate)
+
+  useEffect(() => {
+    const currentStreakDates = [...dates, formattedDateToday].sort((a, b) => b - a);
+
+    if (currentStreakDates.length === 1) return;
+
+    if (currentStreakDates.length >= 2 && currentStreakDates[1] === formattedDateToday) setCurrentStreak(1);
+
+    if (currentStreakDates.length === 2 && currentStreakDates[0] !== formattedDateToday) return;
+
+    if (currentStreakDates.length > 2) {
+      for (let i = 1; i < currentStreakDates.length - 1; i++) {
+        if (currentStreakDates[i] - currentStreakDates[i + 1] === 1) {
+          setCurrentStreak(prevStreak => prevStreak + 1);
+        } else {
+          return;
+        }
+      }
+    }
+  }, [setCurrentStreak, dates, formattedDateToday])
 
   let uniqueErrors = [];
   let errors = [];
   if (userDetails.incorrect) {
     Object.values(userDetails.incorrect).forEach(function (result) {
       const incorrectArrays = result.incorrectAnswers;
-      // console.log(result.incorrectAnswers);
       incorrectArrays.forEach(array => {
         if (!uniqueErrors.includes(array[2])) {
           errors.push([array[0], array[1], array[2]]);
@@ -76,7 +93,7 @@ export default function ProfilePage() {
         }
         <Nav />
         <Header localSignupDetails={userDetails} />
-        <Stats userResults={userDetails.results} />
+        <Stats currentStreak={currentStreak} userResults={userDetails.results} />
         <div className={styles["results_practice"]}>
           <Results userResults={userDetails.results} />
           <Practice username={userDetails.username} userResults={userDetails.results} initialErrors={errors} initialUniqueErrors={uniqueErrors} />

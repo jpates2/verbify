@@ -1,6 +1,6 @@
 import classes from "./Stats.module.css";
 
-export default function Stats({ userResults }) {
+export default function Stats({ currentStreak, userResults }) {
   let avgScore;
 
   if (userResults) {
@@ -21,7 +21,7 @@ export default function Stats({ userResults }) {
         </div>
         <div className={classes["stats__pair"]}>
           <div className={classes["stats__title"]}>Current Streak</div>
-          <div className={classes["stats__num"]}>4 Days</div>
+          <div className={classes["stats__num"]}>{currentStreak} Day{currentStreak === 1 ? "" : "s"}</div>
         </div>
         <div className={classes["stats__pair"]}>
           <div className={classes["stats__title"]}>Average Score</div>
