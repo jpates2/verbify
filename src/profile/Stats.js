@@ -1,6 +1,6 @@
 import classes from "./Stats.module.css";
 
-export default function Stats({ currentStreak, userResults }) {
+export default function Stats({ currentStreak, longestStreak, userResults }) {
   let avgScore;
 
   if (userResults) {
@@ -17,7 +17,7 @@ export default function Stats({ currentStreak, userResults }) {
       <div className={classes["stats__container"]}>
         <div className={classes["stats__pair"]}>
           <div className={classes["stats__title"]}>Longest Streak</div>
-          <div className={classes["stats__num"]}>6 Days</div>
+          <div className={classes["stats__num"]}>{longestStreak} Day{longestStreak === 1 ? "" : "s"}</div>
         </div>
         <div className={classes["stats__pair"]}>
           <div className={classes["stats__title"]}>Current Streak</div>
@@ -25,7 +25,7 @@ export default function Stats({ currentStreak, userResults }) {
         </div>
         <div className={classes["stats__pair"]}>
           <div className={classes["stats__title"]}>Average Score</div>
-          <div className={classes["stats__num"]}>{avgScore ? `${avgScore}%` : ""}</div>
+          <div className={classes["stats__num"]}>{avgScore ? `${avgScore}%` : "0%"}</div>
         </div>
       </div>
     </section>

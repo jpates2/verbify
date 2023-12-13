@@ -19,6 +19,7 @@ export default function ProfilePage() {
   const [userDetails, setUserDetails] = useState(loggedInUserDetails);
   const [isEditing, setIsEditing] = useState(false);
   const [currentStreak, setCurrentStreak] = useState(0);
+  const [longestStreak, setLongestStreak] = useState(0);
   const [dates, setDates] = useState([]);
 
   function handleEdit(input) {
@@ -64,6 +65,33 @@ export default function ProfilePage() {
     }
   }, [setCurrentStreak, dates, formattedDateToday])
 
+  useEffect(() => {
+    if (dates.length === 0) return;
+
+    const sortedDates = dates.sort((a, b) => b - a);
+
+    let longest = [];
+    let current = [sortedDates[0]];
+
+    for (let i = 1; i < sortedDates.length; i++) {
+      if (sortedDates[i] === sortedDates[i - 1] - 1) {
+        current.push(sortedDates[i])
+      } else {
+        if (current.length > longest.length) {
+          longest = current;
+        }
+        current = [sortedDates[i]];
+      }
+    }
+
+    if (current.length > longest.length) {
+      longest = current;
+    }
+
+    setLongestStreak(longest.length)
+
+  }, [setLongestStreak, dates])
+
   let uniqueErrors = [];
   let errors = [];
   if (userDetails.incorrect) {
@@ -93,7 +121,7 @@ export default function ProfilePage() {
         }
         <Nav />
         <Header localSignupDetails={userDetails} />
-        <Stats currentStreak={currentStreak} userResults={userDetails.results} />
+        <Stats currentStreak={currentStreak} longestStreak={longestStreak} userResults={userDetails.results} />
         <div className={styles["results_practice"]}>
           <Results userResults={userDetails.results} />
           <Practice username={userDetails.username} userResults={userDetails.results} initialErrors={errors} initialUniqueErrors={uniqueErrors} />
