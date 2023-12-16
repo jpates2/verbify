@@ -7,6 +7,8 @@ import classes from "./SuggestionsForm.module.css";
 
 export default function Suggestions() {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formSubmitting, setFormSubmitting] = useState(false);
+  const [formSent, setFormSent] = useState(false);
 
   const {
     value: nameValue,
@@ -39,13 +41,20 @@ export default function Suggestions() {
     hasError: commentsHasError
   } = useInput("", (value => hasMinLength(value, 10)))
 
-
   let formIsValid;
   formIsValid = nameIsValid && emailIsValid && commentsIsValid;
+
+  async function submitSuggestion() {
+    await fetch(`https://verbify-94228-default-rtdb.europe-west1.firebasedatabase.app/suggestions.json`, {
+      method: "POST",
+      body: JSON.stringify({name: nameValue, email:emailValue, comment: commentsValue})
+    })
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
     setFormSubmitted(true);
+    setFormSubmitting(true);
 
     handleNameSubmit();
     handleEmailSubmit();
@@ -57,6 +66,8 @@ export default function Suggestions() {
     handleEmailReset();
     handleCommentsReset();
     setFormSubmitted(false);
+    submitSuggestion();
+    setFormSent(true);
     console.log(emailValue, nameValue, commentsValue);
   }
 
@@ -120,6 +131,9 @@ export default function Suggestions() {
         <div className={classes["suggestions-form__details"]}>
           <div></div>
           <p className={formSubmitted ? `${classes["suggestions-form__error"]}` : `${classes["suggestions-form__error-hidden"]}`}>Please fill in highlighted fields.</p>
+          {/* <p className={(!formSubmitted && !formSent && formSubmitting) ? `${classes["suggestions-form__error"]}` : `${classes["suggestions-form__error-hidden"]}`}>Sending...</p> */}
+          <div></div>
+          <p className={(!formSubmitted && formSent) ? `${classes["suggestions-form__error"]}` : `${classes["suggestions-form__error-hidden"]}`}>Received - Thanks for your suggestion!</p>
         </div>
       </form>
 
