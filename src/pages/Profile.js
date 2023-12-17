@@ -46,17 +46,11 @@ export default function ProfilePage() {
   }
 
   useEffect(() => {
-    const currentStreakDates = [...dates, formattedDateToday].sort((a, b) => b - a);
+    if (dates[0] === formattedDateToday) setCurrentStreak(1);
 
-    if (currentStreakDates.length === 1) return;
-
-    if (currentStreakDates.length >= 2 && currentStreakDates[1] === formattedDateToday) setCurrentStreak(1);
-
-    if (currentStreakDates.length === 2 && currentStreakDates[0] !== formattedDateToday) return;
-
-    if (currentStreakDates.length > 2) {
-      for (let i = 1; i < currentStreakDates.length - 1; i++) {
-        if (currentStreakDates[i] - currentStreakDates[i + 1] === 1) {
+    if (dates.length >= 2) {
+      for (let i = 0; i < dates.length - 1; i++) {
+        if (dates[i] - dates[i + 1] === 1) {
           setCurrentStreak(prevStreak => prevStreak + 1);
         } else {
           return;
