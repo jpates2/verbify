@@ -128,10 +128,10 @@ export default function SignupForm({ onSignupStatus }) {
     handleEmailSubmit();
     handlePasswordSubmit();
     handleConfirmSubmit();
-    setFormSubmitted(true);
 
     if (!formIsValid) {return};
 
+    setFormSubmitted(true);
     setUser();
 
     handleNameReset();
